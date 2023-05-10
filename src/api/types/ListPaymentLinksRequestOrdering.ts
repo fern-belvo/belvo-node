@@ -5,6 +5,6 @@
 export type ListPaymentLinksRequestOrdering = "created_at" | "-created_at";
 
 export const ListPaymentLinksRequestOrdering = {
-    CreatedAt: "created_at",
-    CreatedAt: "-created_at",
+    Ascending: "created_at",
+    Descending: "-created_at",
 } as const;
