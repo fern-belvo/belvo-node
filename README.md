@@ -11,7 +11,7 @@ API reference documentation is available [here](https://developers.belvo.com/ref
 
 ## Usage
 
-[![Try it out](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/edit/typescript-example-using-sdk-built-with-fern-358w4s?file=app.ts&view=editor)
+[![Try it out](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/edit/typescript-example-using-sdk-built-with-fern-mqxmdh?file=package.json&view=editor)
 
 ```typescript
 import { BelvoClient, Belvo } from '@fern-api/belvo';
