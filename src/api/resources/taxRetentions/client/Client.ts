@@ -21,6 +21,7 @@ export class TaxRetentions {
     constructor(protected readonly options: TaxRetentions.Options) {}
 
     /**
+     * Get a paginated list of all existing tax retentions in your Belvo account. We return up to 100 results per page.
      * @throws {Belvo.UnauthorizedError}
      */
     public async listTaxRetentions(
@@ -91,7 +92,7 @@ export class TaxRetentions {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.17",
+                "X-Fern-SDK-Version": "0.0.19",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -143,6 +144,7 @@ export class TaxRetentions {
     }
 
     /**
+     * Retrieve tax retention information from a specific link. The maximum number of tax retentions that can be returned for a period is 500.
      * @throws {Belvo.BadRequestError}
      * @throws {Belvo.UnauthorizedError}
      * @throws {Belvo.RequestTimeoutError}
@@ -166,7 +168,7 @@ export class TaxRetentions {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.17",
+                "X-Fern-SDK-Version": "0.0.19",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -249,6 +251,7 @@ export class TaxRetentions {
     }
 
     /**
+     * Get the details of a specific tax retention.
      * @throws {Belvo.UnauthorizedError}
      * @throws {Belvo.NotFoundError}
      */
@@ -276,7 +279,7 @@ export class TaxRetentions {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.17",
+                "X-Fern-SDK-Version": "0.0.19",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -338,6 +341,7 @@ export class TaxRetentions {
     }
 
     /**
+     * Delete a specific tax retention from your Belvo account.
      * @throws {Belvo.UnauthorizedError}
      * @throws {Belvo.NotFoundError}
      */
@@ -352,7 +356,7 @@ export class TaxRetentions {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.17",
+                "X-Fern-SDK-Version": "0.0.19",
             },
             contentType: "application/json",
             timeoutMs: 60000,

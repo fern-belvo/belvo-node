@@ -21,6 +21,7 @@ export class Links {
     constructor(protected readonly options: Links.Options) {}
 
     /**
+     * Get a paginated list of all the existing links in your Belvo account. By default, we return up to 100 results per page.
      * @throws {Belvo.UnauthorizedError}
      */
     public async listLinks(request: Belvo.ListLinksRequest = {}): Promise<Belvo.PaginatedResponseLink> {
@@ -149,7 +150,7 @@ export class Links {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.17",
+                "X-Fern-SDK-Version": "0.0.19",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -201,6 +202,12 @@ export class Links {
     }
 
     /**
+     * Register a new link with your Belvo account.
+     *
+     * <div style="background-color:#f4f6f8; border-left: 6px solid #4CAF50;padding: 12px;margin-left: 25px; border-radius: 4px; margin-right: 25px">
+     * <strong>Note: </strong> We recommend using our <a href="https://developers.belvo.com/docs/connect-widget" target="_blank">Connect Widget</a> to handle link creation and link status updates.
+     * </div>
+     *
      * @throws {Belvo.BadRequestError}
      * @throws {Belvo.UnauthorizedError}
      * @throws {Belvo.PreconditionError}
@@ -224,7 +231,7 @@ export class Links {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.17",
+                "X-Fern-SDK-Version": "0.0.19",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -307,6 +314,7 @@ export class Links {
     }
 
     /**
+     * Used to resume a Link register session that was paused because an MFA token was required by the institution.
      * @throws {Belvo.BadRequestError}
      * @throws {Belvo.UnauthorizedError}
      * @throws {Belvo.PreconditionError}
@@ -330,7 +338,7 @@ export class Links {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.17",
+                "X-Fern-SDK-Version": "0.0.19",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -413,6 +421,7 @@ export class Links {
     }
 
     /**
+     * Get the details of a specific link.
      * @throws {Belvo.UnauthorizedError}
      * @throws {Belvo.NotFoundError}
      */
@@ -434,7 +443,7 @@ export class Links {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.17",
+                "X-Fern-SDK-Version": "0.0.19",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -496,6 +505,9 @@ export class Links {
     }
 
     /**
+     * Update the credentials of a specific link. If the successfully updated link is a recurrent one, we automatically trigger an update of the link. If we find fresh data, you'll [receive historical update](https://developers.belvo.com/docs/webhooks) webhooks.
+     * <div style="background-color:#f4f6f8; border-left: 6px solid #4CAF50;padding: 12px;margin-left: 25px; border-radius: 4px; margin-right: 25px"> <strong>Note: </strong> We recommend using our <a href="https://developers.belvo.com/docs/connect-widget" target="_blank">Connect Widget</a> to handle updating <code>invalid</code> or <code>token_required</code> links. </div>
+     *
      * @throws {Belvo.BadRequestError}
      * @throws {Belvo.UnauthorizedError}
      * @throws {Belvo.NotFoundError}
@@ -520,7 +532,7 @@ export class Links {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.17",
+                "X-Fern-SDK-Version": "0.0.19",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -613,6 +625,8 @@ export class Links {
     }
 
     /**
+     * Change a link's access mode from `single` to `recurrent` or from `recurrent` to single.
+     * ℹ️ **Note**: When you change a link from `single`` to `recurrent`, they will only be updated the next day at the scheduled interval.
      * @throws {Belvo.BadRequestError}
      * @throws {Belvo.UnauthorizedError}
      * @throws {Belvo.NotFoundError}
@@ -637,7 +651,7 @@ export class Links {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.17",
+                "X-Fern-SDK-Version": "0.0.19",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -730,6 +744,15 @@ export class Links {
     }
 
     /**
+     * Delete a specific link and all associated accounts, transactions, and owners from your Belvo account.
+     * # Deleting links in batches
+     * To delete links in bulk, we recommend looping through the list of links you want to delete and making the delete request.
+     *
+     *   > 🚧 **Rate limiting and IP blocking**
+     *   >
+     *   > An important technical note for performing operations in batches is to take into consideration our rate-limiting: up to 80 requests every 30 seconds. If you exceed this limit, you run the risk of Belvo blocking your IP from making further requests.
+     *   >
+     *   > For more information, or if your IP address has been blocked, please contact our [support team](https://support.belvo.com/hc/en-us/requests/new).
      * @throws {Belvo.UnauthorizedError}
      * @throws {Belvo.NotFoundError}
      */
@@ -741,7 +764,7 @@ export class Links {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.17",
+                "X-Fern-SDK-Version": "0.0.19",
             },
             contentType: "application/json",
             timeoutMs: 60000,

@@ -21,6 +21,7 @@ export class ReceivableTransactions {
     constructor(protected readonly options: ReceivableTransactions.Options) {}
 
     /**
+     * Get a paginated list of all the existing receivable transactions in your Belvo account. We return up to 100 results per page.
      * @throws {Belvo.UnauthorizedError}
      */
     public async listReceivableTransactions(
@@ -134,7 +135,7 @@ export class ReceivableTransactions {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.17",
+                "X-Fern-SDK-Version": "0.0.19",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -186,6 +187,7 @@ export class ReceivableTransactions {
     }
 
     /**
+     * Retrieve all receivable transactions for an existing link.
      * @throws {Belvo.BadRequestError}
      * @throws {Belvo.UnauthorizedError}
      * @throws {Belvo.PreconditionError}
@@ -214,7 +216,7 @@ export class ReceivableTransactions {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.17",
+                "X-Fern-SDK-Version": "0.0.19",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -299,6 +301,7 @@ export class ReceivableTransactions {
     }
 
     /**
+     * Get the details of a specific receivable transaction.
      * @throws {Belvo.UnauthorizedError}
      * @throws {Belvo.NotFoundError}
      */
@@ -326,7 +329,7 @@ export class ReceivableTransactions {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.17",
+                "X-Fern-SDK-Version": "0.0.19",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -388,6 +391,7 @@ export class ReceivableTransactions {
     }
 
     /**
+     * Delete a specific receivable transaction from your Belvo account.
      * @throws {Belvo.UnauthorizedError}
      * @throws {Belvo.NotFoundError}
      */
@@ -402,7 +406,7 @@ export class ReceivableTransactions {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.17",
+                "X-Fern-SDK-Version": "0.0.19",
             },
             contentType: "application/json",
             timeoutMs: 60000,

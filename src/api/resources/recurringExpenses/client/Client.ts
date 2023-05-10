@@ -21,6 +21,7 @@ export class RecurringExpenses {
     constructor(protected readonly options: RecurringExpenses.Options) {}
 
     /**
+     * Get a paginated list of all recurring expenses in your Belvo account. By default, we return up to 100 results per page.
      * @throws {Belvo.UnauthorizedError}
      */
     public async listRecurringExpenses(
@@ -78,7 +79,7 @@ export class RecurringExpenses {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.17",
+                "X-Fern-SDK-Version": "0.0.19",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -130,6 +131,7 @@ export class RecurringExpenses {
     }
 
     /**
+     * Retrieve recurring expense insights for <b>checking and savings accounts</b> from a specific link. You can receive insights for a period of up to 365 days, depending on the transaction history available for each [bank](https://developers.belvo.com/docs/institution).
      * @throws {Belvo.BadRequestError}
      * @throws {Belvo.UnauthorizedError}
      * @throws {Belvo.RequestTimeoutError}
@@ -159,7 +161,7 @@ export class RecurringExpenses {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.17",
+                "X-Fern-SDK-Version": "0.0.19",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -252,6 +254,7 @@ export class RecurringExpenses {
     }
 
     /**
+     * Used to resume an Recurring Expenses retrieve session that was paused because an MFA token was required by the institution.
      * @throws {Belvo.BadRequestError}
      * @throws {Belvo.UnauthorizedError}
      * @throws {Belvo.RequestTimeoutError}
@@ -281,7 +284,7 @@ export class RecurringExpenses {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.17",
+                "X-Fern-SDK-Version": "0.0.19",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -374,6 +377,7 @@ export class RecurringExpenses {
     }
 
     /**
+     * Get the details of a specific recurring expense.
      * @throws {Belvo.UnauthorizedError}
      * @throws {Belvo.NotFoundError}
      */
@@ -401,7 +405,7 @@ export class RecurringExpenses {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.17",
+                "X-Fern-SDK-Version": "0.0.19",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -463,6 +467,7 @@ export class RecurringExpenses {
     }
 
     /**
+     * Delete a specific recurring expense from your Belvo account.
      * @throws {Belvo.UnauthorizedError}
      * @throws {Belvo.NotFoundError}
      */
@@ -477,7 +482,7 @@ export class RecurringExpenses {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.17",
+                "X-Fern-SDK-Version": "0.0.19",
             },
             contentType: "application/json",
             timeoutMs: 60000,

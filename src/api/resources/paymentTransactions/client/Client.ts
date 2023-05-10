@@ -21,6 +21,7 @@ export class PaymentTransactions {
     constructor(protected readonly options: PaymentTransactions.Options) {}
 
     /**
+     * List all payment transactions associated with your Belvo account.
      * @throws {Belvo.UnauthorizedError}
      */
     public async listPaymentTransactions(
@@ -151,7 +152,7 @@ export class PaymentTransactions {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.17",
+                "X-Fern-SDK-Version": "0.0.19",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -203,6 +204,7 @@ export class PaymentTransactions {
     }
 
     /**
+     * Get the details about a specific payment transaction.
      * @throws {Belvo.UnauthorizedError}
      * @throws {Belvo.NotFoundError}
      */
@@ -217,7 +219,7 @@ export class PaymentTransactions {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.17",
+                "X-Fern-SDK-Version": "0.0.19",
             },
             contentType: "application/json",
             timeoutMs: 60000,

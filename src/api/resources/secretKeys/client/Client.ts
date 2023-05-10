@@ -20,6 +20,10 @@ export class SecretKeys {
     constructor(protected readonly options: SecretKeys.Options) {}
 
     /**
+     * Get a paginated list of all existing secret keys in your Belvo account. We return up to 100 results per page.
+     *
+     *
+     *   **Note**: We only return the ID of the secret keys.
      * @throws {Belvo.UnauthorizedError}
      */
     public async listSecretKeys(): Promise<Belvo.SecretKeysPaginatedResponse> {
@@ -30,7 +34,7 @@ export class SecretKeys {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.17",
+                "X-Fern-SDK-Version": "0.0.19",
             },
             contentType: "application/json",
             timeoutMs: 60000,
@@ -81,6 +85,17 @@ export class SecretKeys {
     }
 
     /**
+     * Request API keys to use with Belvo's Payments API.
+     *
+     * You will need to send through the username and password (in plain text) you use to login to the Belvo dashboard in the Authorization header.
+     *
+     * For example:
+     *
+     *   ```curl
+     *   POST https://api.belvo.com/payments/secret-keys/
+     *   Authorization: Basic username:password
+     *   ```
+     *
      * @throws {Belvo.BadRequestError}
      * @throws {Belvo.RequestTimeoutError}
      */
@@ -92,7 +107,7 @@ export class SecretKeys {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.17",
+                "X-Fern-SDK-Version": "0.0.19",
             },
             contentType: "application/json",
             timeoutMs: 60000,

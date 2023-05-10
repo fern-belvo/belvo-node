@@ -21,6 +21,7 @@ export class Institutions {
     constructor(protected readonly options: Institutions.Options) {}
 
     /**
+     * Get a paginated list of all the institutions currently supported by Belvo. By default, we return up to 100 results per page.
      * @throws {Belvo.UnauthorizedError}
      */
     public async listInstitutions(
@@ -111,7 +112,7 @@ export class Institutions {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.17",
+                "X-Fern-SDK-Version": "0.0.19",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -163,6 +164,7 @@ export class Institutions {
     }
 
     /**
+     * Get the details of a specific institution.
      * @throws {Belvo.UnauthorizedError}
      * @throws {Belvo.NotFoundError}
      */
@@ -190,7 +192,7 @@ export class Institutions {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.17",
+                "X-Fern-SDK-Version": "0.0.19",
             },
             contentType: "application/json",
             queryParameters: _queryParams,

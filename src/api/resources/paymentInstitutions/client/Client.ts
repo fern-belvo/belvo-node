@@ -21,6 +21,7 @@ export class PaymentInstitutions {
     constructor(protected readonly options: PaymentInstitutions.Options) {}
 
     /**
+     * List all available payment institutions.
      * @throws {Belvo.UnauthorizedError}
      */
     public async listPaymentInstitutions(
@@ -81,7 +82,7 @@ export class PaymentInstitutions {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.17",
+                "X-Fern-SDK-Version": "0.0.19",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -133,6 +134,7 @@ export class PaymentInstitutions {
     }
 
     /**
+     * Get the details about a specific payment institution
      * @throws {Belvo.UnauthorizedError}
      * @throws {Belvo.NotFoundError}
      */
@@ -147,7 +149,7 @@ export class PaymentInstitutions {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.17",
+                "X-Fern-SDK-Version": "0.0.19",
             },
             contentType: "application/json",
             timeoutMs: 60000,

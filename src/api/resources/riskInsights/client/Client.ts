@@ -21,6 +21,7 @@ export class RiskInsights {
     constructor(protected readonly options: RiskInsights.Options) {}
 
     /**
+     * Get a paginated list of all risk insight analyses in your Belvo account. By default, we return up to 100 results per page.
      * @throws {Belvo.UnauthorizedError}
      */
     public async listRiskInsights(
@@ -67,7 +68,7 @@ export class RiskInsights {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.17",
+                "X-Fern-SDK-Version": "0.0.19",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -119,6 +120,9 @@ export class RiskInsights {
     }
 
     /**
+     * Request the risk insights for a given link ID.
+     *
+     * If you need to know the currency of the account, just do a GET Details to the accounts endpoint (using the ID you receive from the accounts response).
      * @throws {Belvo.BadRequestError}
      * @throws {Belvo.UnauthorizedError}
      * @throws {Belvo.RequestTimeoutError}
@@ -143,7 +147,7 @@ export class RiskInsights {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.17",
+                "X-Fern-SDK-Version": "0.0.19",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -236,6 +240,7 @@ export class RiskInsights {
     }
 
     /**
+     * Used to resume an Risk insights retrieve session that was paused because an MFA token was required by the institution.
      * @throws {Belvo.BadRequestError}
      * @throws {Belvo.UnauthorizedError}
      * @throws {Belvo.RequestTimeoutError}
@@ -260,7 +265,7 @@ export class RiskInsights {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.17",
+                "X-Fern-SDK-Version": "0.0.19",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -353,6 +358,7 @@ export class RiskInsights {
     }
 
     /**
+     * Get the details of a specific risk insight.
      * @throws {Belvo.UnauthorizedError}
      * @throws {Belvo.NotFoundError}
      */
@@ -380,7 +386,7 @@ export class RiskInsights {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.17",
+                "X-Fern-SDK-Version": "0.0.19",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -442,6 +448,7 @@ export class RiskInsights {
     }
 
     /**
+     * Delete a specific risk insight from your Belvo account.
      * @throws {Belvo.UnauthorizedError}
      * @throws {Belvo.NotFoundError}
      */
@@ -456,7 +463,7 @@ export class RiskInsights {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.17",
+                "X-Fern-SDK-Version": "0.0.19",
             },
             contentType: "application/json",
             timeoutMs: 60000,

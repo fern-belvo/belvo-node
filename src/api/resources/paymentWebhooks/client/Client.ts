@@ -20,6 +20,7 @@ export class PaymentWebhooks {
     constructor(protected readonly options: PaymentWebhooks.Options) {}
 
     /**
+     * List all payment webhooks associated with your Belvo account.
      * @throws {Belvo.UnauthorizedError}
      */
     public async listPaymentWebhooks(): Promise<Belvo.PaymentsWebhooksPaginatedResponse> {
@@ -30,7 +31,7 @@ export class PaymentWebhooks {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.17",
+                "X-Fern-SDK-Version": "0.0.19",
             },
             contentType: "application/json",
             timeoutMs: 60000,
@@ -81,6 +82,8 @@ export class PaymentWebhooks {
     }
 
     /**
+     * Register a new payments webhook for your Belvo account.
+     *
      * @throws {Belvo.BadRequestError}
      * @throws {Belvo.UnauthorizedError}
      * @throws {Belvo.RequestTimeoutError}
@@ -94,7 +97,7 @@ export class PaymentWebhooks {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.17",
+                "X-Fern-SDK-Version": "0.0.19",
             },
             contentType: "application/json",
             body: await serializers.PaymentWebhookRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
@@ -176,6 +179,7 @@ export class PaymentWebhooks {
     }
 
     /**
+     * Get the details about a specific payment webhook.
      * @throws {Belvo.UnauthorizedError}
      * @throws {Belvo.NotFoundError}
      */
@@ -190,7 +194,7 @@ export class PaymentWebhooks {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.17",
+                "X-Fern-SDK-Version": "0.0.19",
             },
             contentType: "application/json",
             timeoutMs: 60000,
@@ -251,6 +255,7 @@ export class PaymentWebhooks {
     }
 
     /**
+     * Delete a specific payment webhook from your Belvo account.
      * @throws {Belvo.UnauthorizedError}
      * @throws {Belvo.NotFoundError}
      */
@@ -265,7 +270,7 @@ export class PaymentWebhooks {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.17",
+                "X-Fern-SDK-Version": "0.0.19",
             },
             contentType: "application/json",
             timeoutMs: 60000,

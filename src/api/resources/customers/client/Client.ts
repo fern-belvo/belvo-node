@@ -21,6 +21,7 @@ export class Customers {
     constructor(protected readonly options: Customers.Options) {}
 
     /**
+     * List all customers associated with your Belvo account.
      * @throws {Belvo.UnauthorizedError}
      */
     public async listCustomers(request: Belvo.ListCustomersRequest = {}): Promise<Belvo.CustomerPaginatedResponse> {
@@ -84,7 +85,7 @@ export class Customers {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.17",
+                "X-Fern-SDK-Version": "0.0.19",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -136,6 +137,7 @@ export class Customers {
     }
 
     /**
+     * Create a new customer to send or request funds.
      * @throws {Belvo.BadRequestError}
      * @throws {Belvo.UnauthorizedError}
      * @throws {Belvo.InternalServerError}
@@ -148,7 +150,7 @@ export class Customers {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.17",
+                "X-Fern-SDK-Version": "0.0.19",
             },
             contentType: "application/json",
             body: await serializers.CreateCustomerRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
@@ -220,6 +222,7 @@ export class Customers {
     }
 
     /**
+     * Get the details about a specific customer
      * @throws {Belvo.UnauthorizedError}
      * @throws {Belvo.NotFoundError}
      */
@@ -234,7 +237,7 @@ export class Customers {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.17",
+                "X-Fern-SDK-Version": "0.0.19",
             },
             contentType: "application/json",
             timeoutMs: 60000,

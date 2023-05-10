@@ -21,6 +21,7 @@ export class Accounts {
     constructor(protected readonly options: Accounts.Options) {}
 
     /**
+     * Get a paginated list of all existing accounts in your Belvo account. By default, we return up to 100 results per page.
      * @throws {Belvo.UnauthorizedError}
      */
     public async listAccounts(request: Belvo.ListAccountsRequest = {}): Promise<Belvo.AccountsPaginatedResponse> {
@@ -224,7 +225,7 @@ export class Accounts {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.17",
+                "X-Fern-SDK-Version": "0.0.19",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -276,6 +277,21 @@ export class Accounts {
     }
 
     /**
+     * Retrieve accounts from an existing link.
+     *
+     *   > 🚧 Scheduled field deprecation
+     *   >
+     *   > Please note that we will soon be deprecating the following fields in our `loan_data` object:
+     *   > - `cutting_date`
+     *   > - `cutting_day`
+     *   > - `credit_limit`: replaced by the `principal` field.
+     *   > - `interest_rate`: replaced by the `interest_rates` object.
+     *   > - `last_payment_date`
+     *   > - `last_period_balance`: replaced by the `outstanding_balance ` field.
+     *   > - `limit_day`
+     *   > - `limit_date`: replaced by the `payment_day ` field.
+     *   > - `no_interest_payment`
+     *   > - `payment_due_day`
      * @throws {Belvo.BadRequestError}
      * @throws {Belvo.UnauthorizedError}
      * @throws {Belvo.RequestTimeoutError}
@@ -300,7 +316,7 @@ export class Accounts {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.17",
+                "X-Fern-SDK-Version": "0.0.19",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -393,6 +409,21 @@ export class Accounts {
     }
 
     /**
+     * Used to resume an Account retrieve session that was paused because an MFA token was required by the institution.
+     *
+     *   > 🚧 Scheduled field deprecation
+     *   >
+     *   > Please note that we will soon be deprecating the following fields in our `loan_data` object:
+     *   > - `cutting_date`
+     *   > - `cutting_day`
+     *   > - `credit_limit`: replaced by the `principal` field.
+     *   > - `interest_rate`: replaced by the `interest_rates` object.
+     *   > - `last_payment_date`
+     *   > - `last_period_balance`: replaced by the `outstanding_balance ` field.
+     *   > - `limit_day`
+     *   > - `limit_date`: replaced by the `payment_day ` field.
+     *   > - `no_interest_payment`
+     *   > - `payment_due_day`
      * @throws {Belvo.BadRequestError}
      * @throws {Belvo.UnauthorizedError}
      * @throws {Belvo.RequestTimeoutError}
@@ -417,7 +448,7 @@ export class Accounts {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.17",
+                "X-Fern-SDK-Version": "0.0.19",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -510,6 +541,21 @@ export class Accounts {
     }
 
     /**
+     * Get the details of a specific account.
+     *
+     *   > 🚧 Scheduled field deprecation
+     *   >
+     *   > Please note that we will soon be deprecating the following fields in our `loan_data` object:
+     *   > - `cutting_date`
+     *   > - `cutting_day`
+     *   > - `credit_limit`: replaced by the `principal` field.
+     *   > - `interest_rate`: replaced by the `interest_rates` object.
+     *   > - `last_payment_date`
+     *   > - `last_period_balance`: replaced by the `outstanding_balance ` field.
+     *   > - `limit_day`
+     *   > - `limit_date`: replaced by the `payment_day ` field.
+     *   > - `no_interest_payment`
+     *   > - `payment_due_day`
      * @throws {Belvo.UnauthorizedError}
      * @throws {Belvo.NotFoundError}
      */
@@ -531,7 +577,7 @@ export class Accounts {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.17",
+                "X-Fern-SDK-Version": "0.0.19",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -593,6 +639,7 @@ export class Accounts {
     }
 
     /**
+     * Delete a specific account and all associated transactions, as well as owners, from your Belvo account.
      * @throws {Belvo.UnauthorizedError}
      * @throws {Belvo.NotFoundError}
      */
@@ -604,7 +651,7 @@ export class Accounts {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.17",
+                "X-Fern-SDK-Version": "0.0.19",
             },
             contentType: "application/json",
             timeoutMs: 60000,

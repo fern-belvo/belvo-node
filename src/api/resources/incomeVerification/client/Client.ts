@@ -20,6 +20,11 @@ export class IncomeVerification {
     constructor(protected readonly options: IncomeVerification.Options) {}
 
     /**
+     * Send through your raw data and receive enriched information for each of your user's income streams.
+     *
+     * <div style="background-color:#f4f6f8; border-left: 6px solid #5bc0de;padding: 12px;margin-left: 25px; border-radius: 4px; margin-right: 25px">
+     * <strong>Note: </strong> Belvo can process up to 10,000 unique transactions per request.
+     * </div>
      * @throws {Belvo.BadRequestError}
      * @throws {Belvo.UnauthorizedError}
      * @throws {Belvo.ForbiddenError}
@@ -33,7 +38,7 @@ export class IncomeVerification {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.17",
+                "X-Fern-SDK-Version": "0.0.19",
             },
             contentType: "application/json",
             body: await serializers.EyodIncomeVerificationRequest.jsonOrThrow(request, {

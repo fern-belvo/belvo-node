@@ -21,6 +21,7 @@ export class BankAccounts {
     constructor(protected readonly options: BankAccounts.Options) {}
 
     /**
+     * List all bank accounts associated with your Belvo account.
      * @throws {Belvo.UnauthorizedError}
      */
     public async listBankAccount(
@@ -114,7 +115,7 @@ export class BankAccounts {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.17",
+                "X-Fern-SDK-Version": "0.0.19",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -166,6 +167,7 @@ export class BankAccounts {
     }
 
     /**
+     * Create a new bank account from which to send or request funds.
      * @throws {Belvo.BadRequestError}
      * @throws {Belvo.UnauthorizedError}
      * @throws {Belvo.RequestTimeoutError}
@@ -182,7 +184,7 @@ export class BankAccounts {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.17",
+                "X-Fern-SDK-Version": "0.0.19",
             },
             contentType: "application/json",
             body: await serializers.CreateBankAccountRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
@@ -264,6 +266,7 @@ export class BankAccounts {
     }
 
     /**
+     * Get the details about a specific bank account
      * @throws {Belvo.UnauthorizedError}
      * @throws {Belvo.NotFoundError}
      */
@@ -278,7 +281,7 @@ export class BankAccounts {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.17",
+                "X-Fern-SDK-Version": "0.0.19",
             },
             contentType: "application/json",
             timeoutMs: 60000,

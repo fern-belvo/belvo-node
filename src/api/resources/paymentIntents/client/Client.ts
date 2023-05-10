@@ -21,6 +21,7 @@ export class PaymentIntents {
     constructor(protected readonly options: PaymentIntents.Options) {}
 
     /**
+     * List all payment intents associated with your Belvo account.
      * @throws {Belvo.UnauthorizedError}
      */
     public async listPaymentIntents(
@@ -134,7 +135,7 @@ export class PaymentIntents {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.17",
+                "X-Fern-SDK-Version": "0.0.19",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -186,6 +187,7 @@ export class PaymentIntents {
     }
 
     /**
+     * Create a payment intent.
      * @throws {Belvo.BadRequestError}
      * @throws {Belvo.UnauthorizedError}
      * @throws {Belvo.RequestTimeoutError}
@@ -202,7 +204,7 @@ export class PaymentIntents {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.17",
+                "X-Fern-SDK-Version": "0.0.19",
             },
             contentType: "application/json",
             body: await serializers.CreatePaymentIntentPse.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
@@ -284,6 +286,7 @@ export class PaymentIntents {
     }
 
     /**
+     * Get the details about a specific payment intent.
      * @throws {Belvo.UnauthorizedError}
      * @throws {Belvo.NotFoundError}
      */
@@ -298,7 +301,7 @@ export class PaymentIntents {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.17",
+                "X-Fern-SDK-Version": "0.0.19",
             },
             contentType: "application/json",
             timeoutMs: 60000,
@@ -359,6 +362,9 @@ export class PaymentIntents {
     }
 
     /**
+     * Complete a new payment intent.
+     *
+     * During the payment intent flow, you need to fill in the payment intent with required information about your customer (their institution, bank account, and login credentials). This is done by sending PATCH requests with the information that Belvo asked you display in each `next_step` object. If you need more information on how to complete a payment intent, check our <a href="https://developers.belvo.com/docs/colombia-pse#payment-intents" target="_blank">PSE payment initiation</a> guides for  🇨🇴 Colombia.
      * @throws {Belvo.BadRequestError}
      * @throws {Belvo.NotFoundError}
      */
@@ -373,7 +379,7 @@ export class PaymentIntents {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.17",
+                "X-Fern-SDK-Version": "0.0.19",
             },
             contentType: "application/json",
             body: await serializers.PatchPaymentIntentPse.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),

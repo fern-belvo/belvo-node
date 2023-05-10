@@ -21,6 +21,7 @@ export class TaxComplianceStatus {
     constructor(protected readonly options: TaxComplianceStatus.Options) {}
 
     /**
+     * Get a paginated list of all existing Tax compliance statuses in your Belvo account. By default, we return up to 100 results per page.
      * @throws {Belvo.UnauthorizedError}
      */
     public async listTaxComplianceStatus(
@@ -104,7 +105,7 @@ export class TaxComplianceStatus {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.17",
+                "X-Fern-SDK-Version": "0.0.19",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -156,6 +157,7 @@ export class TaxComplianceStatus {
     }
 
     /**
+     * Retrieve the Tax compliance status information for a specific fiscal link.
      * @throws {Belvo.BadRequestError}
      * @throws {Belvo.UnauthorizedError}
      * @throws {Belvo.RequestTimeoutError}
@@ -184,7 +186,7 @@ export class TaxComplianceStatus {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.17",
+                "X-Fern-SDK-Version": "0.0.19",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -267,6 +269,7 @@ export class TaxComplianceStatus {
     }
 
     /**
+     * Get the details of a specific Tax compliance status.
      * @throws {Belvo.UnauthorizedError}
      * @throws {Belvo.NotFoundError}
      */
@@ -294,7 +297,7 @@ export class TaxComplianceStatus {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.17",
+                "X-Fern-SDK-Version": "0.0.19",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -356,6 +359,7 @@ export class TaxComplianceStatus {
     }
 
     /**
+     * Delete a specific Tax compliance status from your Belvo account.
      * @throws {Belvo.UnauthorizedError}
      * @throws {Belvo.NotFoundError}
      */
@@ -370,7 +374,7 @@ export class TaxComplianceStatus {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.17",
+                "X-Fern-SDK-Version": "0.0.19",
             },
             contentType: "application/json",
             timeoutMs: 60000,

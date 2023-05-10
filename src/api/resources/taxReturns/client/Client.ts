@@ -21,6 +21,7 @@ export class TaxReturns {
     constructor(protected readonly options: TaxReturns.Options) {}
 
     /**
+     * Get a paginated list of all existing tax returns in your Belvo account. By default, we return up to 100 results per page. The results will include a mix of both monthly and yearly tax returns.
      * @throws {Belvo.UnauthorizedError}
      */
     public async listTaxReturns(request: Belvo.ListTaxReturnsRequest = {}): Promise<Belvo.ListTaxReturnsResponse> {
@@ -139,7 +140,7 @@ export class TaxReturns {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.17",
+                "X-Fern-SDK-Version": "0.0.19",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -191,6 +192,7 @@ export class TaxReturns {
     }
 
     /**
+     * Retrieve tax return information for a specific fiscal link.
      * @throws {Belvo.BadRequestError}
      * @throws {Belvo.UnauthorizedError}
      * @throws {Belvo.RequestTimeoutError}
@@ -216,7 +218,7 @@ export class TaxReturns {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.17",
+                "X-Fern-SDK-Version": "0.0.19",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -301,6 +303,7 @@ export class TaxReturns {
     }
 
     /**
+     * Get the details of a specific tax return.
      * @throws {Belvo.UnauthorizedError}
      * @throws {Belvo.NotFoundError}
      */
@@ -325,7 +328,7 @@ export class TaxReturns {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.17",
+                "X-Fern-SDK-Version": "0.0.19",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -387,6 +390,7 @@ export class TaxReturns {
     }
 
     /**
+     * Delete a specific tax return from your Belvo account.
      * @throws {Belvo.UnauthorizedError}
      * @throws {Belvo.NotFoundError}
      */
@@ -398,7 +402,7 @@ export class TaxReturns {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.17",
+                "X-Fern-SDK-Version": "0.0.19",
             },
             contentType: "application/json",
             timeoutMs: 60000,
