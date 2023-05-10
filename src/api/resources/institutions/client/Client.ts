@@ -20,6 +20,9 @@ export declare namespace Institutions {
 export class Institutions {
     constructor(protected readonly options: Institutions.Options) {}
 
+    /**
+     * @throws {BelvoApi.UnauthorizedError}
+     */
     public async listInstitutions(
         request: BelvoApi.ListInstitutionsRequest = {}
     ): Promise<BelvoApi.InstitutionsPaginatedResponse> {
@@ -108,7 +111,7 @@ export class Institutions {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.3",
+                "X-Fern-SDK-Version": "0.0.4",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -123,10 +126,21 @@ export class Institutions {
         }
 
         if (_response.error.reason === "status-code") {
-            throw new errors.BelvoApiError({
-                statusCode: _response.error.statusCode,
-                body: _response.error.body,
-            });
+            switch (_response.error.statusCode) {
+                case 401:
+                    throw new BelvoApi.UnauthorizedError(
+                        await serializers.UnauthorizedError.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                        })
+                    );
+                default:
+                    throw new errors.BelvoApiError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                    });
+            }
         }
 
         switch (_response.error.reason) {
@@ -144,6 +158,10 @@ export class Institutions {
         }
     }
 
+    /**
+     * @throws {BelvoApi.UnauthorizedError}
+     * @throws {BelvoApi.NotFoundError}
+     */
     public async detailInstitution(
         id: string,
         request: BelvoApi.DetailInstitutionRequest = {}
@@ -168,7 +186,7 @@ export class Institutions {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.3",
+                "X-Fern-SDK-Version": "0.0.4",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -183,10 +201,29 @@ export class Institutions {
         }
 
         if (_response.error.reason === "status-code") {
-            throw new errors.BelvoApiError({
-                statusCode: _response.error.statusCode,
-                body: _response.error.body,
-            });
+            switch (_response.error.statusCode) {
+                case 401:
+                    throw new BelvoApi.UnauthorizedError(
+                        await serializers.UnauthorizedError.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                        })
+                    );
+                case 404:
+                    throw new BelvoApi.NotFoundError(
+                        await serializers.NotFoundError.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                        })
+                    );
+                default:
+                    throw new errors.BelvoApiError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                    });
+            }
         }
 
         switch (_response.error.reason) {

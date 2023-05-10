@@ -19,6 +19,9 @@ export declare namespace PaymentWebhooks {
 export class PaymentWebhooks {
     constructor(protected readonly options: PaymentWebhooks.Options) {}
 
+    /**
+     * @throws {BelvoApi.UnauthorizedError}
+     */
     public async listPaymentWebhooks(): Promise<BelvoApi.PaymentsWebhooksPaginatedResponse> {
         const _response = await core.fetcher({
             url: urlJoin(this.options.environment ?? environments.BelvoApiEnvironment.Production, "payments/webhooks"),
@@ -27,7 +30,7 @@ export class PaymentWebhooks {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.3",
+                "X-Fern-SDK-Version": "0.0.4",
             },
             contentType: "application/json",
             timeoutMs: 60000,
@@ -41,10 +44,21 @@ export class PaymentWebhooks {
         }
 
         if (_response.error.reason === "status-code") {
-            throw new errors.BelvoApiError({
-                statusCode: _response.error.statusCode,
-                body: _response.error.body,
-            });
+            switch (_response.error.statusCode) {
+                case 401:
+                    throw new BelvoApi.UnauthorizedError(
+                        await serializers.UnauthorizedError.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                        })
+                    );
+                default:
+                    throw new errors.BelvoApiError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                    });
+            }
         }
 
         switch (_response.error.reason) {
@@ -62,6 +76,12 @@ export class PaymentWebhooks {
         }
     }
 
+    /**
+     * @throws {BelvoApi.BadRequestError}
+     * @throws {BelvoApi.UnauthorizedError}
+     * @throws {BelvoApi.RequestTimeoutError}
+     * @throws {BelvoApi.InternalServerError}
+     */
     public async registerPaymentWebhook(request: BelvoApi.PaymentWebhookRequest): Promise<BelvoApi.PaymentWebhook[]> {
         const _response = await core.fetcher({
             url: urlJoin(this.options.environment ?? environments.BelvoApiEnvironment.Production, "payments/webhooks"),
@@ -70,7 +90,7 @@ export class PaymentWebhooks {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.3",
+                "X-Fern-SDK-Version": "0.0.4",
             },
             contentType: "application/json",
             body: await serializers.PaymentWebhookRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
@@ -85,10 +105,45 @@ export class PaymentWebhooks {
         }
 
         if (_response.error.reason === "status-code") {
-            throw new errors.BelvoApiError({
-                statusCode: _response.error.statusCode,
-                body: _response.error.body,
-            });
+            switch (_response.error.statusCode) {
+                case 400:
+                    throw new BelvoApi.BadRequestError(
+                        await serializers.BadRequestError.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                        })
+                    );
+                case 401:
+                    throw new BelvoApi.UnauthorizedError(
+                        await serializers.UnauthorizedError.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                        })
+                    );
+                case 408:
+                    throw new BelvoApi.RequestTimeoutError(
+                        await serializers.RequestTimeoutError.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                        })
+                    );
+                case 500:
+                    throw new BelvoApi.InternalServerError(
+                        await serializers.InternalServerError.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                        })
+                    );
+                default:
+                    throw new errors.BelvoApiError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                    });
+            }
         }
 
         switch (_response.error.reason) {
@@ -106,6 +161,10 @@ export class PaymentWebhooks {
         }
     }
 
+    /**
+     * @throws {BelvoApi.UnauthorizedError}
+     * @throws {BelvoApi.NotFoundError}
+     */
     public async detailPaymentWebhooks(id: string): Promise<BelvoApi.PaymentWebhook> {
         const _response = await core.fetcher({
             url: urlJoin(
@@ -117,7 +176,7 @@ export class PaymentWebhooks {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.3",
+                "X-Fern-SDK-Version": "0.0.4",
             },
             contentType: "application/json",
             timeoutMs: 60000,
@@ -131,10 +190,29 @@ export class PaymentWebhooks {
         }
 
         if (_response.error.reason === "status-code") {
-            throw new errors.BelvoApiError({
-                statusCode: _response.error.statusCode,
-                body: _response.error.body,
-            });
+            switch (_response.error.statusCode) {
+                case 401:
+                    throw new BelvoApi.UnauthorizedError(
+                        await serializers.UnauthorizedError.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                        })
+                    );
+                case 404:
+                    throw new BelvoApi.NotFoundError(
+                        await serializers.NotFoundError.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                        })
+                    );
+                default:
+                    throw new errors.BelvoApiError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                    });
+            }
         }
 
         switch (_response.error.reason) {
@@ -152,6 +230,10 @@ export class PaymentWebhooks {
         }
     }
 
+    /**
+     * @throws {BelvoApi.UnauthorizedError}
+     * @throws {BelvoApi.NotFoundError}
+     */
     public async deletePaymentWebhooks(id: string): Promise<void> {
         const _response = await core.fetcher({
             url: urlJoin(
@@ -163,7 +245,7 @@ export class PaymentWebhooks {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.3",
+                "X-Fern-SDK-Version": "0.0.4",
             },
             contentType: "application/json",
             timeoutMs: 60000,
@@ -173,10 +255,29 @@ export class PaymentWebhooks {
         }
 
         if (_response.error.reason === "status-code") {
-            throw new errors.BelvoApiError({
-                statusCode: _response.error.statusCode,
-                body: _response.error.body,
-            });
+            switch (_response.error.statusCode) {
+                case 401:
+                    throw new BelvoApi.UnauthorizedError(
+                        await serializers.UnauthorizedError.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                        })
+                    );
+                case 404:
+                    throw new BelvoApi.NotFoundError(
+                        await serializers.NotFoundError.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                        })
+                    );
+                default:
+                    throw new errors.BelvoApiError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                    });
+            }
         }
 
         switch (_response.error.reason) {

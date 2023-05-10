@@ -20,6 +20,9 @@ export declare namespace Owners {
 export class Owners {
     constructor(protected readonly options: Owners.Options) {}
 
+    /**
+     * @throws {BelvoApi.UnauthorizedError}
+     */
     public async listOwners(request: BelvoApi.ListOwnersRequest = {}): Promise<BelvoApi.OwnersPaginatedResponse> {
         const {
             page,
@@ -106,7 +109,7 @@ export class Owners {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.3",
+                "X-Fern-SDK-Version": "0.0.4",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -121,10 +124,21 @@ export class Owners {
         }
 
         if (_response.error.reason === "status-code") {
-            throw new errors.BelvoApiError({
-                statusCode: _response.error.statusCode,
-                body: _response.error.body,
-            });
+            switch (_response.error.statusCode) {
+                case 401:
+                    throw new BelvoApi.UnauthorizedError(
+                        await serializers.UnauthorizedError.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                        })
+                    );
+                default:
+                    throw new errors.BelvoApiError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                    });
+            }
         }
 
         switch (_response.error.reason) {
@@ -142,6 +156,13 @@ export class Owners {
         }
     }
 
+    /**
+     * @throws {BelvoApi.BadRequestError}
+     * @throws {BelvoApi.UnauthorizedError}
+     * @throws {BelvoApi.RequestTimeoutError}
+     * @throws {BelvoApi.PreconditionError}
+     * @throws {BelvoApi.InternalServerError}
+     */
     public async retrieveOwners(request: BelvoApi.RetrieveOwnersRequest): Promise<BelvoApi.Owner[]> {
         const { omit, fields, body: _body } = request;
         const _queryParams = new URLSearchParams();
@@ -160,7 +181,7 @@ export class Owners {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.3",
+                "X-Fern-SDK-Version": "0.0.4",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -176,10 +197,53 @@ export class Owners {
         }
 
         if (_response.error.reason === "status-code") {
-            throw new errors.BelvoApiError({
-                statusCode: _response.error.statusCode,
-                body: _response.error.body,
-            });
+            switch (_response.error.statusCode) {
+                case 400:
+                    throw new BelvoApi.BadRequestError(
+                        await serializers.BadRequestError.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                        })
+                    );
+                case 401:
+                    throw new BelvoApi.UnauthorizedError(
+                        await serializers.UnauthorizedError.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                        })
+                    );
+                case 408:
+                    throw new BelvoApi.RequestTimeoutError(
+                        await serializers.RequestTimeoutError.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                        })
+                    );
+                case 428:
+                    throw new BelvoApi.PreconditionError(
+                        await serializers.PreconditionError.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                        })
+                    );
+                case 500:
+                    throw new BelvoApi.InternalServerError(
+                        await serializers.InternalServerError.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                        })
+                    );
+                default:
+                    throw new errors.BelvoApiError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                    });
+            }
         }
 
         switch (_response.error.reason) {
@@ -197,6 +261,13 @@ export class Owners {
         }
     }
 
+    /**
+     * @throws {BelvoApi.BadRequestError}
+     * @throws {BelvoApi.UnauthorizedError}
+     * @throws {BelvoApi.RequestTimeoutError}
+     * @throws {BelvoApi.PreconditionError}
+     * @throws {BelvoApi.InternalServerError}
+     */
     public async patchOwners(request: BelvoApi.PatchOwnersRequest): Promise<BelvoApi.Owner[]> {
         const { omit, fields, body: _body } = request;
         const _queryParams = new URLSearchParams();
@@ -215,7 +286,7 @@ export class Owners {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.3",
+                "X-Fern-SDK-Version": "0.0.4",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -231,10 +302,53 @@ export class Owners {
         }
 
         if (_response.error.reason === "status-code") {
-            throw new errors.BelvoApiError({
-                statusCode: _response.error.statusCode,
-                body: _response.error.body,
-            });
+            switch (_response.error.statusCode) {
+                case 400:
+                    throw new BelvoApi.BadRequestError(
+                        await serializers.BadRequestError.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                        })
+                    );
+                case 401:
+                    throw new BelvoApi.UnauthorizedError(
+                        await serializers.UnauthorizedError.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                        })
+                    );
+                case 408:
+                    throw new BelvoApi.RequestTimeoutError(
+                        await serializers.RequestTimeoutError.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                        })
+                    );
+                case 428:
+                    throw new BelvoApi.PreconditionError(
+                        await serializers.PreconditionError.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                        })
+                    );
+                case 500:
+                    throw new BelvoApi.InternalServerError(
+                        await serializers.InternalServerError.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                        })
+                    );
+                default:
+                    throw new errors.BelvoApiError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                    });
+            }
         }
 
         switch (_response.error.reason) {
@@ -252,6 +366,10 @@ export class Owners {
         }
     }
 
+    /**
+     * @throws {BelvoApi.UnauthorizedError}
+     * @throws {BelvoApi.NotFoundError}
+     */
     public async detailOwner(id: string, request: BelvoApi.DetailOwnerRequest = {}): Promise<BelvoApi.Owner> {
         const { omit, fields } = request;
         const _queryParams = new URLSearchParams();
@@ -270,7 +388,7 @@ export class Owners {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.3",
+                "X-Fern-SDK-Version": "0.0.4",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -285,10 +403,29 @@ export class Owners {
         }
 
         if (_response.error.reason === "status-code") {
-            throw new errors.BelvoApiError({
-                statusCode: _response.error.statusCode,
-                body: _response.error.body,
-            });
+            switch (_response.error.statusCode) {
+                case 401:
+                    throw new BelvoApi.UnauthorizedError(
+                        await serializers.UnauthorizedError.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                        })
+                    );
+                case 404:
+                    throw new BelvoApi.NotFoundError(
+                        await serializers.NotFoundError.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                        })
+                    );
+                default:
+                    throw new errors.BelvoApiError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                    });
+            }
         }
 
         switch (_response.error.reason) {
@@ -306,6 +443,10 @@ export class Owners {
         }
     }
 
+    /**
+     * @throws {BelvoApi.UnauthorizedError}
+     * @throws {BelvoApi.NotFoundError}
+     */
     public async destroyOwner(id: string): Promise<void> {
         const _response = await core.fetcher({
             url: urlJoin(this.options.environment ?? environments.BelvoApiEnvironment.Production, `api/owners/${id}`),
@@ -314,7 +455,7 @@ export class Owners {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.3",
+                "X-Fern-SDK-Version": "0.0.4",
             },
             contentType: "application/json",
             timeoutMs: 60000,
@@ -324,10 +465,29 @@ export class Owners {
         }
 
         if (_response.error.reason === "status-code") {
-            throw new errors.BelvoApiError({
-                statusCode: _response.error.statusCode,
-                body: _response.error.body,
-            });
+            switch (_response.error.statusCode) {
+                case 401:
+                    throw new BelvoApi.UnauthorizedError(
+                        await serializers.UnauthorizedError.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                        })
+                    );
+                case 404:
+                    throw new BelvoApi.NotFoundError(
+                        await serializers.NotFoundError.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                        })
+                    );
+                default:
+                    throw new errors.BelvoApiError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                    });
+            }
         }
 
         switch (_response.error.reason) {

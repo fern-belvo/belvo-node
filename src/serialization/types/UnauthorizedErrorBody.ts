@@ -6,16 +6,16 @@ import * as serializers from "..";
 import * as BelvoApi from "../../api";
 import * as core from "../../core";
 
-export const UnauthorizedError: core.serialization.ObjectSchema<
-    serializers.UnauthorizedError.Raw,
-    BelvoApi.UnauthorizedError
+export const UnauthorizedErrorBody: core.serialization.ObjectSchema<
+    serializers.UnauthorizedErrorBody.Raw,
+    BelvoApi.UnauthorizedErrorBody
 > = core.serialization.object({
     code: core.serialization.string().optional(),
     message: core.serialization.string().optional(),
     requestId: core.serialization.property("request_id", core.serialization.string().optional()),
 });
 
-export declare namespace UnauthorizedError {
+export declare namespace UnauthorizedErrorBody {
     interface Raw {
         code?: string | null;
         message?: string | null;

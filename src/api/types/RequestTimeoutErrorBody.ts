@@ -5,7 +5,7 @@
 /**
  * Belvo has a limit regarding the time it takes to log in, retrieve account data, and log out. A timeout occurs when there is a very high amount of data and everything could not be obtained within the allotted time.
  */
-export interface RequestTimeoutError {
+export interface RequestTimeoutErrorBody {
     /**
      * A unique error code (`request_timeout`) that allows you to classify and handle the error programmatically.
      *

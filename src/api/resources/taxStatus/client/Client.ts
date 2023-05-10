@@ -20,6 +20,9 @@ export declare namespace TaxStatus {
 export class TaxStatus {
     constructor(protected readonly options: TaxStatus.Options) {}
 
+    /**
+     * @throws {BelvoApi.UnauthorizedError}
+     */
     public async listTaxStatus(
         request: BelvoApi.ListTaxStatusRequest = {}
     ): Promise<BelvoApi.TaxStatusPaginatedResponse> {
@@ -98,7 +101,7 @@ export class TaxStatus {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.3",
+                "X-Fern-SDK-Version": "0.0.4",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -113,10 +116,21 @@ export class TaxStatus {
         }
 
         if (_response.error.reason === "status-code") {
-            throw new errors.BelvoApiError({
-                statusCode: _response.error.statusCode,
-                body: _response.error.body,
-            });
+            switch (_response.error.statusCode) {
+                case 401:
+                    throw new BelvoApi.UnauthorizedError(
+                        await serializers.UnauthorizedError.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                        })
+                    );
+                default:
+                    throw new errors.BelvoApiError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                    });
+            }
         }
 
         switch (_response.error.reason) {
@@ -134,6 +148,12 @@ export class TaxStatus {
         }
     }
 
+    /**
+     * @throws {BelvoApi.BadRequestError}
+     * @throws {BelvoApi.UnauthorizedError}
+     * @throws {BelvoApi.RequestTimeoutError}
+     * @throws {BelvoApi.InternalServerError}
+     */
     public async retrieveTaxStatus(
         request: BelvoApi.RetrieveTaxStatusRequest
     ): Promise<BelvoApi.RetrieveTaxStatusResponse> {
@@ -154,7 +174,7 @@ export class TaxStatus {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.3",
+                "X-Fern-SDK-Version": "0.0.4",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -170,10 +190,45 @@ export class TaxStatus {
         }
 
         if (_response.error.reason === "status-code") {
-            throw new errors.BelvoApiError({
-                statusCode: _response.error.statusCode,
-                body: _response.error.body,
-            });
+            switch (_response.error.statusCode) {
+                case 400:
+                    throw new BelvoApi.BadRequestError(
+                        await serializers.BadRequestError.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                        })
+                    );
+                case 401:
+                    throw new BelvoApi.UnauthorizedError(
+                        await serializers.UnauthorizedError.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                        })
+                    );
+                case 408:
+                    throw new BelvoApi.RequestTimeoutError(
+                        await serializers.RequestTimeoutError.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                        })
+                    );
+                case 500:
+                    throw new BelvoApi.InternalServerError(
+                        await serializers.InternalServerError.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                        })
+                    );
+                default:
+                    throw new errors.BelvoApiError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                    });
+            }
         }
 
         switch (_response.error.reason) {
@@ -191,6 +246,10 @@ export class TaxStatus {
         }
     }
 
+    /**
+     * @throws {BelvoApi.UnauthorizedError}
+     * @throws {BelvoApi.NotFoundError}
+     */
     public async detailTaxStatus(
         id: string,
         request: BelvoApi.DetailTaxStatusRequest = {}
@@ -215,7 +274,7 @@ export class TaxStatus {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.3",
+                "X-Fern-SDK-Version": "0.0.4",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -230,10 +289,29 @@ export class TaxStatus {
         }
 
         if (_response.error.reason === "status-code") {
-            throw new errors.BelvoApiError({
-                statusCode: _response.error.statusCode,
-                body: _response.error.body,
-            });
+            switch (_response.error.statusCode) {
+                case 401:
+                    throw new BelvoApi.UnauthorizedError(
+                        await serializers.UnauthorizedError.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                        })
+                    );
+                case 404:
+                    throw new BelvoApi.NotFoundError(
+                        await serializers.NotFoundError.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                        })
+                    );
+                default:
+                    throw new errors.BelvoApiError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                    });
+            }
         }
 
         switch (_response.error.reason) {
@@ -251,6 +329,10 @@ export class TaxStatus {
         }
     }
 
+    /**
+     * @throws {BelvoApi.UnauthorizedError}
+     * @throws {BelvoApi.NotFoundError}
+     */
     public async destroyTaxStatus(id: string): Promise<void> {
         const _response = await core.fetcher({
             url: urlJoin(
@@ -262,7 +344,7 @@ export class TaxStatus {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.3",
+                "X-Fern-SDK-Version": "0.0.4",
             },
             contentType: "application/json",
             timeoutMs: 60000,
@@ -272,10 +354,29 @@ export class TaxStatus {
         }
 
         if (_response.error.reason === "status-code") {
-            throw new errors.BelvoApiError({
-                statusCode: _response.error.statusCode,
-                body: _response.error.body,
-            });
+            switch (_response.error.statusCode) {
+                case 401:
+                    throw new BelvoApi.UnauthorizedError(
+                        await serializers.UnauthorizedError.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                        })
+                    );
+                case 404:
+                    throw new BelvoApi.NotFoundError(
+                        await serializers.NotFoundError.parseOrThrow(_response.error.body, {
+                            unrecognizedObjectKeys: "passthrough",
+                            allowUnrecognizedUnionMembers: true,
+                            allowUnrecognizedEnumValues: true,
+                        })
+                    );
+                default:
+                    throw new errors.BelvoApiError({
+                        statusCode: _response.error.statusCode,
+                        body: _response.error.body,
+                    });
+            }
         }
 
         switch (_response.error.reason) {

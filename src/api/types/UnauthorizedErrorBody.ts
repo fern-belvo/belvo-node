@@ -5,7 +5,7 @@
 /**
  * This error occurs when you try to make an API call using incorrect Belvo API credentials (either your secret key or secret password, or both, are incorrect).
  */
-export interface UnauthorizedError {
+export interface UnauthorizedErrorBody {
     /**
      * A unique error code (`authentication_failed`) that allows you to classify and handle the error programmatically.
      *
