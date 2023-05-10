@@ -33,7 +33,7 @@ export class Categorization {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.14",
+                "X-Fern-SDK-Version": "0.0.15",
             },
             contentType: "application/json",
             body: await serializers.CategorizationRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
@@ -44,6 +44,7 @@ export class Categorization {
                 unrecognizedObjectKeys: "passthrough",
                 allowUnrecognizedUnionMembers: true,
                 allowUnrecognizedEnumValues: true,
+                skipValidation: true,
                 breadcrumbsPrefix: ["response"],
             });
         }
@@ -56,6 +57,7 @@ export class Categorization {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
+                            skipValidation: true,
                             breadcrumbsPrefix: ["response"],
                         })
                     );
@@ -65,6 +67,7 @@ export class Categorization {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
+                            skipValidation: true,
                             breadcrumbsPrefix: ["response"],
                         })
                     );
@@ -74,6 +77,7 @@ export class Categorization {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
+                            skipValidation: true,
                             breadcrumbsPrefix: ["response"],
                         })
                     );
@@ -83,6 +87,7 @@ export class Categorization {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
+                            skipValidation: true,
                             breadcrumbsPrefix: ["response"],
                         })
                     );

@@ -99,7 +99,7 @@ export class TaxStatus {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.14",
+                "X-Fern-SDK-Version": "0.0.15",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -110,6 +110,7 @@ export class TaxStatus {
                 unrecognizedObjectKeys: "passthrough",
                 allowUnrecognizedUnionMembers: true,
                 allowUnrecognizedEnumValues: true,
+                skipValidation: true,
                 breadcrumbsPrefix: ["response"],
             });
         }
@@ -122,6 +123,7 @@ export class TaxStatus {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
+                            skipValidation: true,
                             breadcrumbsPrefix: ["response"],
                         })
                     );
@@ -172,7 +174,7 @@ export class TaxStatus {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.14",
+                "X-Fern-SDK-Version": "0.0.15",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -184,6 +186,7 @@ export class TaxStatus {
                 unrecognizedObjectKeys: "passthrough",
                 allowUnrecognizedUnionMembers: true,
                 allowUnrecognizedEnumValues: true,
+                skipValidation: true,
                 breadcrumbsPrefix: ["response"],
             });
         }
@@ -196,6 +199,7 @@ export class TaxStatus {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
+                            skipValidation: true,
                             breadcrumbsPrefix: ["response"],
                         })
                     );
@@ -205,6 +209,7 @@ export class TaxStatus {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
+                            skipValidation: true,
                             breadcrumbsPrefix: ["response"],
                         })
                     );
@@ -214,6 +219,7 @@ export class TaxStatus {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
+                            skipValidation: true,
                             breadcrumbsPrefix: ["response"],
                         })
                     );
@@ -223,6 +229,7 @@ export class TaxStatus {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
+                            skipValidation: true,
                             breadcrumbsPrefix: ["response"],
                         })
                     );
@@ -274,7 +281,7 @@ export class TaxStatus {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.14",
+                "X-Fern-SDK-Version": "0.0.15",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -285,6 +292,7 @@ export class TaxStatus {
                 unrecognizedObjectKeys: "passthrough",
                 allowUnrecognizedUnionMembers: true,
                 allowUnrecognizedEnumValues: true,
+                skipValidation: true,
                 breadcrumbsPrefix: ["response"],
             });
         }
@@ -297,6 +305,7 @@ export class TaxStatus {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
+                            skipValidation: true,
                             breadcrumbsPrefix: ["response"],
                         })
                     );
@@ -306,6 +315,7 @@ export class TaxStatus {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
+                            skipValidation: true,
                             breadcrumbsPrefix: ["response"],
                         })
                     );
@@ -344,7 +354,7 @@ export class TaxStatus {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.14",
+                "X-Fern-SDK-Version": "0.0.15",
             },
             contentType: "application/json",
             timeoutMs: 60000,
@@ -361,6 +371,7 @@ export class TaxStatus {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
+                            skipValidation: true,
                             breadcrumbsPrefix: ["response"],
                         })
                     );
@@ -370,6 +381,7 @@ export class TaxStatus {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
+                            skipValidation: true,
                             breadcrumbsPrefix: ["response"],
                         })
                     );
