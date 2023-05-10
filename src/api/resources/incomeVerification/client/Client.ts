@@ -33,7 +33,7 @@ export class IncomeVerification {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.18",
+                "X-Fern-SDK-Version": "0.0.17",
             },
             contentType: "application/json",
             body: await serializers.EyodIncomeVerificationRequest.jsonOrThrow(request, {
