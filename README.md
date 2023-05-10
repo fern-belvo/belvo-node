@@ -1,22 +1,35 @@
-# {Company} Node Library
+# Belvo Node Library
 
-[![npm shield](https://img.shields.io/npm/v/@fern-api/{company})](https://www.npmjs.com/package/@fern-api/{company})
+[![npm shield](https://img.shields.io/npm/v/@fern-api/belvo)](https://www.npmjs.com/package/@fern-api/belvo)
 [![fern shield](https://img.shields.io/badge/%F0%9F%8C%BF-SDK%20generated%20by%20Fern-brightgreen)](https://github.com/fern-api/fern)
 
-The {Company} Node.js library provides access to the {Company} API from JavaScript/TypeScript.
+The Belvo Node.js library provides access to the Belvo API from JavaScript/TypeScript.
 
 ## Documentation
 
-API reference documentation is available [here](docs_url).
+API reference documentation is available [here](https://developers.belvo.com/reference/using-the-api-reference).
 
 ## Usage
 
-[![Try it out](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](TODO)
+[![Try it out](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/edit/typescript-example-using-sdk-built-with-fern-358w4s?file=app.ts&view=editor)
 
 ```typescript
-import { TODO } from "TODO";
+import { BelvoClient, Belvo } from '@fern-api/belvo';
 
-const TODO
+const belvo = new BelvoClient({
+    secretId: "YOUR_SECRET_ID",
+    secretPassword: "YOUR_SECRET_PASSWORD",
+});
+
+const link = await belvo.links.registerLink({
+    body: {
+        institution: "banamex_mx_retail",
+        username: "username",
+        password: "password",
+        accessMode: Belvo.EnumLinkAccessModeRequest.Single,
+        credentialsStorage: "30d",
+    },
+});
 ```
 
 ## Beta status
