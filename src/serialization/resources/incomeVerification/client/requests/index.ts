@@ -1,0 +1,1 @@
+export { EyodIncomeVerificationRequest } from "./EyodIncomeVerificationRequest";
