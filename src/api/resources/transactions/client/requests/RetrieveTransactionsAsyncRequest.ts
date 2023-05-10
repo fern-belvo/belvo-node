@@ -4,8 +4,9 @@
 
 import * as BelvoApi from "../../../..";
 
-export interface RetrieveTransactionsRequest {
+export interface RetrieveTransactionsAsyncRequest {
     omit?: string;
     fields?: string;
+    belvoRequestMode: "async";
     body: BelvoApi.TransactionsRequest;
 }

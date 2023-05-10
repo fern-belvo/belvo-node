@@ -4,7 +4,6 @@ export * from "./LinksPutRequest";
 export * from "./ChangeAccessMode";
 export * from "./StandardRequest";
 export * from "./PatchBody";
-export * from "./RetrieveTransactionsRequestXBelvoRequestMode";
 export * from "./TransactionsRequest";
 export * from "./BalancesRequest";
 export * from "./InvoicesRequest";
