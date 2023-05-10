@@ -3,56 +3,49 @@
  */
 
 import * as serializers from "..";
-import * as BelvoApi from "../../api";
+import * as Belvo from "../../api";
 import * as core from "../../core";
 
-export const Income: core.serialization.ObjectSchema<serializers.Income.Raw, BelvoApi.Income> =
-    core.serialization.object({
-        id: core.serialization.string(),
-        link: core.serialization.string(),
-        createdAt: core.serialization.property("created_at", core.serialization.string()),
-        incomeStreams: core.serialization.property(
-            "income_streams",
-            core.serialization.list(core.serialization.lazyObject(async () => (await import("..")).IncomeStreamsBody))
-        ),
-        incomeSourceType: core.serialization.property(
-            "income_source_type",
-            core.serialization.lazy(async () => (await import("..")).EnumIncomeSourceType)
-        ),
-        firstTransactionDate: core.serialization.property(
-            "first_transaction_date",
-            core.serialization.string().optional()
-        ),
-        lastTransactionDate: core.serialization.property("last_transaction_date", core.serialization.string()),
-        numberOfIncomeStreams: core.serialization.property("number_of_income_streams", core.serialization.number()),
-        monthlyAverage: core.serialization.property("monthly_average", core.serialization.number()),
-        monthlyAverageRegular: core.serialization.property("monthly_average_regular", core.serialization.number()),
-        monthlyAverageIrregular: core.serialization.property("monthly_average_irregular", core.serialization.number()),
-        monthlyAverageLowConfidence: core.serialization.property(
-            "monthly_average_low_confidence",
-            core.serialization.number()
-        ),
-        monthlyAverageMediumConfidence: core.serialization.property(
-            "monthly_average_medium_confidence",
-            core.serialization.number()
-        ),
-        monthlyAverageHighConfidence: core.serialization.property(
-            "monthly_average_high_confidence",
-            core.serialization.number()
-        ),
-        totalIncomeAmount: core.serialization.property("total_income_amount", core.serialization.number()),
-        totalRegularIncomeAmount: core.serialization.property(
-            "total_regular_income_amount",
-            core.serialization.number()
-        ),
-        totalIrregularIncomeAmount: core.serialization.property(
-            "total_irregular_income_amount",
-            core.serialization.number().optional()
-        ),
-        totalLowConfidence: core.serialization.property("total_low_confidence", core.serialization.number()),
-        totalMediumConfidence: core.serialization.property("total_medium_confidence", core.serialization.number()),
-        totalHighConfidence: core.serialization.property("total_high_confidence", core.serialization.number()),
-    });
+export const Income: core.serialization.ObjectSchema<serializers.Income.Raw, Belvo.Income> = core.serialization.object({
+    id: core.serialization.string(),
+    link: core.serialization.string(),
+    createdAt: core.serialization.property("created_at", core.serialization.string()),
+    incomeStreams: core.serialization.property(
+        "income_streams",
+        core.serialization.list(core.serialization.lazyObject(async () => (await import("..")).IncomeStreamsBody))
+    ),
+    incomeSourceType: core.serialization.property(
+        "income_source_type",
+        core.serialization.lazy(async () => (await import("..")).EnumIncomeSourceType)
+    ),
+    firstTransactionDate: core.serialization.property("first_transaction_date", core.serialization.string().optional()),
+    lastTransactionDate: core.serialization.property("last_transaction_date", core.serialization.string()),
+    numberOfIncomeStreams: core.serialization.property("number_of_income_streams", core.serialization.number()),
+    monthlyAverage: core.serialization.property("monthly_average", core.serialization.number()),
+    monthlyAverageRegular: core.serialization.property("monthly_average_regular", core.serialization.number()),
+    monthlyAverageIrregular: core.serialization.property("monthly_average_irregular", core.serialization.number()),
+    monthlyAverageLowConfidence: core.serialization.property(
+        "monthly_average_low_confidence",
+        core.serialization.number()
+    ),
+    monthlyAverageMediumConfidence: core.serialization.property(
+        "monthly_average_medium_confidence",
+        core.serialization.number()
+    ),
+    monthlyAverageHighConfidence: core.serialization.property(
+        "monthly_average_high_confidence",
+        core.serialization.number()
+    ),
+    totalIncomeAmount: core.serialization.property("total_income_amount", core.serialization.number()),
+    totalRegularIncomeAmount: core.serialization.property("total_regular_income_amount", core.serialization.number()),
+    totalIrregularIncomeAmount: core.serialization.property(
+        "total_irregular_income_amount",
+        core.serialization.number().optional()
+    ),
+    totalLowConfidence: core.serialization.property("total_low_confidence", core.serialization.number()),
+    totalMediumConfidence: core.serialization.property("total_medium_confidence", core.serialization.number()),
+    totalHighConfidence: core.serialization.property("total_high_confidence", core.serialization.number()),
+});
 
 export declare namespace Income {
     interface Raw {

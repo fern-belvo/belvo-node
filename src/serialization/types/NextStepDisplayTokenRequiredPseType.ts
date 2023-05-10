@@ -3,12 +3,12 @@
  */
 
 import * as serializers from "..";
-import * as BelvoApi from "../../api";
+import * as Belvo from "../../api";
 import * as core from "../../core";
 
 export const NextStepDisplayTokenRequiredPseType: core.serialization.Schema<
     serializers.NextStepDisplayTokenRequiredPseType.Raw,
-    BelvoApi.NextStepDisplayTokenRequiredPseType
+    Belvo.NextStepDisplayTokenRequiredPseType
 > = core.serialization.enum_([
     "pse_display_payment_method_information",
     "pse_display_credentials_required",

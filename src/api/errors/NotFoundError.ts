@@ -3,10 +3,10 @@
  */
 
 import * as errors from "../../errors";
-import * as BelvoApi from "..";
+import * as Belvo from "..";
 
-export class NotFoundError extends errors.BelvoApiError {
-    constructor(body: BelvoApi.NotFoundErrorBody[]) {
+export class NotFoundError extends errors.BelvoError {
+    constructor(body: Belvo.NotFoundErrorBody[]) {
         super({
             message: "NotFoundError",
             statusCode: 404,

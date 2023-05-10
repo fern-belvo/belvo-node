@@ -3,13 +3,11 @@
  */
 
 import * as serializers from "..";
-import * as BelvoApi from "../../api";
+import * as Belvo from "../../api";
 import * as core from "../../core";
 
-export const TaxReturnBusiness: core.serialization.Schema<
-    serializers.TaxReturnBusiness.Raw,
-    BelvoApi.TaxReturnBusiness
-> = core.serialization.record(core.serialization.string(), core.serialization.unknown());
+export const TaxReturnBusiness: core.serialization.Schema<serializers.TaxReturnBusiness.Raw, Belvo.TaxReturnBusiness> =
+    core.serialization.record(core.serialization.string(), core.serialization.unknown());
 
 export declare namespace TaxReturnBusiness {
     type Raw = Record<string, unknown>;

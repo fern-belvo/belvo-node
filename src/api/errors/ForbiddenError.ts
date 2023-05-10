@@ -3,10 +3,10 @@
  */
 
 import * as errors from "../../errors";
-import * as BelvoApi from "..";
+import * as Belvo from "..";
 
-export class ForbiddenError extends errors.BelvoApiError {
-    constructor(body: BelvoApi.AccessToResourceDenied[]) {
+export class ForbiddenError extends errors.BelvoError {
+    constructor(body: Belvo.AccessToResourceDenied[]) {
         super({
             message: "ForbiddenError",
             statusCode: 403,

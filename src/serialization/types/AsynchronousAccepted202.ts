@@ -3,12 +3,12 @@
  */
 
 import * as serializers from "..";
-import * as BelvoApi from "../../api";
+import * as Belvo from "../../api";
 import * as core from "../../core";
 
 export const AsynchronousAccepted202: core.serialization.ObjectSchema<
     serializers.AsynchronousAccepted202.Raw,
-    BelvoApi.AsynchronousAccepted202
+    Belvo.AsynchronousAccepted202
 > = core.serialization.object({
     requestId: core.serialization.property("request_id", core.serialization.string().optional()),
 });

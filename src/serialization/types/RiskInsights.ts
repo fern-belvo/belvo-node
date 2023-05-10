@@ -3,10 +3,10 @@
  */
 
 import * as serializers from "..";
-import * as BelvoApi from "../../api";
+import * as Belvo from "../../api";
 import * as core from "../../core";
 
-export const RiskInsights: core.serialization.ObjectSchema<serializers.RiskInsights.Raw, BelvoApi.RiskInsights> =
+export const RiskInsights: core.serialization.ObjectSchema<serializers.RiskInsights.Raw, Belvo.RiskInsights> =
     core.serialization.object({
         id: core.serialization.string(),
         link: core.serialization.string(),

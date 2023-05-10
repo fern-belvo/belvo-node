@@ -3,10 +3,10 @@
  */
 
 import * as serializers from "..";
-import * as BelvoApi from "../../api";
+import * as Belvo from "../../api";
 import * as core from "../../core";
 
-export const SecretKeys: core.serialization.ObjectSchema<serializers.SecretKeys.Raw, BelvoApi.SecretKeys> =
+export const SecretKeys: core.serialization.ObjectSchema<serializers.SecretKeys.Raw, Belvo.SecretKeys> =
     core.serialization.object({
         id: core.serialization.string(),
         password: core.serialization.string(),

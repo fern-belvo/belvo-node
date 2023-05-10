@@ -3,12 +3,12 @@
  */
 
 import * as serializers from "..";
-import * as BelvoApi from "../../api";
+import * as Belvo from "../../api";
 import * as core from "../../core";
 
 export const TaxStatusRegimensDian: core.serialization.ObjectSchema<
     serializers.TaxStatusRegimensDian.Raw,
-    BelvoApi.TaxStatusRegimensDian
+    Belvo.TaxStatusRegimensDian
 > = core.serialization.object({
     endDate: core.serialization.property("end_date", core.serialization.string().optional()),
     initialDate: core.serialization.property("initial_date", core.serialization.string().optional()),

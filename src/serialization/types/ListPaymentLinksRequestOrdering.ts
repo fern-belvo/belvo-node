@@ -3,12 +3,12 @@
  */
 
 import * as serializers from "..";
-import * as BelvoApi from "../../api";
+import * as Belvo from "../../api";
 import * as core from "../../core";
 
 export const ListPaymentLinksRequestOrdering: core.serialization.Schema<
     serializers.ListPaymentLinksRequestOrdering.Raw,
-    BelvoApi.ListPaymentLinksRequestOrdering
+    Belvo.ListPaymentLinksRequestOrdering
 > = core.serialization.enum_(["created_at", "-created_at"]);
 
 export declare namespace ListPaymentLinksRequestOrdering {

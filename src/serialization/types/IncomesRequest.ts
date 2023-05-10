@@ -3,10 +3,10 @@
  */
 
 import * as serializers from "..";
-import * as BelvoApi from "../../api";
+import * as Belvo from "../../api";
 import * as core from "../../core";
 
-export const IncomesRequest: core.serialization.ObjectSchema<serializers.IncomesRequest.Raw, BelvoApi.IncomesRequest> =
+export const IncomesRequest: core.serialization.ObjectSchema<serializers.IncomesRequest.Raw, Belvo.IncomesRequest> =
     core.serialization.object({
         link: core.serialization.string(),
         allowedIncomeTypes: core.serialization.property(

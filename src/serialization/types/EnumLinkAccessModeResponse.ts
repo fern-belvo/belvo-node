@@ -3,12 +3,12 @@
  */
 
 import * as serializers from "..";
-import * as BelvoApi from "../../api";
+import * as Belvo from "../../api";
 import * as core from "../../core";
 
 export const EnumLinkAccessModeResponse: core.serialization.Schema<
     serializers.EnumLinkAccessModeResponse.Raw,
-    BelvoApi.EnumLinkAccessModeResponse
+    Belvo.EnumLinkAccessModeResponse
 > = core.serialization.string().optional();
 
 export declare namespace EnumLinkAccessModeResponse {

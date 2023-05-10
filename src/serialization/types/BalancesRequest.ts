@@ -3,20 +3,18 @@
  */
 
 import * as serializers from "..";
-import * as BelvoApi from "../../api";
+import * as Belvo from "../../api";
 import * as core from "../../core";
 
-export const BalancesRequest: core.serialization.ObjectSchema<
-    serializers.BalancesRequest.Raw,
-    BelvoApi.BalancesRequest
-> = core.serialization.object({
-    link: core.serialization.string(),
-    account: core.serialization.string().optional(),
-    dateFrom: core.serialization.property("date_from", core.serialization.string()),
-    dateTo: core.serialization.property("date_to", core.serialization.string()),
-    token: core.serialization.string().optional(),
-    saveData: core.serialization.property("save_data", core.serialization.boolean().optional()),
-});
+export const BalancesRequest: core.serialization.ObjectSchema<serializers.BalancesRequest.Raw, Belvo.BalancesRequest> =
+    core.serialization.object({
+        link: core.serialization.string(),
+        account: core.serialization.string().optional(),
+        dateFrom: core.serialization.property("date_from", core.serialization.string()),
+        dateTo: core.serialization.property("date_to", core.serialization.string()),
+        token: core.serialization.string().optional(),
+        saveData: core.serialization.property("save_data", core.serialization.boolean().optional()),
+    });
 
 export declare namespace BalancesRequest {
     interface Raw {

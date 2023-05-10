@@ -3,10 +3,10 @@
  */
 
 import * as serializers from "..";
-import * as BelvoApi from "../../api";
+import * as Belvo from "../../api";
 import * as core from "../../core";
 
-export const PatchBody: core.serialization.ObjectSchema<serializers.PatchBody.Raw, BelvoApi.PatchBody> =
+export const PatchBody: core.serialization.ObjectSchema<serializers.PatchBody.Raw, Belvo.PatchBody> =
     core.serialization.object({
         session: core.serialization.string(),
         token: core.serialization.string().optional(),

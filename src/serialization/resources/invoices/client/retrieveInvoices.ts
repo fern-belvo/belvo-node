@@ -3,12 +3,12 @@
  */
 
 import * as serializers from "../../..";
-import * as BelvoApi from "../../../../api";
+import * as Belvo from "../../../../api";
 import * as core from "../../../../core";
 
 export const Response: core.serialization.Schema<
     serializers.invoices.retrieveInvoices.Response.Raw,
-    BelvoApi.RetrieveInvoicesResponseItem[]
+    Belvo.RetrieveInvoicesResponseItem[]
 > = core.serialization.list(
     core.serialization.lazy(async () => (await import("../../..")).RetrieveInvoicesResponseItem)
 );

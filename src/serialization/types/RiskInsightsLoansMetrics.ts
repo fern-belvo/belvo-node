@@ -3,12 +3,12 @@
  */
 
 import * as serializers from "..";
-import * as BelvoApi from "../../api";
+import * as Belvo from "../../api";
 import * as core from "../../core";
 
 export const RiskInsightsLoansMetrics: core.serialization.ObjectSchema<
     serializers.RiskInsightsLoansMetrics.Raw,
-    BelvoApi.RiskInsightsLoansMetrics
+    Belvo.RiskInsightsLoansMetrics
 > = core.serialization.object({
     numAccounts: core.serialization.property("num_accounts", core.serialization.number()),
     sumLoansPrincipal: core.serialization.property("sum_loans_principal", core.serialization.number().optional()),

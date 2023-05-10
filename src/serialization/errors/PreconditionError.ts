@@ -3,12 +3,12 @@
  */
 
 import * as serializers from "..";
-import * as BelvoApi from "../../api";
+import * as Belvo from "../../api";
 import * as core from "../../core";
 
 export const PreconditionError: core.serialization.Schema<
     serializers.PreconditionError.Raw,
-    BelvoApi.TokenRequiredResponse[]
+    Belvo.TokenRequiredResponse[]
 > = core.serialization.list(core.serialization.lazyObject(async () => (await import("..")).TokenRequiredResponse));
 
 export declare namespace PreconditionError {

@@ -3,12 +3,12 @@
  */
 
 import * as serializers from "..";
-import * as BelvoApi from "../../api";
+import * as Belvo from "../../api";
 import * as core from "../../core";
 
 export const EmploymentRecordDetail: core.serialization.ObjectSchema<
     serializers.EmploymentRecordDetail.Raw,
-    BelvoApi.EmploymentRecordDetail
+    Belvo.EmploymentRecordDetail
 > = core.serialization.object({
     collectedAt: core.serialization.property("collected_at", core.serialization.string().optional()),
     employer: core.serialization.string().optional(),

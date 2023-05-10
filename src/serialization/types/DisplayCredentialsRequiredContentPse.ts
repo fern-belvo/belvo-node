@@ -3,12 +3,12 @@
  */
 
 import * as serializers from "..";
-import * as BelvoApi from "../../api";
+import * as Belvo from "../../api";
 import * as core from "../../core";
 
 export const DisplayCredentialsRequiredContentPse: core.serialization.ObjectSchema<
     serializers.DisplayCredentialsRequiredContentPse.Raw,
-    BelvoApi.DisplayCredentialsRequiredContentPse
+    Belvo.DisplayCredentialsRequiredContentPse
 > = core.serialization.object({
     payerInstitution: core.serialization.property(
         "payer_institution",

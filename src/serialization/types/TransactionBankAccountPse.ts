@@ -3,12 +3,12 @@
  */
 
 import * as serializers from "..";
-import * as BelvoApi from "../../api";
+import * as Belvo from "../../api";
 import * as core from "../../core";
 
 export const TransactionBankAccountPse: core.serialization.Schema<
     serializers.TransactionBankAccountPse.Raw,
-    BelvoApi.TransactionBankAccountPse
+    Belvo.TransactionBankAccountPse
 > = core.serialization.undiscriminatedUnion([
     core.serialization.lazyObject(async () => (await import("..")).TransactionBankAccountBodyPse),
     core.serialization.lazyObject(async () => (await import("..")).BankAccountInformationPse),

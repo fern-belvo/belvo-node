@@ -3,12 +3,12 @@
  */
 
 import * as serializers from "..";
-import * as BelvoApi from "../../api";
+import * as Belvo from "../../api";
 import * as core from "../../core";
 
 export const AccessToResourceDenied: core.serialization.ObjectSchema<
     serializers.AccessToResourceDenied.Raw,
-    BelvoApi.AccessToResourceDenied
+    Belvo.AccessToResourceDenied
 > = core.serialization.object({
     code: core.serialization.string().optional(),
     message: core.serialization.string().optional(),

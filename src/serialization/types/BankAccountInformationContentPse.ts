@@ -3,12 +3,12 @@
  */
 
 import * as serializers from "..";
-import * as BelvoApi from "../../api";
+import * as Belvo from "../../api";
 import * as core from "../../core";
 
 export const BankAccountInformationContentPse: core.serialization.ObjectSchema<
     serializers.BankAccountInformationContentPse.Raw,
-    BelvoApi.BankAccountInformationContentPse
+    Belvo.BankAccountInformationContentPse
 > = core.serialization.object({
     payerInstitution: core.serialization.property("payer_institution", core.serialization.string().optional()),
 });

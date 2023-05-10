@@ -33,15 +33,15 @@ import { PaymentLinks } from "./api/resources/paymentLinks/client/Client";
 import { PaymentIntents } from "./api/resources/paymentIntents/client/Client";
 import { PaymentTransactions } from "./api/resources/paymentTransactions/client/Client";
 
-export declare namespace BelvoApiClient {
+export declare namespace BelvoClient {
     interface Options {
-        environment?: environments.BelvoApiEnvironment | string;
+        environment?: environments.BelvoEnvironment | string;
         credentials: core.Supplier<core.BasicAuth>;
     }
 }
 
-export class BelvoApiClient {
-    constructor(protected readonly options: BelvoApiClient.Options) {}
+export class BelvoClient {
+    constructor(protected readonly options: BelvoClient.Options) {}
 
     protected _links: Links | undefined;
 

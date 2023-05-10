@@ -3,10 +3,10 @@
  */
 
 import * as errors from "../../errors";
-import * as BelvoApi from "..";
+import * as Belvo from "..";
 
-export class PreconditionError extends errors.BelvoApiError {
-    constructor(body: BelvoApi.TokenRequiredResponse[]) {
+export class PreconditionError extends errors.BelvoError {
+    constructor(body: Belvo.TokenRequiredResponse[]) {
         super({
             message: "PreconditionError",
             statusCode: 428,

@@ -3,12 +3,12 @@
  */
 
 import * as serializers from "..";
-import * as BelvoApi from "../../api";
+import * as Belvo from "../../api";
 import * as core from "../../core";
 
 export const NextStepDisplayTokenRequiredPse: core.serialization.ObjectSchema<
     serializers.NextStepDisplayTokenRequiredPse.Raw,
-    BelvoApi.NextStepDisplayTokenRequiredPse
+    Belvo.NextStepDisplayTokenRequiredPse
 > = core.serialization.object({
     type: core.serialization.lazy(async () => (await import("..")).NextStepDisplayTokenRequiredPseType).optional(),
     pseDisplayTokenRequired: core.serialization.property(

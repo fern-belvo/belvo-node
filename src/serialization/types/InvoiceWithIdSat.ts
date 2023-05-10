@@ -3,12 +3,12 @@
  */
 
 import * as serializers from "..";
-import * as BelvoApi from "../../api";
+import * as Belvo from "../../api";
 import * as core from "../../core";
 
 export const InvoiceWithIdSat: core.serialization.ObjectSchema<
     serializers.InvoiceWithIdSat.Raw,
-    BelvoApi.InvoiceWithIdSat
+    Belvo.InvoiceWithIdSat
 > = core.serialization.object({
     id: core.serialization.string().optional(),
     link: core.serialization.string().optional(),

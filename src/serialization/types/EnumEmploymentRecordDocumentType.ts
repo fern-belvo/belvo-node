@@ -3,12 +3,12 @@
  */
 
 import * as serializers from "..";
-import * as BelvoApi from "../../api";
+import * as Belvo from "../../api";
 import * as core from "../../core";
 
 export const EnumEmploymentRecordDocumentType: core.serialization.Schema<
     serializers.EnumEmploymentRecordDocumentType.Raw,
-    BelvoApi.EnumEmploymentRecordDocumentType
+    Belvo.EnumEmploymentRecordDocumentType
 > = core.serialization.enum_(["NSS", "CURP"]);
 
 export declare namespace EnumEmploymentRecordDocumentType {

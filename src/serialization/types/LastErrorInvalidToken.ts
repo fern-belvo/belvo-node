@@ -3,12 +3,12 @@
  */
 
 import * as serializers from "..";
-import * as BelvoApi from "../../api";
+import * as Belvo from "../../api";
 import * as core from "../../core";
 
 export const LastErrorInvalidToken: core.serialization.ObjectSchema<
     serializers.LastErrorInvalidToken.Raw,
-    BelvoApi.LastErrorInvalidToken
+    Belvo.LastErrorInvalidToken
 > = core.serialization.object({
     errorCode: core.serialization.property("error_code", core.serialization.string()),
     errorMessage: core.serialization.property("error_message", core.serialization.string()),

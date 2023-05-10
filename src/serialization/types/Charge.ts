@@ -3,42 +3,41 @@
  */
 
 import * as serializers from "..";
-import * as BelvoApi from "../../api";
+import * as Belvo from "../../api";
 import * as core from "../../core";
 
-export const Charge: core.serialization.ObjectSchema<serializers.Charge.Raw, BelvoApi.Charge> =
-    core.serialization.object({
-        id: core.serialization.string(),
-        createdAt: core.serialization.property("created_at", core.serialization.string()),
-        createdBy: core.serialization.property("created_by", core.serialization.string().optional()),
-        customer: core.serialization.string().optional(),
-        failureCode: core.serialization.property("failure_code", core.serialization.string().optional()),
-        failureMessage: core.serialization.property("failure_message", core.serialization.string().optional()),
-        status: core.serialization.lazy(async () => (await import("..")).ChargeStatus),
-        amount: core.serialization.string().optional(),
-        currency: core.serialization.lazy(async () => (await import("..")).EnumPaymentsCurrency).optional(),
-        description: core.serialization.string().optional(),
-        metadata: core.serialization.record(core.serialization.string(), core.serialization.unknown()),
-        beneficiary: core.serialization.string(),
-        provider: core.serialization.lazy(async () => (await import("..")).EnumPaymentLinkProvider),
-        paymentMethodType: core.serialization.property(
-            "payment_method_type",
-            core.serialization.lazy(async () => (await import("..")).EnumPaymentLinkAllowedPaymentMethod).optional()
-        ),
-        paymentMethodDetails: core.serialization.property(
-            "payment_method_details",
-            core.serialization.lazy(async () => (await import("..")).ChargePaymentMethodDetails)
-        ),
-        paymentMethodInformation: core.serialization.property(
-            "payment_method_information",
-            core.serialization.lazyObject(async () => (await import("..")).PaymentMethodInformationPse)
-        ),
-        paymentIntent: core.serialization.property("payment_intent", core.serialization.string().optional()),
-        transactions: core.serialization
-            .list(core.serialization.lazyObject(async () => (await import("..")).PaymentTransaction))
-            .optional(),
-        updatedAt: core.serialization.property("updated_at", core.serialization.string().optional()),
-    });
+export const Charge: core.serialization.ObjectSchema<serializers.Charge.Raw, Belvo.Charge> = core.serialization.object({
+    id: core.serialization.string(),
+    createdAt: core.serialization.property("created_at", core.serialization.string()),
+    createdBy: core.serialization.property("created_by", core.serialization.string().optional()),
+    customer: core.serialization.string().optional(),
+    failureCode: core.serialization.property("failure_code", core.serialization.string().optional()),
+    failureMessage: core.serialization.property("failure_message", core.serialization.string().optional()),
+    status: core.serialization.lazy(async () => (await import("..")).ChargeStatus),
+    amount: core.serialization.string().optional(),
+    currency: core.serialization.lazy(async () => (await import("..")).EnumPaymentsCurrency).optional(),
+    description: core.serialization.string().optional(),
+    metadata: core.serialization.record(core.serialization.string(), core.serialization.unknown()),
+    beneficiary: core.serialization.string(),
+    provider: core.serialization.lazy(async () => (await import("..")).EnumPaymentLinkProvider),
+    paymentMethodType: core.serialization.property(
+        "payment_method_type",
+        core.serialization.lazy(async () => (await import("..")).EnumPaymentLinkAllowedPaymentMethod).optional()
+    ),
+    paymentMethodDetails: core.serialization.property(
+        "payment_method_details",
+        core.serialization.lazy(async () => (await import("..")).ChargePaymentMethodDetails)
+    ),
+    paymentMethodInformation: core.serialization.property(
+        "payment_method_information",
+        core.serialization.lazyObject(async () => (await import("..")).PaymentMethodInformationPse)
+    ),
+    paymentIntent: core.serialization.property("payment_intent", core.serialization.string().optional()),
+    transactions: core.serialization
+        .list(core.serialization.lazyObject(async () => (await import("..")).PaymentTransaction))
+        .optional(),
+    updatedAt: core.serialization.property("updated_at", core.serialization.string().optional()),
+});
 
 export declare namespace Charge {
     interface Raw {

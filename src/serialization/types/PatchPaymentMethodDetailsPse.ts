@@ -3,12 +3,12 @@
  */
 
 import * as serializers from "..";
-import * as BelvoApi from "../../api";
+import * as Belvo from "../../api";
 import * as core from "../../core";
 
 export const PatchPaymentMethodDetailsPse: core.serialization.ObjectSchema<
     serializers.PatchPaymentMethodDetailsPse.Raw,
-    BelvoApi.PatchPaymentMethodDetailsPse
+    Belvo.PatchPaymentMethodDetailsPse
 > = core.serialization.object({
     payerInstitution: core.serialization.property("payer_institution", core.serialization.string().optional()),
     username: core.serialization.string().optional(),

@@ -3,12 +3,12 @@
  */
 
 import * as serializers from "..";
-import * as BelvoApi from "../../api";
+import * as Belvo from "../../api";
 import * as core from "../../core";
 
 export const DisplayConfirmationRequiredOfpi: core.serialization.ObjectSchema<
     serializers.DisplayConfirmationRequiredOfpi.Raw,
-    BelvoApi.DisplayConfirmationRequiredOfpi
+    Belvo.DisplayConfirmationRequiredOfpi
 > = core.serialization.object({
     beneficiaryBankAccount: core.serialization.property(
         "beneficiary_bank_account",

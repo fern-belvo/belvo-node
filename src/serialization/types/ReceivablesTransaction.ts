@@ -3,12 +3,12 @@
  */
 
 import * as serializers from "..";
-import * as BelvoApi from "../../api";
+import * as Belvo from "../../api";
 import * as core from "../../core";
 
 export const ReceivablesTransaction: core.serialization.ObjectSchema<
     serializers.ReceivablesTransaction.Raw,
-    BelvoApi.ReceivablesTransaction
+    Belvo.ReceivablesTransaction
 > = core.serialization.object({
     id: core.serialization.string(),
     account: core.serialization.lazyObject(async () => (await import("..")).ReceivablesTransactionAccount),

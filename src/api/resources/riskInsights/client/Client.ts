@@ -4,7 +4,7 @@
 
 import * as environments from "../../../../environments";
 import * as core from "../../../../core";
-import * as BelvoApi from "../../..";
+import * as Belvo from "../../..";
 import URLSearchParams from "@ungap/url-search-params";
 import urlJoin from "url-join";
 import * as serializers from "../../../../serialization";
@@ -12,7 +12,7 @@ import * as errors from "../../../../errors";
 
 export declare namespace RiskInsights {
     interface Options {
-        environment?: environments.BelvoApiEnvironment | string;
+        environment?: environments.BelvoEnvironment | string;
         credentials: core.Supplier<core.BasicAuth>;
     }
 }
@@ -21,11 +21,11 @@ export class RiskInsights {
     constructor(protected readonly options: RiskInsights.Options) {}
 
     /**
-     * @throws {BelvoApi.UnauthorizedError}
+     * @throws {Belvo.UnauthorizedError}
      */
     public async listRiskInsights(
-        request: BelvoApi.ListRiskInsightsRequest = {}
-    ): Promise<BelvoApi.RiskInsightsPaginatedResponse> {
+        request: Belvo.ListRiskInsightsRequest = {}
+    ): Promise<Belvo.RiskInsightsPaginatedResponse> {
         const { page, pageSize, omit, fields, link, id, idIn, linkIn } = request;
         const _queryParams = new URLSearchParams();
         if (page != null) {
@@ -61,13 +61,13 @@ export class RiskInsights {
         }
 
         const _response = await core.fetcher({
-            url: urlJoin(this.options.environment ?? environments.BelvoApiEnvironment.Production, "api/risk-insights"),
+            url: urlJoin(this.options.environment ?? environments.BelvoEnvironment.Production, "api/risk-insights"),
             method: "GET",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.13",
+                "X-Fern-SDK-Version": "0.0.14",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -85,7 +85,7 @@ export class RiskInsights {
         if (_response.error.reason === "status-code") {
             switch (_response.error.statusCode) {
                 case 401:
-                    throw new BelvoApi.UnauthorizedError(
+                    throw new Belvo.UnauthorizedError(
                         await serializers.UnauthorizedError.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
@@ -94,7 +94,7 @@ export class RiskInsights {
                         })
                     );
                 default:
-                    throw new errors.BelvoApiError({
+                    throw new errors.BelvoError({
                         statusCode: _response.error.statusCode,
                         body: _response.error.body,
                     });
@@ -103,27 +103,27 @@ export class RiskInsights {
 
         switch (_response.error.reason) {
             case "non-json":
-                throw new errors.BelvoApiError({
+                throw new errors.BelvoError({
                     statusCode: _response.error.statusCode,
                     body: _response.error.rawBody,
                 });
             case "timeout":
-                throw new errors.BelvoApiTimeoutError();
+                throw new errors.BelvoTimeoutError();
             case "unknown":
-                throw new errors.BelvoApiError({
+                throw new errors.BelvoError({
                     message: _response.error.errorMessage,
                 });
         }
     }
 
     /**
-     * @throws {BelvoApi.BadRequestError}
-     * @throws {BelvoApi.UnauthorizedError}
-     * @throws {BelvoApi.RequestTimeoutError}
-     * @throws {BelvoApi.PreconditionError}
-     * @throws {BelvoApi.InternalServerError}
+     * @throws {Belvo.BadRequestError}
+     * @throws {Belvo.UnauthorizedError}
+     * @throws {Belvo.RequestTimeoutError}
+     * @throws {Belvo.PreconditionError}
+     * @throws {Belvo.InternalServerError}
      */
-    public async retrieveRiskInsights(request: BelvoApi.RetrieveRiskInsightsRequest): Promise<BelvoApi.RiskInsights[]> {
+    public async retrieveRiskInsights(request: Belvo.RetrieveRiskInsightsRequest): Promise<Belvo.RiskInsights[]> {
         const { omit, fields, body: _body } = request;
         const _queryParams = new URLSearchParams();
         if (omit != null) {
@@ -135,13 +135,13 @@ export class RiskInsights {
         }
 
         const _response = await core.fetcher({
-            url: urlJoin(this.options.environment ?? environments.BelvoApiEnvironment.Production, "api/risk-insights"),
+            url: urlJoin(this.options.environment ?? environments.BelvoEnvironment.Production, "api/risk-insights"),
             method: "POST",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.13",
+                "X-Fern-SDK-Version": "0.0.14",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -160,7 +160,7 @@ export class RiskInsights {
         if (_response.error.reason === "status-code") {
             switch (_response.error.statusCode) {
                 case 400:
-                    throw new BelvoApi.BadRequestError(
+                    throw new Belvo.BadRequestError(
                         await serializers.BadRequestError.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
@@ -169,7 +169,7 @@ export class RiskInsights {
                         })
                     );
                 case 401:
-                    throw new BelvoApi.UnauthorizedError(
+                    throw new Belvo.UnauthorizedError(
                         await serializers.UnauthorizedError.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
@@ -178,7 +178,7 @@ export class RiskInsights {
                         })
                     );
                 case 408:
-                    throw new BelvoApi.RequestTimeoutError(
+                    throw new Belvo.RequestTimeoutError(
                         await serializers.RequestTimeoutError.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
@@ -187,7 +187,7 @@ export class RiskInsights {
                         })
                     );
                 case 428:
-                    throw new BelvoApi.PreconditionError(
+                    throw new Belvo.PreconditionError(
                         await serializers.PreconditionError.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
@@ -196,7 +196,7 @@ export class RiskInsights {
                         })
                     );
                 case 500:
-                    throw new BelvoApi.InternalServerError(
+                    throw new Belvo.InternalServerError(
                         await serializers.InternalServerError.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
@@ -205,7 +205,7 @@ export class RiskInsights {
                         })
                     );
                 default:
-                    throw new errors.BelvoApiError({
+                    throw new errors.BelvoError({
                         statusCode: _response.error.statusCode,
                         body: _response.error.body,
                     });
@@ -214,27 +214,27 @@ export class RiskInsights {
 
         switch (_response.error.reason) {
             case "non-json":
-                throw new errors.BelvoApiError({
+                throw new errors.BelvoError({
                     statusCode: _response.error.statusCode,
                     body: _response.error.rawBody,
                 });
             case "timeout":
-                throw new errors.BelvoApiTimeoutError();
+                throw new errors.BelvoTimeoutError();
             case "unknown":
-                throw new errors.BelvoApiError({
+                throw new errors.BelvoError({
                     message: _response.error.errorMessage,
                 });
         }
     }
 
     /**
-     * @throws {BelvoApi.BadRequestError}
-     * @throws {BelvoApi.UnauthorizedError}
-     * @throws {BelvoApi.RequestTimeoutError}
-     * @throws {BelvoApi.PreconditionError}
-     * @throws {BelvoApi.InternalServerError}
+     * @throws {Belvo.BadRequestError}
+     * @throws {Belvo.UnauthorizedError}
+     * @throws {Belvo.RequestTimeoutError}
+     * @throws {Belvo.PreconditionError}
+     * @throws {Belvo.InternalServerError}
      */
-    public async patchRiskInsights(request: BelvoApi.PatchRiskInsightsRequest): Promise<BelvoApi.RiskInsights[]> {
+    public async patchRiskInsights(request: Belvo.PatchRiskInsightsRequest): Promise<Belvo.RiskInsights[]> {
         const { omit, fields, body: _body } = request;
         const _queryParams = new URLSearchParams();
         if (omit != null) {
@@ -246,13 +246,13 @@ export class RiskInsights {
         }
 
         const _response = await core.fetcher({
-            url: urlJoin(this.options.environment ?? environments.BelvoApiEnvironment.Production, "api/risk-insights"),
+            url: urlJoin(this.options.environment ?? environments.BelvoEnvironment.Production, "api/risk-insights"),
             method: "PATCH",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.13",
+                "X-Fern-SDK-Version": "0.0.14",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -271,7 +271,7 @@ export class RiskInsights {
         if (_response.error.reason === "status-code") {
             switch (_response.error.statusCode) {
                 case 400:
-                    throw new BelvoApi.BadRequestError(
+                    throw new Belvo.BadRequestError(
                         await serializers.BadRequestError.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
@@ -280,7 +280,7 @@ export class RiskInsights {
                         })
                     );
                 case 401:
-                    throw new BelvoApi.UnauthorizedError(
+                    throw new Belvo.UnauthorizedError(
                         await serializers.UnauthorizedError.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
@@ -289,7 +289,7 @@ export class RiskInsights {
                         })
                     );
                 case 408:
-                    throw new BelvoApi.RequestTimeoutError(
+                    throw new Belvo.RequestTimeoutError(
                         await serializers.RequestTimeoutError.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
@@ -298,7 +298,7 @@ export class RiskInsights {
                         })
                     );
                 case 428:
-                    throw new BelvoApi.PreconditionError(
+                    throw new Belvo.PreconditionError(
                         await serializers.PreconditionError.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
@@ -307,7 +307,7 @@ export class RiskInsights {
                         })
                     );
                 case 500:
-                    throw new BelvoApi.InternalServerError(
+                    throw new Belvo.InternalServerError(
                         await serializers.InternalServerError.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
@@ -316,7 +316,7 @@ export class RiskInsights {
                         })
                     );
                 default:
-                    throw new errors.BelvoApiError({
+                    throw new errors.BelvoError({
                         statusCode: _response.error.statusCode,
                         body: _response.error.body,
                     });
@@ -325,27 +325,27 @@ export class RiskInsights {
 
         switch (_response.error.reason) {
             case "non-json":
-                throw new errors.BelvoApiError({
+                throw new errors.BelvoError({
                     statusCode: _response.error.statusCode,
                     body: _response.error.rawBody,
                 });
             case "timeout":
-                throw new errors.BelvoApiTimeoutError();
+                throw new errors.BelvoTimeoutError();
             case "unknown":
-                throw new errors.BelvoApiError({
+                throw new errors.BelvoError({
                     message: _response.error.errorMessage,
                 });
         }
     }
 
     /**
-     * @throws {BelvoApi.UnauthorizedError}
-     * @throws {BelvoApi.NotFoundError}
+     * @throws {Belvo.UnauthorizedError}
+     * @throws {Belvo.NotFoundError}
      */
     public async detailRiskInsights(
         id: string,
-        request: BelvoApi.DetailRiskInsightsRequest = {}
-    ): Promise<BelvoApi.RiskInsights[]> {
+        request: Belvo.DetailRiskInsightsRequest = {}
+    ): Promise<Belvo.RiskInsights[]> {
         const { omit, fields } = request;
         const _queryParams = new URLSearchParams();
         if (omit != null) {
@@ -358,7 +358,7 @@ export class RiskInsights {
 
         const _response = await core.fetcher({
             url: urlJoin(
-                this.options.environment ?? environments.BelvoApiEnvironment.Production,
+                this.options.environment ?? environments.BelvoEnvironment.Production,
                 `api/risk-insights/${id}`
             ),
             method: "GET",
@@ -366,7 +366,7 @@ export class RiskInsights {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.13",
+                "X-Fern-SDK-Version": "0.0.14",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -384,7 +384,7 @@ export class RiskInsights {
         if (_response.error.reason === "status-code") {
             switch (_response.error.statusCode) {
                 case 401:
-                    throw new BelvoApi.UnauthorizedError(
+                    throw new Belvo.UnauthorizedError(
                         await serializers.UnauthorizedError.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
@@ -393,7 +393,7 @@ export class RiskInsights {
                         })
                     );
                 case 404:
-                    throw new BelvoApi.NotFoundError(
+                    throw new Belvo.NotFoundError(
                         await serializers.NotFoundError.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
@@ -402,7 +402,7 @@ export class RiskInsights {
                         })
                     );
                 default:
-                    throw new errors.BelvoApiError({
+                    throw new errors.BelvoError({
                         statusCode: _response.error.statusCode,
                         body: _response.error.body,
                     });
@@ -411,27 +411,27 @@ export class RiskInsights {
 
         switch (_response.error.reason) {
             case "non-json":
-                throw new errors.BelvoApiError({
+                throw new errors.BelvoError({
                     statusCode: _response.error.statusCode,
                     body: _response.error.rawBody,
                 });
             case "timeout":
-                throw new errors.BelvoApiTimeoutError();
+                throw new errors.BelvoTimeoutError();
             case "unknown":
-                throw new errors.BelvoApiError({
+                throw new errors.BelvoError({
                     message: _response.error.errorMessage,
                 });
         }
     }
 
     /**
-     * @throws {BelvoApi.UnauthorizedError}
-     * @throws {BelvoApi.NotFoundError}
+     * @throws {Belvo.UnauthorizedError}
+     * @throws {Belvo.NotFoundError}
      */
     public async destroyRiskInsights(id: string): Promise<void> {
         const _response = await core.fetcher({
             url: urlJoin(
-                this.options.environment ?? environments.BelvoApiEnvironment.Production,
+                this.options.environment ?? environments.BelvoEnvironment.Production,
                 `api/risk-insights/${id}`
             ),
             method: "DELETE",
@@ -439,7 +439,7 @@ export class RiskInsights {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.13",
+                "X-Fern-SDK-Version": "0.0.14",
             },
             contentType: "application/json",
             timeoutMs: 60000,
@@ -451,7 +451,7 @@ export class RiskInsights {
         if (_response.error.reason === "status-code") {
             switch (_response.error.statusCode) {
                 case 401:
-                    throw new BelvoApi.UnauthorizedError(
+                    throw new Belvo.UnauthorizedError(
                         await serializers.UnauthorizedError.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
@@ -460,7 +460,7 @@ export class RiskInsights {
                         })
                     );
                 case 404:
-                    throw new BelvoApi.NotFoundError(
+                    throw new Belvo.NotFoundError(
                         await serializers.NotFoundError.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
@@ -469,7 +469,7 @@ export class RiskInsights {
                         })
                     );
                 default:
-                    throw new errors.BelvoApiError({
+                    throw new errors.BelvoError({
                         statusCode: _response.error.statusCode,
                         body: _response.error.body,
                     });
@@ -478,14 +478,14 @@ export class RiskInsights {
 
         switch (_response.error.reason) {
             case "non-json":
-                throw new errors.BelvoApiError({
+                throw new errors.BelvoError({
                     statusCode: _response.error.statusCode,
                     body: _response.error.rawBody,
                 });
             case "timeout":
-                throw new errors.BelvoApiTimeoutError();
+                throw new errors.BelvoTimeoutError();
             case "unknown":
-                throw new errors.BelvoApiError({
+                throw new errors.BelvoError({
                     message: _response.error.errorMessage,
                 });
         }

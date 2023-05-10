@@ -3,12 +3,12 @@
  */
 
 import * as serializers from "..";
-import * as BelvoApi from "../../api";
+import * as Belvo from "../../api";
 import * as core from "../../core";
 
 export const EnumCategorizationTransactionSubcategory: core.serialization.Schema<
     serializers.EnumCategorizationTransactionSubcategory.Raw,
-    BelvoApi.EnumCategorizationTransactionSubcategory
+    Belvo.EnumCategorizationTransactionSubcategory
 > = core.serialization.string().optional();
 
 export declare namespace EnumCategorizationTransactionSubcategory {

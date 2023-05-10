@@ -3,12 +3,12 @@
  */
 
 import * as serializers from "..";
-import * as BelvoApi from "../../api";
+import * as Belvo from "../../api";
 import * as core from "../../core";
 
 export const EnumInstitutionIntegrationType: core.serialization.Schema<
     serializers.EnumInstitutionIntegrationType.Raw,
-    BelvoApi.EnumInstitutionIntegrationType
+    Belvo.EnumInstitutionIntegrationType
 > = core.serialization.enum_(["credentials", "openbanking"]);
 
 export declare namespace EnumInstitutionIntegrationType {

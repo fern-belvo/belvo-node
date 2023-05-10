@@ -3,12 +3,12 @@
  */
 
 import * as serializers from "..";
-import * as BelvoApi from "../../api";
+import * as Belvo from "../../api";
 import * as core from "../../core";
 
 export const EnumPaymentTransactionType: core.serialization.Schema<
     serializers.EnumPaymentTransactionType.Raw,
-    BelvoApi.EnumPaymentTransactionType
+    Belvo.EnumPaymentTransactionType
 > = core.serialization.enum_(["INFLOW", "OUTFLOW"]);
 
 export declare namespace EnumPaymentTransactionType {

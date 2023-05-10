@@ -3,12 +3,12 @@
  */
 
 import * as serializers from "..";
-import * as BelvoApi from "../../api";
+import * as Belvo from "../../api";
 import * as core from "../../core";
 
 export const EmploymentRecordEntitlement: core.serialization.ObjectSchema<
     serializers.EmploymentRecordEntitlement.Raw,
-    BelvoApi.EmploymentRecordEntitlement
+    Belvo.EmploymentRecordEntitlement
 > = core.serialization.object({
     entitledToHealthInsurance: core.serialization.property(
         "entitled_to_health_insurance",

@@ -3,12 +3,12 @@
  */
 
 import * as serializers from "..";
-import * as BelvoApi from "../../api";
+import * as Belvo from "../../api";
 import * as core from "../../core";
 
 export const EnumPaymentIntentStatus: core.serialization.Schema<
     serializers.EnumPaymentIntentStatus.Raw,
-    BelvoApi.EnumPaymentIntentStatus
+    Belvo.EnumPaymentIntentStatus
 > = core.serialization.enum_(["REQUIRES_PAYMENT_METHOD", "REQUIRES_ACTION", "SUCCEEDED", "PROCESSING", "FAILED"]);
 
 export declare namespace EnumPaymentIntentStatus {

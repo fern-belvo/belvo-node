@@ -3,12 +3,12 @@
  */
 
 import * as serializers from "..";
-import * as BelvoApi from "../../api";
+import * as Belvo from "../../api";
 import * as core from "../../core";
 
 export const TaxStatusObligationsSat: core.serialization.ObjectSchema<
     serializers.TaxStatusObligationsSat.Raw,
-    BelvoApi.TaxStatusObligationsSat
+    Belvo.TaxStatusObligationsSat
 > = core.serialization.object({
     obligation: core.serialization.string().optional(),
     expiration: core.serialization.string().optional(),

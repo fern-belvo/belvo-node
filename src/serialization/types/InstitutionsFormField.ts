@@ -3,12 +3,12 @@
  */
 
 import * as serializers from "..";
-import * as BelvoApi from "../../api";
+import * as Belvo from "../../api";
 import * as core from "../../core";
 
 export const InstitutionsFormField: core.serialization.ObjectSchema<
     serializers.InstitutionsFormField.Raw,
-    BelvoApi.InstitutionsFormField
+    Belvo.InstitutionsFormField
 > = core.serialization.object({
     name: core.serialization.string().optional(),
     type: core.serialization.string().optional(),

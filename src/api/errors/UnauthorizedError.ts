@@ -3,10 +3,10 @@
  */
 
 import * as errors from "../../errors";
-import * as BelvoApi from "..";
+import * as Belvo from "..";
 
-export class UnauthorizedError extends errors.BelvoApiError {
-    constructor(body: BelvoApi.UnauthorizedErrorBody[]) {
+export class UnauthorizedError extends errors.BelvoError {
+    constructor(body: Belvo.UnauthorizedErrorBody[]) {
         super({
             message: "UnauthorizedError",
             statusCode: 401,

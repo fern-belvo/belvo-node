@@ -3,12 +3,12 @@
  */
 
 import * as serializers from "..";
-import * as BelvoApi from "../../api";
+import * as Belvo from "../../api";
 import * as core from "../../core";
 
 export const EmploymentRecordSocialSecuritySummary: core.serialization.ObjectSchema<
     serializers.EmploymentRecordSocialSecuritySummary.Raw,
-    BelvoApi.EmploymentRecordSocialSecuritySummary
+    Belvo.EmploymentRecordSocialSecuritySummary
 > = core.serialization.object({
     weeksRedeemed: core.serialization.property("weeks_redeemed", core.serialization.number().optional()),
     weeksReinstated: core.serialization.property("weeks_reinstated", core.serialization.number().optional()),

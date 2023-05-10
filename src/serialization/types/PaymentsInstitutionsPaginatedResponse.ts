@@ -3,12 +3,12 @@
  */
 
 import * as serializers from "..";
-import * as BelvoApi from "../../api";
+import * as Belvo from "../../api";
 import * as core from "../../core";
 
 export const PaymentsInstitutionsPaginatedResponse: core.serialization.ObjectSchema<
     serializers.PaymentsInstitutionsPaginatedResponse.Raw,
-    BelvoApi.PaymentsInstitutionsPaginatedResponse
+    Belvo.PaymentsInstitutionsPaginatedResponse
 > = core.serialization.object({
     count: core.serialization.number().optional(),
     next: core.serialization.string().optional(),

@@ -3,10 +3,10 @@
  */
 
 import * as serializers from "../../..";
-import * as BelvoApi from "../../../../api";
+import * as Belvo from "../../../../api";
 import * as core from "../../../../core";
 
-export const Response: core.serialization.Schema<serializers.incomes.detailIncome.Response.Raw, BelvoApi.Income[]> =
+export const Response: core.serialization.Schema<serializers.incomes.detailIncome.Response.Raw, Belvo.Income[]> =
     core.serialization.list(core.serialization.lazyObject(async () => (await import("../../..")).Income));
 
 export declare namespace Response {

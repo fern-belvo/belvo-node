@@ -3,12 +3,12 @@
  */
 
 import * as serializers from "..";
-import * as BelvoApi from "../../api";
+import * as Belvo from "../../api";
 import * as core from "../../core";
 
 export const InvoicesPayrollDian: core.serialization.ObjectSchema<
     serializers.InvoicesPayrollDian.Raw,
-    BelvoApi.InvoicesPayrollDian
+    Belvo.InvoicesPayrollDian
 > = core.serialization.object({
     days: core.serialization.number().optional(),
     type: core.serialization.string().optional(),

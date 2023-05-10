@@ -3,12 +3,12 @@
  */
 
 import * as serializers from "..";
-import * as BelvoApi from "../../api";
+import * as Belvo from "../../api";
 import * as core from "../../core";
 
 export const BadRequestErrorBodyItem: core.serialization.Schema<
     serializers.BadRequestErrorBodyItem.Raw,
-    BelvoApi.BadRequestErrorBodyItem
+    Belvo.BadRequestErrorBodyItem
 > = core.serialization.undiscriminatedUnion([
     core.serialization.lazyObject(async () => (await import("..")).InvalidAccessMode),
     core.serialization.lazyObject(async () => (await import("..")).TooManySessionsError),

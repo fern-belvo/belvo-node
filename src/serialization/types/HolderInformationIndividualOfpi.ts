@@ -3,12 +3,12 @@
  */
 
 import * as serializers from "..";
-import * as BelvoApi from "../../api";
+import * as Belvo from "../../api";
 import * as core from "../../core";
 
 export const HolderInformationIndividualOfpi: core.serialization.ObjectSchema<
     serializers.HolderInformationIndividualOfpi.Raw,
-    BelvoApi.HolderInformationIndividualOfpi
+    Belvo.HolderInformationIndividualOfpi
 > = core.serialization.object({
     firstName: core.serialization.property("first_name", core.serialization.string()),
     lastName: core.serialization.property("last_name", core.serialization.string()),

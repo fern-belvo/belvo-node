@@ -3,10 +3,10 @@
  */
 
 import * as errors from "../../errors";
-import * as BelvoApi from "..";
+import * as Belvo from "..";
 
-export class InternalServerError extends errors.BelvoApiError {
-    constructor(body: BelvoApi.UnexpectedError[]) {
+export class InternalServerError extends errors.BelvoError {
+    constructor(body: Belvo.UnexpectedError[]) {
         super({
             message: "InternalServerError",
             statusCode: 500,

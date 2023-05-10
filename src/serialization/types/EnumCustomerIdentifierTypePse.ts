@@ -3,12 +3,12 @@
  */
 
 import * as serializers from "..";
-import * as BelvoApi from "../../api";
+import * as Belvo from "../../api";
 import * as core from "../../core";
 
 export const EnumCustomerIdentifierTypePse: core.serialization.Schema<
     serializers.EnumCustomerIdentifierTypePse.Raw,
-    BelvoApi.EnumCustomerIdentifierTypePse
+    Belvo.EnumCustomerIdentifierTypePse
 > = core.serialization.enum_(["CC", "PP", "CE", "TI", "NIT"]);
 
 export declare namespace EnumCustomerIdentifierTypePse {

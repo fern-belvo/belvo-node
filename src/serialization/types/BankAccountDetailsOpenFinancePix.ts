@@ -3,12 +3,12 @@
  */
 
 import * as serializers from "..";
-import * as BelvoApi from "../../api";
+import * as Belvo from "../../api";
 import * as core from "../../core";
 
 export const BankAccountDetailsOpenFinancePix: core.serialization.ObjectSchema<
     serializers.BankAccountDetailsOpenFinancePix.Raw,
-    BelvoApi.BankAccountDetailsOpenFinancePix
+    Belvo.BankAccountDetailsOpenFinancePix
 > = core.serialization.object({
     country: core.serialization.lazy(async () => (await import("..")).EnumPaymentsCountry),
     pixKey: core.serialization.property("pix_key", core.serialization.string()),

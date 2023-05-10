@@ -3,12 +3,12 @@
  */
 
 import * as serializers from "..";
-import * as BelvoApi from "../../api";
+import * as Belvo from "../../api";
 import * as core from "../../core";
 
 export const EnumRecurringExpenseCategory: core.serialization.Schema<
     serializers.EnumRecurringExpenseCategory.Raw,
-    BelvoApi.EnumRecurringExpenseCategory
+    Belvo.EnumRecurringExpenseCategory
 > = core.serialization.enum_([
     "Bills & Utilities",
     "Credits & Loans",

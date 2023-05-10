@@ -3,12 +3,12 @@
  */
 
 import * as serializers from "..";
-import * as BelvoApi from "../../api";
+import * as Belvo from "../../api";
 import * as core from "../../core";
 
 export const UnauthorizedError: core.serialization.Schema<
     serializers.UnauthorizedError.Raw,
-    BelvoApi.UnauthorizedErrorBody[]
+    Belvo.UnauthorizedErrorBody[]
 > = core.serialization.list(core.serialization.lazyObject(async () => (await import("..")).UnauthorizedErrorBody));
 
 export declare namespace UnauthorizedError {

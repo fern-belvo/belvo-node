@@ -3,12 +3,12 @@
  */
 
 import * as serializers from "..";
-import * as BelvoApi from "../../api";
+import * as Belvo from "../../api";
 import * as core from "../../core";
 
 export const EnumIncomeStreamConfidence: core.serialization.Schema<
     serializers.EnumIncomeStreamConfidence.Raw,
-    BelvoApi.EnumIncomeStreamConfidence
+    Belvo.EnumIncomeStreamConfidence
 > = core.serialization.enum_(["HIGH", "MEDIUM", "LOW"]);
 
 export declare namespace EnumIncomeStreamConfidence {

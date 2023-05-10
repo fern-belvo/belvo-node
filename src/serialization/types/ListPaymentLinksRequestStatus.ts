@@ -3,12 +3,12 @@
  */
 
 import * as serializers from "..";
-import * as BelvoApi from "../../api";
+import * as Belvo from "../../api";
 import * as core from "../../core";
 
 export const ListPaymentLinksRequestStatus: core.serialization.Schema<
     serializers.ListPaymentLinksRequestStatus.Raw,
-    BelvoApi.ListPaymentLinksRequestStatus
+    Belvo.ListPaymentLinksRequestStatus
 > = core.serialization.enum_(["ACTIVE", "INACTIVE"]);
 
 export declare namespace ListPaymentLinksRequestStatus {

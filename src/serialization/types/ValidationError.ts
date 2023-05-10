@@ -3,18 +3,16 @@
  */
 
 import * as serializers from "..";
-import * as BelvoApi from "../../api";
+import * as Belvo from "../../api";
 import * as core from "../../core";
 
-export const ValidationError: core.serialization.ObjectSchema<
-    serializers.ValidationError.Raw,
-    BelvoApi.ValidationError
-> = core.serialization.object({
-    code: core.serialization.string().optional(),
-    message: core.serialization.string().optional(),
-    requestId: core.serialization.property("request_id", core.serialization.string().optional()),
-    field: core.serialization.string().optional(),
-});
+export const ValidationError: core.serialization.ObjectSchema<serializers.ValidationError.Raw, Belvo.ValidationError> =
+    core.serialization.object({
+        code: core.serialization.string().optional(),
+        message: core.serialization.string().optional(),
+        requestId: core.serialization.property("request_id", core.serialization.string().optional()),
+        field: core.serialization.string().optional(),
+    });
 
 export declare namespace ValidationError {
     interface Raw {

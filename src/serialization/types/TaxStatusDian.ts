@@ -3,10 +3,10 @@
  */
 
 import * as serializers from "..";
-import * as BelvoApi from "../../api";
+import * as Belvo from "../../api";
 import * as core from "../../core";
 
-export const TaxStatusDian: core.serialization.ObjectSchema<serializers.TaxStatusDian.Raw, BelvoApi.TaxStatusDian> =
+export const TaxStatusDian: core.serialization.ObjectSchema<serializers.TaxStatusDian.Raw, Belvo.TaxStatusDian> =
     core.serialization.object({
         id: core.serialization.string(),
         link: core.serialization.string(),

@@ -3,12 +3,12 @@
  */
 
 import * as serializers from "..";
-import * as BelvoApi from "../../api";
+import * as Belvo from "../../api";
 import * as core from "../../core";
 
 export const NextStepNeedsRedirect: core.serialization.ObjectSchema<
     serializers.NextStepNeedsRedirect.Raw,
-    BelvoApi.NextStepNeedsRedirect
+    Belvo.NextStepNeedsRedirect
 > = core.serialization.object({
     type: core.serialization.lazy(async () => (await import("..")).NextStepNeedsRedirectType).optional(),
     openFinanceDisplayNeedsRedirect: core.serialization.property(

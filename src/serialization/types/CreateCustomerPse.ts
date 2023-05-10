@@ -3,12 +3,12 @@
  */
 
 import * as serializers from "..";
-import * as BelvoApi from "../../api";
+import * as Belvo from "../../api";
 import * as core from "../../core";
 
 export const CreateCustomerPse: core.serialization.ObjectSchema<
     serializers.CreateCustomerPse.Raw,
-    BelvoApi.CreateCustomerPse
+    Belvo.CreateCustomerPse
 > = core.serialization.object({
     customerType: core.serialization.property(
         "customer_type",

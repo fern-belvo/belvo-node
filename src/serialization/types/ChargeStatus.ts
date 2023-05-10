@@ -3,10 +3,10 @@
  */
 
 import * as serializers from "..";
-import * as BelvoApi from "../../api";
+import * as Belvo from "../../api";
 import * as core from "../../core";
 
-export const ChargeStatus: core.serialization.Schema<serializers.ChargeStatus.Raw, BelvoApi.ChargeStatus> =
+export const ChargeStatus: core.serialization.Schema<serializers.ChargeStatus.Raw, Belvo.ChargeStatus> =
     core.serialization.enum_(["PENDING", "SUCCEEDED", "FAILED"]);
 
 export declare namespace ChargeStatus {

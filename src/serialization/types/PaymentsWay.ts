@@ -3,10 +3,10 @@
  */
 
 import * as serializers from "..";
-import * as BelvoApi from "../../api";
+import * as Belvo from "../../api";
 import * as core from "../../core";
 
-export const PaymentsWay: core.serialization.ObjectSchema<serializers.PaymentsWay.Raw, BelvoApi.PaymentsWay> =
+export const PaymentsWay: core.serialization.ObjectSchema<serializers.PaymentsWay.Raw, Belvo.PaymentsWay> =
     core.serialization.object({
         terminalId: core.serialization.property("terminal_id", core.serialization.number()),
         formId: core.serialization.property("form_id", core.serialization.number()),

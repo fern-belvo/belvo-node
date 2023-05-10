@@ -3,17 +3,15 @@
  */
 
 import * as serializers from "..";
-import * as BelvoApi from "../../api";
+import * as Belvo from "../../api";
 import * as core from "../../core";
 
-export const UnexpectedError: core.serialization.ObjectSchema<
-    serializers.UnexpectedError.Raw,
-    BelvoApi.UnexpectedError
-> = core.serialization.object({
-    code: core.serialization.string().optional(),
-    message: core.serialization.string().optional(),
-    requestId: core.serialization.property("request_id", core.serialization.string().optional()),
-});
+export const UnexpectedError: core.serialization.ObjectSchema<serializers.UnexpectedError.Raw, Belvo.UnexpectedError> =
+    core.serialization.object({
+        code: core.serialization.string().optional(),
+        message: core.serialization.string().optional(),
+        requestId: core.serialization.property("request_id", core.serialization.string().optional()),
+    });
 
 export declare namespace UnexpectedError {
     interface Raw {

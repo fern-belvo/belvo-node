@@ -3,12 +3,12 @@
  */
 
 import * as serializers from "../../..";
-import * as BelvoApi from "../../../../api";
+import * as Belvo from "../../../../api";
 import * as core from "../../../../core";
 
 export const Response: core.serialization.Schema<
     serializers.secretKeys.createSecretKeys.Response.Raw,
-    BelvoApi.SecretKeys[]
+    Belvo.SecretKeys[]
 > = core.serialization.list(core.serialization.lazyObject(async () => (await import("../../..")).SecretKeys));
 
 export declare namespace Response {

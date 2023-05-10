@@ -3,12 +3,12 @@
  */
 
 import * as serializers from "..";
-import * as BelvoApi from "../../api";
+import * as Belvo from "../../api";
 import * as core from "../../core";
 
 export const EnumBankAccountHolderTypePse: core.serialization.Schema<
     serializers.EnumBankAccountHolderTypePse.Raw,
-    BelvoApi.EnumBankAccountHolderTypePse
+    Belvo.EnumBankAccountHolderTypePse
 > = core.serialization.enum_(["BUSINESS"]);
 
 export declare namespace EnumBankAccountHolderTypePse {

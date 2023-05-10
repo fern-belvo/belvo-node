@@ -3,12 +3,12 @@
  */
 
 import * as serializers from "..";
-import * as BelvoApi from "../../api";
+import * as Belvo from "../../api";
 import * as core from "../../core";
 
 export const RequestTimeoutError: core.serialization.Schema<
     serializers.RequestTimeoutError.Raw,
-    BelvoApi.RequestTimeoutErrorBody[]
+    Belvo.RequestTimeoutErrorBody[]
 > = core.serialization.list(core.serialization.lazyObject(async () => (await import("..")).RequestTimeoutErrorBody));
 
 export declare namespace RequestTimeoutError {

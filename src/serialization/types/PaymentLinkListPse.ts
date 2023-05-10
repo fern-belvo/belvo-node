@@ -3,12 +3,12 @@
  */
 
 import * as serializers from "..";
-import * as BelvoApi from "../../api";
+import * as Belvo from "../../api";
 import * as core from "../../core";
 
 export const PaymentLinkListPse: core.serialization.ObjectSchema<
     serializers.PaymentLinkListPse.Raw,
-    BelvoApi.PaymentLinkListPse
+    Belvo.PaymentLinkListPse
 > = core.serialization.object({
     id: core.serialization.string(),
     createdAt: core.serialization.property("created_at", core.serialization.string()),

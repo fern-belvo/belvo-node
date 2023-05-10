@@ -3,20 +3,18 @@
  */
 
 import * as serializers from "..";
-import * as BelvoApi from "../../api";
+import * as Belvo from "../../api";
 import * as core from "../../core";
 
-export const LinksPutRequest: core.serialization.ObjectSchema<
-    serializers.LinksPutRequest.Raw,
-    BelvoApi.LinksPutRequest
-> = core.serialization.object({
-    password: core.serialization.string(),
-    password2: core.serialization.string().optional(),
-    token: core.serialization.string().optional(),
-    usernameType: core.serialization.property("username_type", core.serialization.string().optional()),
-    certificate: core.serialization.string().optional(),
-    privateKey: core.serialization.property("private_key", core.serialization.string().optional()),
-});
+export const LinksPutRequest: core.serialization.ObjectSchema<serializers.LinksPutRequest.Raw, Belvo.LinksPutRequest> =
+    core.serialization.object({
+        password: core.serialization.string(),
+        password2: core.serialization.string().optional(),
+        token: core.serialization.string().optional(),
+        usernameType: core.serialization.property("username_type", core.serialization.string().optional()),
+        certificate: core.serialization.string().optional(),
+        privateKey: core.serialization.property("private_key", core.serialization.string().optional()),
+    });
 
 export declare namespace LinksPutRequest {
     interface Raw {

@@ -3,12 +3,12 @@
  */
 
 import * as serializers from "..";
-import * as BelvoApi from "../../api";
+import * as Belvo from "../../api";
 import * as core from "../../core";
 
 export const InvoiceDetailRetainedTaxSat: core.serialization.ObjectSchema<
     serializers.InvoiceDetailRetainedTaxSat.Raw,
-    BelvoApi.InvoiceDetailRetainedTaxSat
+    Belvo.InvoiceDetailRetainedTaxSat
 > = core.serialization.object({
     collectedAt: core.serialization.property("collected_at", core.serialization.string().optional()),
     taxType: core.serialization.property("tax_type", core.serialization.string().optional()),

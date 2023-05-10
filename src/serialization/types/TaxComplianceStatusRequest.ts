@@ -3,12 +3,12 @@
  */
 
 import * as serializers from "..";
-import * as BelvoApi from "../../api";
+import * as Belvo from "../../api";
 import * as core from "../../core";
 
 export const TaxComplianceStatusRequest: core.serialization.ObjectSchema<
     serializers.TaxComplianceStatusRequest.Raw,
-    BelvoApi.TaxComplianceStatusRequest
+    Belvo.TaxComplianceStatusRequest
 > = core.serialization.object({
     link: core.serialization.string(),
     attachPdf: core.serialization.property("attach_pdf", core.serialization.boolean().optional()),

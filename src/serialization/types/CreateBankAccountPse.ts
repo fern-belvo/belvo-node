@@ -3,12 +3,12 @@
  */
 
 import * as serializers from "..";
-import * as BelvoApi from "../../api";
+import * as Belvo from "../../api";
 import * as core from "../../core";
 
 export const CreateBankAccountPse: core.serialization.ObjectSchema<
     serializers.CreateBankAccountPse.Raw,
-    BelvoApi.CreateBankAccountPse
+    Belvo.CreateBankAccountPse
 > = core.serialization.object({
     holder: core.serialization.lazyObject(async () => (await import("..")).HolderBusinessPse),
     providers: core.serialization.lazyObject(async () => (await import("..")).ProvidersPse),

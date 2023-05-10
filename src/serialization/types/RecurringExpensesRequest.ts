@@ -3,12 +3,12 @@
  */
 
 import * as serializers from "..";
-import * as BelvoApi from "../../api";
+import * as Belvo from "../../api";
 import * as core from "../../core";
 
 export const RecurringExpensesRequest: core.serialization.ObjectSchema<
     serializers.RecurringExpensesRequest.Raw,
-    BelvoApi.RecurringExpensesRequest
+    Belvo.RecurringExpensesRequest
 > = core.serialization.object({
     link: core.serialization.string(),
     token: core.serialization.string().optional(),

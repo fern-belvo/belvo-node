@@ -3,10 +3,10 @@
  */
 
 import * as serializers from "..";
-import * as BelvoApi from "../../api";
+import * as Belvo from "../../api";
 import * as core from "../../core";
 
-export const EnumLinkStatus: core.serialization.Schema<serializers.EnumLinkStatus.Raw, BelvoApi.EnumLinkStatus> =
+export const EnumLinkStatus: core.serialization.Schema<serializers.EnumLinkStatus.Raw, Belvo.EnumLinkStatus> =
     core.serialization.enum_(["valid", "invalid", "unconfirmed", "token_required"]);
 
 export declare namespace EnumLinkStatus {

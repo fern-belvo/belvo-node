@@ -3,13 +3,11 @@
  */
 
 import * as serializers from "..";
-import * as BelvoApi from "../../api";
+import * as Belvo from "../../api";
 import * as core from "../../core";
 
-export const ForbiddenError: core.serialization.Schema<
-    serializers.ForbiddenError.Raw,
-    BelvoApi.AccessToResourceDenied[]
-> = core.serialization.list(core.serialization.lazyObject(async () => (await import("..")).AccessToResourceDenied));
+export const ForbiddenError: core.serialization.Schema<serializers.ForbiddenError.Raw, Belvo.AccessToResourceDenied[]> =
+    core.serialization.list(core.serialization.lazyObject(async () => (await import("..")).AccessToResourceDenied));
 
 export declare namespace ForbiddenError {
     type Raw = serializers.AccessToResourceDenied.Raw[];

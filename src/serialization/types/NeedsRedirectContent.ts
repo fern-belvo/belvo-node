@@ -3,12 +3,12 @@
  */
 
 import * as serializers from "..";
-import * as BelvoApi from "../../api";
+import * as Belvo from "../../api";
 import * as core from "../../core";
 
 export const NeedsRedirectContent: core.serialization.ObjectSchema<
     serializers.NeedsRedirectContent.Raw,
-    BelvoApi.NeedsRedirectContent
+    Belvo.NeedsRedirectContent
 > = core.serialization.object({
     payerInstitution: core.serialization.property(
         "payer_institution",

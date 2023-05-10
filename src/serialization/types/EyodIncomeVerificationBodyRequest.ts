@@ -3,12 +3,12 @@
  */
 
 import * as serializers from "..";
-import * as BelvoApi from "../../api";
+import * as Belvo from "../../api";
 import * as core from "../../core";
 
 export const EyodIncomeVerificationBodyRequest: core.serialization.ObjectSchema<
     serializers.EyodIncomeVerificationBodyRequest.Raw,
-    BelvoApi.EyodIncomeVerificationBodyRequest
+    Belvo.EyodIncomeVerificationBodyRequest
 > = core.serialization.object({
     transactionId: core.serialization.property("transaction_id", core.serialization.string()),
     accountHolderType: core.serialization.property(

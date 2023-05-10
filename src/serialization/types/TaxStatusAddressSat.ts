@@ -3,12 +3,12 @@
  */
 
 import * as serializers from "..";
-import * as BelvoApi from "../../api";
+import * as Belvo from "../../api";
 import * as core from "../../core";
 
 export const TaxStatusAddressSat: core.serialization.ObjectSchema<
     serializers.TaxStatusAddressSat.Raw,
-    BelvoApi.TaxStatusAddressSat
+    Belvo.TaxStatusAddressSat
 > = core.serialization.object({
     postalCode: core.serialization.property("postal_code", core.serialization.string().optional()),
     streetType: core.serialization.property("street_type", core.serialization.string().optional()),

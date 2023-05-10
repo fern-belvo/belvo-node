@@ -1,4 +1,4 @@
-export * as BelvoApi from "./api";
-export { BelvoApiClient } from "./Client";
-export { BelvoApiEnvironment } from "./environments";
-export { BelvoApiError, BelvoApiTimeoutError } from "./errors";
+export * as Belvo from "./api";
+export { BelvoClient } from "./Client";
+export { BelvoEnvironment } from "./environments";
+export { BelvoError, BelvoTimeoutError } from "./errors";

@@ -3,12 +3,12 @@
  */
 
 import * as serializers from "..";
-import * as BelvoApi from "../../api";
+import * as Belvo from "../../api";
 import * as core from "../../core";
 
 export const NextStepDisplayPaymentMethodInformationType: core.serialization.Schema<
     serializers.NextStepDisplayPaymentMethodInformationType.Raw,
-    BelvoApi.NextStepDisplayPaymentMethodInformationType
+    Belvo.NextStepDisplayPaymentMethodInformationType
 > = core.serialization.enum_([
     "open_finance_display_payment_method_information",
     "open_finance_display_confirmation_required",

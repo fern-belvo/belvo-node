@@ -3,12 +3,12 @@
  */
 
 import * as serializers from "..";
-import * as BelvoApi from "../../api";
+import * as Belvo from "../../api";
 import * as core from "../../core";
 
 export const InvoicesPaymentsRelatedDocumentsDian: core.serialization.ObjectSchema<
     serializers.InvoicesPaymentsRelatedDocumentsDian.Raw,
-    BelvoApi.InvoicesPaymentsRelatedDocumentsDian
+    Belvo.InvoicesPaymentsRelatedDocumentsDian
 > = core.serialization.object({
     invoiceIdentification: core.serialization.property(
         "invoice_identification",

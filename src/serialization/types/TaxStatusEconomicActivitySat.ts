@@ -3,12 +3,12 @@
  */
 
 import * as serializers from "..";
-import * as BelvoApi from "../../api";
+import * as Belvo from "../../api";
 import * as core from "../../core";
 
 export const TaxStatusEconomicActivitySat: core.serialization.ObjectSchema<
     serializers.TaxStatusEconomicActivitySat.Raw,
-    BelvoApi.TaxStatusEconomicActivitySat
+    Belvo.TaxStatusEconomicActivitySat
 > = core.serialization.object({
     economicActivity: core.serialization.property("economic_activity", core.serialization.string().optional()),
     initialDate: core.serialization.property("initial_date", core.serialization.string().optional()),

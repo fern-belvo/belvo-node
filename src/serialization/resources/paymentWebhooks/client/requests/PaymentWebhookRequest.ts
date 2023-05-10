@@ -3,12 +3,12 @@
  */
 
 import * as serializers from "../../../..";
-import * as BelvoApi from "../../../../../api";
+import * as Belvo from "../../../../../api";
 import * as core from "../../../../../core";
 
 export const PaymentWebhookRequest: core.serialization.Schema<
     serializers.PaymentWebhookRequest.Raw,
-    BelvoApi.PaymentWebhookRequest
+    Belvo.PaymentWebhookRequest
 > = core.serialization.object({
     name: core.serialization.string(),
     url: core.serialization.string(),

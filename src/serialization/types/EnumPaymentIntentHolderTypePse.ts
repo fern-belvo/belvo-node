@@ -3,12 +3,12 @@
  */
 
 import * as serializers from "..";
-import * as BelvoApi from "../../api";
+import * as Belvo from "../../api";
 import * as core from "../../core";
 
 export const EnumPaymentIntentHolderTypePse: core.serialization.Schema<
     serializers.EnumPaymentIntentHolderTypePse.Raw,
-    BelvoApi.EnumPaymentIntentHolderTypePse
+    Belvo.EnumPaymentIntentHolderTypePse
 > = core.serialization.enum_(["INDIVIDUAL", "BUSINESS"]);
 
 export declare namespace EnumPaymentIntentHolderTypePse {

@@ -4,7 +4,7 @@
 
 import * as environments from "../../../../environments";
 import * as core from "../../../../core";
-import * as BelvoApi from "../../..";
+import * as Belvo from "../../..";
 import URLSearchParams from "@ungap/url-search-params";
 import urlJoin from "url-join";
 import * as serializers from "../../../../serialization";
@@ -12,7 +12,7 @@ import * as errors from "../../../../errors";
 
 export declare namespace ReceivableTransactions {
     interface Options {
-        environment?: environments.BelvoApiEnvironment | string;
+        environment?: environments.BelvoEnvironment | string;
         credentials: core.Supplier<core.BasicAuth>;
     }
 }
@@ -21,11 +21,11 @@ export class ReceivableTransactions {
     constructor(protected readonly options: ReceivableTransactions.Options) {}
 
     /**
-     * @throws {BelvoApi.UnauthorizedError}
+     * @throws {Belvo.UnauthorizedError}
      */
     public async listReceivableTransactions(
-        request: BelvoApi.ListReceivableTransactionsRequest = {}
-    ): Promise<BelvoApi.ReceivablesTransactionsPaginatedResponse> {
+        request: Belvo.ListReceivableTransactionsRequest = {}
+    ): Promise<Belvo.ReceivablesTransactionsPaginatedResponse> {
         const {
             page,
             pageSize,
@@ -126,7 +126,7 @@ export class ReceivableTransactions {
 
         const _response = await core.fetcher({
             url: urlJoin(
-                this.options.environment ?? environments.BelvoApiEnvironment.Production,
+                this.options.environment ?? environments.BelvoEnvironment.Production,
                 "receivables/transactions"
             ),
             method: "GET",
@@ -134,7 +134,7 @@ export class ReceivableTransactions {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.13",
+                "X-Fern-SDK-Version": "0.0.14",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -152,7 +152,7 @@ export class ReceivableTransactions {
         if (_response.error.reason === "status-code") {
             switch (_response.error.statusCode) {
                 case 401:
-                    throw new BelvoApi.UnauthorizedError(
+                    throw new Belvo.UnauthorizedError(
                         await serializers.UnauthorizedError.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
@@ -161,7 +161,7 @@ export class ReceivableTransactions {
                         })
                     );
                 default:
-                    throw new errors.BelvoApiError({
+                    throw new errors.BelvoError({
                         statusCode: _response.error.statusCode,
                         body: _response.error.body,
                     });
@@ -170,28 +170,28 @@ export class ReceivableTransactions {
 
         switch (_response.error.reason) {
             case "non-json":
-                throw new errors.BelvoApiError({
+                throw new errors.BelvoError({
                     statusCode: _response.error.statusCode,
                     body: _response.error.rawBody,
                 });
             case "timeout":
-                throw new errors.BelvoApiTimeoutError();
+                throw new errors.BelvoTimeoutError();
             case "unknown":
-                throw new errors.BelvoApiError({
+                throw new errors.BelvoError({
                     message: _response.error.errorMessage,
                 });
         }
     }
 
     /**
-     * @throws {BelvoApi.BadRequestError}
-     * @throws {BelvoApi.UnauthorizedError}
-     * @throws {BelvoApi.PreconditionError}
-     * @throws {BelvoApi.InternalServerError}
+     * @throws {Belvo.BadRequestError}
+     * @throws {Belvo.UnauthorizedError}
+     * @throws {Belvo.PreconditionError}
+     * @throws {Belvo.InternalServerError}
      */
     public async retrieveReceivableTransactions(
-        request: BelvoApi.RetrieveReceivableTransactionsRequest
-    ): Promise<BelvoApi.ReceivablesTransaction> {
+        request: Belvo.RetrieveReceivableTransactionsRequest
+    ): Promise<Belvo.ReceivablesTransaction> {
         const { omit, fields, body: _body } = request;
         const _queryParams = new URLSearchParams();
         if (omit != null) {
@@ -204,7 +204,7 @@ export class ReceivableTransactions {
 
         const _response = await core.fetcher({
             url: urlJoin(
-                this.options.environment ?? environments.BelvoApiEnvironment.Production,
+                this.options.environment ?? environments.BelvoEnvironment.Production,
                 "receivables/transactions"
             ),
             method: "POST",
@@ -212,7 +212,7 @@ export class ReceivableTransactions {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.13",
+                "X-Fern-SDK-Version": "0.0.14",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -233,7 +233,7 @@ export class ReceivableTransactions {
         if (_response.error.reason === "status-code") {
             switch (_response.error.statusCode) {
                 case 400:
-                    throw new BelvoApi.BadRequestError(
+                    throw new Belvo.BadRequestError(
                         await serializers.BadRequestError.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
@@ -242,7 +242,7 @@ export class ReceivableTransactions {
                         })
                     );
                 case 401:
-                    throw new BelvoApi.UnauthorizedError(
+                    throw new Belvo.UnauthorizedError(
                         await serializers.UnauthorizedError.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
@@ -251,7 +251,7 @@ export class ReceivableTransactions {
                         })
                     );
                 case 428:
-                    throw new BelvoApi.PreconditionError(
+                    throw new Belvo.PreconditionError(
                         await serializers.PreconditionError.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
@@ -260,7 +260,7 @@ export class ReceivableTransactions {
                         })
                     );
                 case 500:
-                    throw new BelvoApi.InternalServerError(
+                    throw new Belvo.InternalServerError(
                         await serializers.InternalServerError.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
@@ -269,7 +269,7 @@ export class ReceivableTransactions {
                         })
                     );
                 default:
-                    throw new errors.BelvoApiError({
+                    throw new errors.BelvoError({
                         statusCode: _response.error.statusCode,
                         body: _response.error.body,
                     });
@@ -278,27 +278,27 @@ export class ReceivableTransactions {
 
         switch (_response.error.reason) {
             case "non-json":
-                throw new errors.BelvoApiError({
+                throw new errors.BelvoError({
                     statusCode: _response.error.statusCode,
                     body: _response.error.rawBody,
                 });
             case "timeout":
-                throw new errors.BelvoApiTimeoutError();
+                throw new errors.BelvoTimeoutError();
             case "unknown":
-                throw new errors.BelvoApiError({
+                throw new errors.BelvoError({
                     message: _response.error.errorMessage,
                 });
         }
     }
 
     /**
-     * @throws {BelvoApi.UnauthorizedError}
-     * @throws {BelvoApi.NotFoundError}
+     * @throws {Belvo.UnauthorizedError}
+     * @throws {Belvo.NotFoundError}
      */
     public async detailReceivableTransaction(
         id: string,
-        request: BelvoApi.DetailReceivableTransactionRequest = {}
-    ): Promise<BelvoApi.ReceivablesTransaction> {
+        request: Belvo.DetailReceivableTransactionRequest = {}
+    ): Promise<Belvo.ReceivablesTransaction> {
         const { omit, fields } = request;
         const _queryParams = new URLSearchParams();
         if (omit != null) {
@@ -311,7 +311,7 @@ export class ReceivableTransactions {
 
         const _response = await core.fetcher({
             url: urlJoin(
-                this.options.environment ?? environments.BelvoApiEnvironment.Production,
+                this.options.environment ?? environments.BelvoEnvironment.Production,
                 `receivables/transactions/${id}`
             ),
             method: "GET",
@@ -319,7 +319,7 @@ export class ReceivableTransactions {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.13",
+                "X-Fern-SDK-Version": "0.0.14",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -337,7 +337,7 @@ export class ReceivableTransactions {
         if (_response.error.reason === "status-code") {
             switch (_response.error.statusCode) {
                 case 401:
-                    throw new BelvoApi.UnauthorizedError(
+                    throw new Belvo.UnauthorizedError(
                         await serializers.UnauthorizedError.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
@@ -346,7 +346,7 @@ export class ReceivableTransactions {
                         })
                     );
                 case 404:
-                    throw new BelvoApi.NotFoundError(
+                    throw new Belvo.NotFoundError(
                         await serializers.NotFoundError.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
@@ -355,7 +355,7 @@ export class ReceivableTransactions {
                         })
                     );
                 default:
-                    throw new errors.BelvoApiError({
+                    throw new errors.BelvoError({
                         statusCode: _response.error.statusCode,
                         body: _response.error.body,
                     });
@@ -364,27 +364,27 @@ export class ReceivableTransactions {
 
         switch (_response.error.reason) {
             case "non-json":
-                throw new errors.BelvoApiError({
+                throw new errors.BelvoError({
                     statusCode: _response.error.statusCode,
                     body: _response.error.rawBody,
                 });
             case "timeout":
-                throw new errors.BelvoApiTimeoutError();
+                throw new errors.BelvoTimeoutError();
             case "unknown":
-                throw new errors.BelvoApiError({
+                throw new errors.BelvoError({
                     message: _response.error.errorMessage,
                 });
         }
     }
 
     /**
-     * @throws {BelvoApi.UnauthorizedError}
-     * @throws {BelvoApi.NotFoundError}
+     * @throws {Belvo.UnauthorizedError}
+     * @throws {Belvo.NotFoundError}
      */
     public async destroyReceivableTransaction(id: string): Promise<void> {
         const _response = await core.fetcher({
             url: urlJoin(
-                this.options.environment ?? environments.BelvoApiEnvironment.Production,
+                this.options.environment ?? environments.BelvoEnvironment.Production,
                 `receivables/transactions/${id}`
             ),
             method: "DELETE",
@@ -392,7 +392,7 @@ export class ReceivableTransactions {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.13",
+                "X-Fern-SDK-Version": "0.0.14",
             },
             contentType: "application/json",
             timeoutMs: 60000,
@@ -404,7 +404,7 @@ export class ReceivableTransactions {
         if (_response.error.reason === "status-code") {
             switch (_response.error.statusCode) {
                 case 401:
-                    throw new BelvoApi.UnauthorizedError(
+                    throw new Belvo.UnauthorizedError(
                         await serializers.UnauthorizedError.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
@@ -413,7 +413,7 @@ export class ReceivableTransactions {
                         })
                     );
                 case 404:
-                    throw new BelvoApi.NotFoundError(
+                    throw new Belvo.NotFoundError(
                         await serializers.NotFoundError.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
@@ -422,7 +422,7 @@ export class ReceivableTransactions {
                         })
                     );
                 default:
-                    throw new errors.BelvoApiError({
+                    throw new errors.BelvoError({
                         statusCode: _response.error.statusCode,
                         body: _response.error.body,
                     });
@@ -431,14 +431,14 @@ export class ReceivableTransactions {
 
         switch (_response.error.reason) {
             case "non-json":
-                throw new errors.BelvoApiError({
+                throw new errors.BelvoError({
                     statusCode: _response.error.statusCode,
                     body: _response.error.rawBody,
                 });
             case "timeout":
-                throw new errors.BelvoApiTimeoutError();
+                throw new errors.BelvoTimeoutError();
             case "unknown":
-                throw new errors.BelvoApiError({
+                throw new errors.BelvoError({
                     message: _response.error.errorMessage,
                 });
         }

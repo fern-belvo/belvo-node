@@ -3,12 +3,12 @@
  */
 
 import * as serializers from "..";
-import * as BelvoApi from "../../api";
+import * as Belvo from "../../api";
 import * as core from "../../core";
 
 export const BankAccountDetailsOfpi: core.serialization.ObjectSchema<
     serializers.BankAccountDetailsOfpi.Raw,
-    BelvoApi.BankAccountDetailsOfpi
+    Belvo.BankAccountDetailsOfpi
 > = core.serialization.object({
     country: core.serialization.lazy(async () => (await import("..")).EnumPaymentsCountry),
     accountType: core.serialization.property(

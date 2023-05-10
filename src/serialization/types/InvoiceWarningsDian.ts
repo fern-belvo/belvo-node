@@ -3,12 +3,12 @@
  */
 
 import * as serializers from "..";
-import * as BelvoApi from "../../api";
+import * as Belvo from "../../api";
 import * as core from "../../core";
 
 export const InvoiceWarningsDian: core.serialization.ObjectSchema<
     serializers.InvoiceWarningsDian.Raw,
-    BelvoApi.InvoiceWarningsDian
+    Belvo.InvoiceWarningsDian
 > = core.serialization.object({
     code: core.serialization.string().optional(),
     message: core.serialization.string().optional(),

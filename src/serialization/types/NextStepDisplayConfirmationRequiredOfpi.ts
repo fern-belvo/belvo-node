@@ -3,12 +3,12 @@
  */
 
 import * as serializers from "..";
-import * as BelvoApi from "../../api";
+import * as Belvo from "../../api";
 import * as core from "../../core";
 
 export const NextStepDisplayConfirmationRequiredOfpi: core.serialization.ObjectSchema<
     serializers.NextStepDisplayConfirmationRequiredOfpi.Raw,
-    BelvoApi.NextStepDisplayConfirmationRequiredOfpi
+    Belvo.NextStepDisplayConfirmationRequiredOfpi
 > = core.serialization.object({
     type: core.serialization
         .lazy(async () => (await import("..")).NextStepDisplayConfirmationRequiredOfpiType)

@@ -3,12 +3,12 @@
  */
 
 import * as serializers from "..";
-import * as BelvoApi from "../../api";
+import * as Belvo from "../../api";
 import * as core from "../../core";
 
 export const CreatePaymentLinkPseAmount: core.serialization.Schema<
     serializers.CreatePaymentLinkPseAmount.Raw,
-    BelvoApi.CreatePaymentLinkPseAmount
+    Belvo.CreatePaymentLinkPseAmount
 > = core.serialization.undiscriminatedUnion([core.serialization.string(), core.serialization.number()]);
 
 export declare namespace CreatePaymentLinkPseAmount {

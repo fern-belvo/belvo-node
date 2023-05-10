@@ -3,10 +3,10 @@
  */
 
 import * as serializers from "..";
-import * as BelvoApi from "../../api";
+import * as Belvo from "../../api";
 import * as core from "../../core";
 
-export const EnumCustomerType: core.serialization.Schema<serializers.EnumCustomerType.Raw, BelvoApi.EnumCustomerType> =
+export const EnumCustomerType: core.serialization.Schema<serializers.EnumCustomerType.Raw, Belvo.EnumCustomerType> =
     core.serialization.enum_(["INDIVIDUAL", "BUSINESS"]);
 
 export declare namespace EnumCustomerType {

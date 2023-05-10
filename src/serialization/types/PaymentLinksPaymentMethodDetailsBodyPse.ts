@@ -3,12 +3,12 @@
  */
 
 import * as serializers from "..";
-import * as BelvoApi from "../../api";
+import * as Belvo from "../../api";
 import * as core from "../../core";
 
 export const PaymentLinksPaymentMethodDetailsBodyPse: core.serialization.ObjectSchema<
     serializers.PaymentLinksPaymentMethodDetailsBodyPse.Raw,
-    BelvoApi.PaymentLinksPaymentMethodDetailsBodyPse
+    Belvo.PaymentLinksPaymentMethodDetailsBodyPse
 > = core.serialization.object({
     beneficiaryBankAccount: core.serialization.property("beneficiary_bank_account", core.serialization.string()),
     callbackUrl: core.serialization.property("callback_url", core.serialization.string().optional()),

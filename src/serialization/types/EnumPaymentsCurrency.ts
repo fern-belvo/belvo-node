@@ -3,12 +3,12 @@
  */
 
 import * as serializers from "..";
-import * as BelvoApi from "../../api";
+import * as Belvo from "../../api";
 import * as core from "../../core";
 
 export const EnumPaymentsCurrency: core.serialization.Schema<
     serializers.EnumPaymentsCurrency.Raw,
-    BelvoApi.EnumPaymentsCurrency
+    Belvo.EnumPaymentsCurrency
 > = core.serialization.enum_(["BRL", "COP"]);
 
 export declare namespace EnumPaymentsCurrency {

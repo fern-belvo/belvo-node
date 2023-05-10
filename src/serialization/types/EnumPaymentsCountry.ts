@@ -3,12 +3,12 @@
  */
 
 import * as serializers from "..";
-import * as BelvoApi from "../../api";
+import * as Belvo from "../../api";
 import * as core from "../../core";
 
 export const EnumPaymentsCountry: core.serialization.Schema<
     serializers.EnumPaymentsCountry.Raw,
-    BelvoApi.EnumPaymentsCountry
+    Belvo.EnumPaymentsCountry
 > = core.serialization.enum_(["BRA", "COL"]);
 
 export declare namespace EnumPaymentsCountry {

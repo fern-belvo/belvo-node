@@ -3,12 +3,12 @@
  */
 
 import * as serializers from "..";
-import * as BelvoApi from "../../api";
+import * as Belvo from "../../api";
 import * as core from "../../core";
 
 export const EnumPaymentLinkAllowedPaymentMethod: core.serialization.Schema<
     serializers.EnumPaymentLinkAllowedPaymentMethod.Raw,
-    BelvoApi.EnumPaymentLinkAllowedPaymentMethod
+    Belvo.EnumPaymentLinkAllowedPaymentMethod
 > = core.serialization.enum_(["open_finance", "pse"]);
 
 export declare namespace EnumPaymentLinkAllowedPaymentMethod {

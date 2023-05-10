@@ -3,12 +3,12 @@
  */
 
 import * as serializers from "..";
-import * as BelvoApi from "../../api";
+import * as Belvo from "../../api";
 import * as core from "../../core";
 
 export const ReceivableTransactionRequest: core.serialization.ObjectSchema<
     serializers.ReceivableTransactionRequest.Raw,
-    BelvoApi.ReceivableTransactionRequest
+    Belvo.ReceivableTransactionRequest
 > = core.serialization.object({
     link: core.serialization.string(),
     dateFrom: core.serialization.property("date_from", core.serialization.string()),

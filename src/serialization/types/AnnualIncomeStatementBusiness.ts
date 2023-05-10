@@ -3,12 +3,12 @@
  */
 
 import * as serializers from "..";
-import * as BelvoApi from "../../api";
+import * as Belvo from "../../api";
 import * as core from "../../core";
 
 export const AnnualIncomeStatementBusiness: core.serialization.ObjectSchema<
     serializers.AnnualIncomeStatementBusiness.Raw,
-    BelvoApi.AnnualIncomeStatementBusiness
+    Belvo.AnnualIncomeStatementBusiness
 > = core.serialization.object({
     grossIncomeFromOrdinaryActivities: core.serialization.property(
         "gross_income_from_ordinary_activities",

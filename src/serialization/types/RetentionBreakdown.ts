@@ -3,12 +3,12 @@
  */
 
 import * as serializers from "..";
-import * as BelvoApi from "../../api";
+import * as Belvo from "../../api";
 import * as core from "../../core";
 
 export const RetentionBreakdown: core.serialization.ObjectSchema<
     serializers.RetentionBreakdown.Raw,
-    BelvoApi.RetentionBreakdown
+    Belvo.RetentionBreakdown
 > = core.serialization.object({
     baseAmount: core.serialization.property("base_amount", core.serialization.number().optional()),
     taxType: core.serialization.property("tax_type", core.serialization.string().optional()),

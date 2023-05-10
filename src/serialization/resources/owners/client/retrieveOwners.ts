@@ -3,10 +3,10 @@
  */
 
 import * as serializers from "../../..";
-import * as BelvoApi from "../../../../api";
+import * as Belvo from "../../../../api";
 import * as core from "../../../../core";
 
-export const Response: core.serialization.Schema<serializers.owners.retrieveOwners.Response.Raw, BelvoApi.Owner[]> =
+export const Response: core.serialization.Schema<serializers.owners.retrieveOwners.Response.Raw, Belvo.Owner[]> =
     core.serialization.list(core.serialization.lazyObject(async () => (await import("../../..")).Owner));
 
 export declare namespace Response {

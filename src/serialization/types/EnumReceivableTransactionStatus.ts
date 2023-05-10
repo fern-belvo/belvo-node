@@ -3,12 +3,12 @@
  */
 
 import * as serializers from "..";
-import * as BelvoApi from "../../api";
+import * as Belvo from "../../api";
 import * as core from "../../core";
 
 export const EnumReceivableTransactionStatus: core.serialization.Schema<
     serializers.EnumReceivableTransactionStatus.Raw,
-    BelvoApi.EnumReceivableTransactionStatus
+    Belvo.EnumReceivableTransactionStatus
 > = core.serialization.enum_(["APPROVED", "CANCELLED", "REVERTED", "UNCATEGORIZED"]);
 
 export declare namespace EnumReceivableTransactionStatus {

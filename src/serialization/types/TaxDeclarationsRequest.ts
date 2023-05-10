@@ -3,12 +3,12 @@
  */
 
 import * as serializers from "..";
-import * as BelvoApi from "../../api";
+import * as Belvo from "../../api";
 import * as core from "../../core";
 
 export const TaxDeclarationsRequest: core.serialization.ObjectSchema<
     serializers.TaxDeclarationsRequest.Raw,
-    BelvoApi.TaxDeclarationsRequest
+    Belvo.TaxDeclarationsRequest
 > = core.serialization.object({
     link: core.serialization.string(),
     yearFrom: core.serialization.property("year_from", core.serialization.string()),

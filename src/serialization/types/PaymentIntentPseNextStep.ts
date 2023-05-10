@@ -3,12 +3,12 @@
  */
 
 import * as serializers from "..";
-import * as BelvoApi from "../../api";
+import * as Belvo from "../../api";
 import * as core from "../../core";
 
 export const PaymentIntentPseNextStep: core.serialization.Schema<
     serializers.PaymentIntentPseNextStep.Raw,
-    BelvoApi.PaymentIntentPseNextStep
+    Belvo.PaymentIntentPseNextStep
 > = core.serialization.undiscriminatedUnion([
     core.serialization.lazyObject(async () => (await import("..")).NextStepDisplayPaymentMethodInformationPse),
     core.serialization.lazyObject(async () => (await import("..")).NextStepDisplayCredentialsRequiredPse),

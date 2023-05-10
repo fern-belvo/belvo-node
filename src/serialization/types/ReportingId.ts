@@ -3,10 +3,10 @@
  */
 
 import * as serializers from "..";
-import * as BelvoApi from "../../api";
+import * as Belvo from "../../api";
 import * as core from "../../core";
 
-export const ReportingId: core.serialization.ObjectSchema<serializers.ReportingId.Raw, BelvoApi.ReportingId> =
+export const ReportingId: core.serialization.ObjectSchema<serializers.ReportingId.Raw, Belvo.ReportingId> =
     core.serialization.object({
         reportingType: core.serialization.property("reporting_type", core.serialization.string()),
         reportingValue: core.serialization.property("reporting_value", core.serialization.string()),

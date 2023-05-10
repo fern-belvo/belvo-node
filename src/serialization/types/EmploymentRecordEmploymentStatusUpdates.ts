@@ -3,12 +3,12 @@
  */
 
 import * as serializers from "..";
-import * as BelvoApi from "../../api";
+import * as Belvo from "../../api";
 import * as core from "../../core";
 
 export const EmploymentRecordEmploymentStatusUpdates: core.serialization.ObjectSchema<
     serializers.EmploymentRecordEmploymentStatusUpdates.Raw,
-    BelvoApi.EmploymentRecordEmploymentStatusUpdates
+    Belvo.EmploymentRecordEmploymentStatusUpdates
 > = core.serialization.object({
     event: core.serialization.lazy(async () => (await import("..")).EnumEmploymentRecordStatusUpdateEvents).optional(),
     baseSalary: core.serialization.property("base_salary", core.serialization.number().optional()),

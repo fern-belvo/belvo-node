@@ -4,14 +4,14 @@
 
 import * as environments from "../../../../environments";
 import * as core from "../../../../core";
-import * as BelvoApi from "../../..";
+import * as Belvo from "../../..";
 import * as serializers from "../../../../serialization";
 import urlJoin from "url-join";
 import * as errors from "../../../../errors";
 
 export declare namespace IncomeVerification {
     interface Options {
-        environment?: environments.BelvoApiEnvironment | string;
+        environment?: environments.BelvoEnvironment | string;
         credentials: core.Supplier<core.BasicAuth>;
     }
 }
@@ -20,20 +20,20 @@ export class IncomeVerification {
     constructor(protected readonly options: IncomeVerification.Options) {}
 
     /**
-     * @throws {BelvoApi.BadRequestError}
-     * @throws {BelvoApi.UnauthorizedError}
-     * @throws {BelvoApi.ForbiddenError}
-     * @throws {BelvoApi.InternalServerError}
+     * @throws {Belvo.BadRequestError}
+     * @throws {Belvo.UnauthorizedError}
+     * @throws {Belvo.ForbiddenError}
+     * @throws {Belvo.InternalServerError}
      */
-    public async verifyIncome(request: BelvoApi.EyodIncomeVerificationRequest): Promise<BelvoApi.Income[]> {
+    public async verifyIncome(request: Belvo.EyodIncomeVerificationRequest): Promise<Belvo.Income[]> {
         const _response = await core.fetcher({
-            url: urlJoin(this.options.environment ?? environments.BelvoApiEnvironment.Production, "api/enrich/incomes"),
+            url: urlJoin(this.options.environment ?? environments.BelvoEnvironment.Production, "api/enrich/incomes"),
             method: "POST",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.13",
+                "X-Fern-SDK-Version": "0.0.14",
             },
             contentType: "application/json",
             body: await serializers.EyodIncomeVerificationRequest.jsonOrThrow(request, {
@@ -53,7 +53,7 @@ export class IncomeVerification {
         if (_response.error.reason === "status-code") {
             switch (_response.error.statusCode) {
                 case 400:
-                    throw new BelvoApi.BadRequestError(
+                    throw new Belvo.BadRequestError(
                         await serializers.BadRequestError.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
@@ -62,7 +62,7 @@ export class IncomeVerification {
                         })
                     );
                 case 401:
-                    throw new BelvoApi.UnauthorizedError(
+                    throw new Belvo.UnauthorizedError(
                         await serializers.UnauthorizedError.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
@@ -71,7 +71,7 @@ export class IncomeVerification {
                         })
                     );
                 case 403:
-                    throw new BelvoApi.ForbiddenError(
+                    throw new Belvo.ForbiddenError(
                         await serializers.ForbiddenError.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
@@ -80,7 +80,7 @@ export class IncomeVerification {
                         })
                     );
                 case 500:
-                    throw new BelvoApi.InternalServerError(
+                    throw new Belvo.InternalServerError(
                         await serializers.InternalServerError.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
@@ -89,7 +89,7 @@ export class IncomeVerification {
                         })
                     );
                 default:
-                    throw new errors.BelvoApiError({
+                    throw new errors.BelvoError({
                         statusCode: _response.error.statusCode,
                         body: _response.error.body,
                     });
@@ -98,14 +98,14 @@ export class IncomeVerification {
 
         switch (_response.error.reason) {
             case "non-json":
-                throw new errors.BelvoApiError({
+                throw new errors.BelvoError({
                     statusCode: _response.error.statusCode,
                     body: _response.error.rawBody,
                 });
             case "timeout":
-                throw new errors.BelvoApiTimeoutError();
+                throw new errors.BelvoTimeoutError();
             case "unknown":
-                throw new errors.BelvoApiError({
+                throw new errors.BelvoError({
                     message: _response.error.errorMessage,
                 });
         }

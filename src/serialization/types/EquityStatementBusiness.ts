@@ -3,12 +3,12 @@
  */
 
 import * as serializers from "..";
-import * as BelvoApi from "../../api";
+import * as Belvo from "../../api";
 import * as core from "../../core";
 
 export const EquityStatementBusiness: core.serialization.ObjectSchema<
     serializers.EquityStatementBusiness.Raw,
-    BelvoApi.EquityStatementBusiness
+    Belvo.EquityStatementBusiness
 > = core.serialization.object({
     cashAndCashEquivalents: core.serialization.property("cash_and_cash_equivalents", core.serialization.number()),
     investmentsAndDerivativeFinancialInstruments: core.serialization.property(

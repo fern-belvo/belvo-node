@@ -3,12 +3,12 @@
  */
 
 import * as serializers from "..";
-import * as BelvoApi from "../../api";
+import * as Belvo from "../../api";
 import * as core from "../../core";
 
 export const EnumInvoiceDianPaymentMethod: core.serialization.Schema<
     serializers.EnumInvoiceDianPaymentMethod.Raw,
-    BelvoApi.EnumInvoiceDianPaymentMethod
+    Belvo.EnumInvoiceDianPaymentMethod
 > = core.serialization.string().optional();
 
 export declare namespace EnumInvoiceDianPaymentMethod {

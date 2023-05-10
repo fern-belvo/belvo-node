@@ -3,12 +3,12 @@
  */
 
 import * as serializers from "../../../..";
-import * as BelvoApi from "../../../../../api";
+import * as Belvo from "../../../../../api";
 import * as core from "../../../../../core";
 
 export const EyodIncomeVerificationRequest: core.serialization.Schema<
     serializers.EyodIncomeVerificationRequest.Raw,
-    BelvoApi.EyodIncomeVerificationRequest
+    Belvo.EyodIncomeVerificationRequest
 > = core.serialization.object({
     language: core.serialization.string(),
     transactions: core.serialization.list(

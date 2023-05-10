@@ -3,17 +3,15 @@
  */
 
 import * as serializers from "..";
-import * as BelvoApi from "../../api";
+import * as Belvo from "../../api";
 import * as core from "../../core";
 
-export const StandardRequest: core.serialization.ObjectSchema<
-    serializers.StandardRequest.Raw,
-    BelvoApi.StandardRequest
-> = core.serialization.object({
-    link: core.serialization.string(),
-    token: core.serialization.string().optional(),
-    saveData: core.serialization.property("save_data", core.serialization.boolean().optional()),
-});
+export const StandardRequest: core.serialization.ObjectSchema<serializers.StandardRequest.Raw, Belvo.StandardRequest> =
+    core.serialization.object({
+        link: core.serialization.string(),
+        token: core.serialization.string().optional(),
+        saveData: core.serialization.property("save_data", core.serialization.boolean().optional()),
+    });
 
 export declare namespace StandardRequest {
     interface Raw {

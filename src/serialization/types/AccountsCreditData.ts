@@ -3,12 +3,12 @@
  */
 
 import * as serializers from "..";
-import * as BelvoApi from "../../api";
+import * as Belvo from "../../api";
 import * as core from "../../core";
 
 export const AccountsCreditData: core.serialization.ObjectSchema<
     serializers.AccountsCreditData.Raw,
-    BelvoApi.AccountsCreditData
+    Belvo.AccountsCreditData
 > = core.serialization.object({
     creditLimit: core.serialization.property("credit_limit", core.serialization.number().optional()),
     collectedAt: core.serialization.property("collected_at", core.serialization.string().optional()),

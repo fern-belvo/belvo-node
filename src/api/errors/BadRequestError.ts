@@ -3,10 +3,10 @@
  */
 
 import * as errors from "../../errors";
-import * as BelvoApi from "..";
+import * as Belvo from "..";
 
-export class BadRequestError extends errors.BelvoApiError {
-    constructor(body: BelvoApi.BadRequestErrorBodyItem[]) {
+export class BadRequestError extends errors.BelvoError {
+    constructor(body: Belvo.BadRequestErrorBodyItem[]) {
         super({
             message: "BadRequestError",
             statusCode: 400,

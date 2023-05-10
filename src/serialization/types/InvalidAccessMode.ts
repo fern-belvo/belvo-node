@@ -3,12 +3,12 @@
  */
 
 import * as serializers from "..";
-import * as BelvoApi from "../../api";
+import * as Belvo from "../../api";
 import * as core from "../../core";
 
 export const InvalidAccessMode: core.serialization.ObjectSchema<
     serializers.InvalidAccessMode.Raw,
-    BelvoApi.InvalidAccessMode
+    Belvo.InvalidAccessMode
 > = core.serialization.object({
     code: core.serialization.string().optional(),
     message: core.serialization.string().optional(),

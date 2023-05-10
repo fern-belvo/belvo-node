@@ -3,10 +3,10 @@
  */
 
 import * as serializers from "..";
-import * as BelvoApi from "../../api";
+import * as Belvo from "../../api";
 import * as core from "../../core";
 
-export const Categorization: core.serialization.ObjectSchema<serializers.Categorization.Raw, BelvoApi.Categorization> =
+export const Categorization: core.serialization.ObjectSchema<serializers.Categorization.Raw, Belvo.Categorization> =
     core.serialization.object({
         transactions: core.serialization
             .list(core.serialization.lazyObject(async () => (await import("..")).CategorizationBody))

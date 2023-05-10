@@ -4,7 +4,7 @@
 
 import * as environments from "../../../../environments";
 import * as core from "../../../../core";
-import * as BelvoApi from "../../..";
+import * as Belvo from "../../..";
 import URLSearchParams from "@ungap/url-search-params";
 import urlJoin from "url-join";
 import * as serializers from "../../../../serialization";
@@ -12,7 +12,7 @@ import * as errors from "../../../../errors";
 
 export declare namespace TaxStatus {
     interface Options {
-        environment?: environments.BelvoApiEnvironment | string;
+        environment?: environments.BelvoEnvironment | string;
         credentials: core.Supplier<core.BasicAuth>;
     }
 }
@@ -21,11 +21,9 @@ export class TaxStatus {
     constructor(protected readonly options: TaxStatus.Options) {}
 
     /**
-     * @throws {BelvoApi.UnauthorizedError}
+     * @throws {Belvo.UnauthorizedError}
      */
-    public async listTaxStatus(
-        request: BelvoApi.ListTaxStatusRequest = {}
-    ): Promise<BelvoApi.TaxStatusPaginatedResponse> {
+    public async listTaxStatus(request: Belvo.ListTaxStatusRequest = {}): Promise<Belvo.TaxStatusPaginatedResponse> {
         const {
             page,
             pageSize,
@@ -95,13 +93,13 @@ export class TaxStatus {
         }
 
         const _response = await core.fetcher({
-            url: urlJoin(this.options.environment ?? environments.BelvoApiEnvironment.Production, "api/tax-status"),
+            url: urlJoin(this.options.environment ?? environments.BelvoEnvironment.Production, "api/tax-status"),
             method: "GET",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.13",
+                "X-Fern-SDK-Version": "0.0.14",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -119,7 +117,7 @@ export class TaxStatus {
         if (_response.error.reason === "status-code") {
             switch (_response.error.statusCode) {
                 case 401:
-                    throw new BelvoApi.UnauthorizedError(
+                    throw new Belvo.UnauthorizedError(
                         await serializers.UnauthorizedError.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
@@ -128,7 +126,7 @@ export class TaxStatus {
                         })
                     );
                 default:
-                    throw new errors.BelvoApiError({
+                    throw new errors.BelvoError({
                         statusCode: _response.error.statusCode,
                         body: _response.error.body,
                     });
@@ -137,28 +135,26 @@ export class TaxStatus {
 
         switch (_response.error.reason) {
             case "non-json":
-                throw new errors.BelvoApiError({
+                throw new errors.BelvoError({
                     statusCode: _response.error.statusCode,
                     body: _response.error.rawBody,
                 });
             case "timeout":
-                throw new errors.BelvoApiTimeoutError();
+                throw new errors.BelvoTimeoutError();
             case "unknown":
-                throw new errors.BelvoApiError({
+                throw new errors.BelvoError({
                     message: _response.error.errorMessage,
                 });
         }
     }
 
     /**
-     * @throws {BelvoApi.BadRequestError}
-     * @throws {BelvoApi.UnauthorizedError}
-     * @throws {BelvoApi.RequestTimeoutError}
-     * @throws {BelvoApi.InternalServerError}
+     * @throws {Belvo.BadRequestError}
+     * @throws {Belvo.UnauthorizedError}
+     * @throws {Belvo.RequestTimeoutError}
+     * @throws {Belvo.InternalServerError}
      */
-    public async retrieveTaxStatus(
-        request: BelvoApi.RetrieveTaxStatusRequest
-    ): Promise<BelvoApi.RetrieveTaxStatusResponse> {
+    public async retrieveTaxStatus(request: Belvo.RetrieveTaxStatusRequest): Promise<Belvo.RetrieveTaxStatusResponse> {
         const { omit, fields, body: _body } = request;
         const _queryParams = new URLSearchParams();
         if (omit != null) {
@@ -170,13 +166,13 @@ export class TaxStatus {
         }
 
         const _response = await core.fetcher({
-            url: urlJoin(this.options.environment ?? environments.BelvoApiEnvironment.Production, "api/tax-status"),
+            url: urlJoin(this.options.environment ?? environments.BelvoEnvironment.Production, "api/tax-status"),
             method: "POST",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.13",
+                "X-Fern-SDK-Version": "0.0.14",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -195,7 +191,7 @@ export class TaxStatus {
         if (_response.error.reason === "status-code") {
             switch (_response.error.statusCode) {
                 case 400:
-                    throw new BelvoApi.BadRequestError(
+                    throw new Belvo.BadRequestError(
                         await serializers.BadRequestError.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
@@ -204,7 +200,7 @@ export class TaxStatus {
                         })
                     );
                 case 401:
-                    throw new BelvoApi.UnauthorizedError(
+                    throw new Belvo.UnauthorizedError(
                         await serializers.UnauthorizedError.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
@@ -213,7 +209,7 @@ export class TaxStatus {
                         })
                     );
                 case 408:
-                    throw new BelvoApi.RequestTimeoutError(
+                    throw new Belvo.RequestTimeoutError(
                         await serializers.RequestTimeoutError.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
@@ -222,7 +218,7 @@ export class TaxStatus {
                         })
                     );
                 case 500:
-                    throw new BelvoApi.InternalServerError(
+                    throw new Belvo.InternalServerError(
                         await serializers.InternalServerError.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
@@ -231,7 +227,7 @@ export class TaxStatus {
                         })
                     );
                 default:
-                    throw new errors.BelvoApiError({
+                    throw new errors.BelvoError({
                         statusCode: _response.error.statusCode,
                         body: _response.error.body,
                     });
@@ -240,27 +236,27 @@ export class TaxStatus {
 
         switch (_response.error.reason) {
             case "non-json":
-                throw new errors.BelvoApiError({
+                throw new errors.BelvoError({
                     statusCode: _response.error.statusCode,
                     body: _response.error.rawBody,
                 });
             case "timeout":
-                throw new errors.BelvoApiTimeoutError();
+                throw new errors.BelvoTimeoutError();
             case "unknown":
-                throw new errors.BelvoApiError({
+                throw new errors.BelvoError({
                     message: _response.error.errorMessage,
                 });
         }
     }
 
     /**
-     * @throws {BelvoApi.UnauthorizedError}
-     * @throws {BelvoApi.NotFoundError}
+     * @throws {Belvo.UnauthorizedError}
+     * @throws {Belvo.NotFoundError}
      */
     public async detailTaxStatus(
         id: string,
-        request: BelvoApi.DetailTaxStatusRequest = {}
-    ): Promise<BelvoApi.DetailTaxStatusResponse> {
+        request: Belvo.DetailTaxStatusRequest = {}
+    ): Promise<Belvo.DetailTaxStatusResponse> {
         const { omit, fields } = request;
         const _queryParams = new URLSearchParams();
         if (omit != null) {
@@ -272,16 +268,13 @@ export class TaxStatus {
         }
 
         const _response = await core.fetcher({
-            url: urlJoin(
-                this.options.environment ?? environments.BelvoApiEnvironment.Production,
-                `api/tax-status/${id}`
-            ),
+            url: urlJoin(this.options.environment ?? environments.BelvoEnvironment.Production, `api/tax-status/${id}`),
             method: "GET",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.13",
+                "X-Fern-SDK-Version": "0.0.14",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -299,7 +292,7 @@ export class TaxStatus {
         if (_response.error.reason === "status-code") {
             switch (_response.error.statusCode) {
                 case 401:
-                    throw new BelvoApi.UnauthorizedError(
+                    throw new Belvo.UnauthorizedError(
                         await serializers.UnauthorizedError.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
@@ -308,7 +301,7 @@ export class TaxStatus {
                         })
                     );
                 case 404:
-                    throw new BelvoApi.NotFoundError(
+                    throw new Belvo.NotFoundError(
                         await serializers.NotFoundError.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
@@ -317,7 +310,7 @@ export class TaxStatus {
                         })
                     );
                 default:
-                    throw new errors.BelvoApiError({
+                    throw new errors.BelvoError({
                         statusCode: _response.error.statusCode,
                         body: _response.error.body,
                     });
@@ -326,35 +319,32 @@ export class TaxStatus {
 
         switch (_response.error.reason) {
             case "non-json":
-                throw new errors.BelvoApiError({
+                throw new errors.BelvoError({
                     statusCode: _response.error.statusCode,
                     body: _response.error.rawBody,
                 });
             case "timeout":
-                throw new errors.BelvoApiTimeoutError();
+                throw new errors.BelvoTimeoutError();
             case "unknown":
-                throw new errors.BelvoApiError({
+                throw new errors.BelvoError({
                     message: _response.error.errorMessage,
                 });
         }
     }
 
     /**
-     * @throws {BelvoApi.UnauthorizedError}
-     * @throws {BelvoApi.NotFoundError}
+     * @throws {Belvo.UnauthorizedError}
+     * @throws {Belvo.NotFoundError}
      */
     public async destroyTaxStatus(id: string): Promise<void> {
         const _response = await core.fetcher({
-            url: urlJoin(
-                this.options.environment ?? environments.BelvoApiEnvironment.Production,
-                `api/tax-status/${id}`
-            ),
+            url: urlJoin(this.options.environment ?? environments.BelvoEnvironment.Production, `api/tax-status/${id}`),
             method: "DELETE",
             headers: {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.13",
+                "X-Fern-SDK-Version": "0.0.14",
             },
             contentType: "application/json",
             timeoutMs: 60000,
@@ -366,7 +356,7 @@ export class TaxStatus {
         if (_response.error.reason === "status-code") {
             switch (_response.error.statusCode) {
                 case 401:
-                    throw new BelvoApi.UnauthorizedError(
+                    throw new Belvo.UnauthorizedError(
                         await serializers.UnauthorizedError.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
@@ -375,7 +365,7 @@ export class TaxStatus {
                         })
                     );
                 case 404:
-                    throw new BelvoApi.NotFoundError(
+                    throw new Belvo.NotFoundError(
                         await serializers.NotFoundError.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
@@ -384,7 +374,7 @@ export class TaxStatus {
                         })
                     );
                 default:
-                    throw new errors.BelvoApiError({
+                    throw new errors.BelvoError({
                         statusCode: _response.error.statusCode,
                         body: _response.error.body,
                     });
@@ -393,14 +383,14 @@ export class TaxStatus {
 
         switch (_response.error.reason) {
             case "non-json":
-                throw new errors.BelvoApiError({
+                throw new errors.BelvoError({
                     statusCode: _response.error.statusCode,
                     body: _response.error.rawBody,
                 });
             case "timeout":
-                throw new errors.BelvoApiTimeoutError();
+                throw new errors.BelvoTimeoutError();
             case "unknown":
-                throw new errors.BelvoApiError({
+                throw new errors.BelvoError({
                     message: _response.error.errorMessage,
                 });
         }

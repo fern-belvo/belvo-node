@@ -3,12 +3,12 @@
  */
 
 import * as serializers from "..";
-import * as BelvoApi from "../../api";
+import * as Belvo from "../../api";
 import * as core from "../../core";
 
 export const TransactionBankAccountBodyPse: core.serialization.ObjectSchema<
     serializers.TransactionBankAccountBodyPse.Raw,
-    BelvoApi.TransactionBankAccountBodyPse
+    Belvo.TransactionBankAccountBodyPse
 > = core.serialization.object({
     bankAccount: core.serialization.property("bank_account", core.serialization.string().optional()),
 });

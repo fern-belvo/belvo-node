@@ -4,7 +4,7 @@
 
 import * as environments from "../../../../environments";
 import * as core from "../../../../core";
-import * as BelvoApi from "../../..";
+import * as Belvo from "../../..";
 import URLSearchParams from "@ungap/url-search-params";
 import urlJoin from "url-join";
 import * as serializers from "../../../../serialization";
@@ -12,7 +12,7 @@ import * as errors from "../../../../errors";
 
 export declare namespace EmploymentRecords {
     interface Options {
-        environment?: environments.BelvoApiEnvironment | string;
+        environment?: environments.BelvoEnvironment | string;
         credentials: core.Supplier<core.BasicAuth>;
     }
 }
@@ -21,11 +21,11 @@ export class EmploymentRecords {
     constructor(protected readonly options: EmploymentRecords.Options) {}
 
     /**
-     * @throws {BelvoApi.UnauthorizedError}
+     * @throws {Belvo.UnauthorizedError}
      */
     public async listEmploymentRecords(
-        request: BelvoApi.ListEmploymentRecordsRequest = {}
-    ): Promise<BelvoApi.EmploymentRecordsPaginatedResponse> {
+        request: Belvo.ListEmploymentRecordsRequest = {}
+    ): Promise<Belvo.EmploymentRecordsPaginatedResponse> {
         const { page, pageSize, omit, fields } = request;
         const _queryParams = new URLSearchParams();
         if (page != null) {
@@ -46,7 +46,7 @@ export class EmploymentRecords {
 
         const _response = await core.fetcher({
             url: urlJoin(
-                this.options.environment ?? environments.BelvoApiEnvironment.Production,
+                this.options.environment ?? environments.BelvoEnvironment.Production,
                 "api/employment-records"
             ),
             method: "GET",
@@ -54,7 +54,7 @@ export class EmploymentRecords {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.13",
+                "X-Fern-SDK-Version": "0.0.14",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -72,7 +72,7 @@ export class EmploymentRecords {
         if (_response.error.reason === "status-code") {
             switch (_response.error.statusCode) {
                 case 401:
-                    throw new BelvoApi.UnauthorizedError(
+                    throw new Belvo.UnauthorizedError(
                         await serializers.UnauthorizedError.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
@@ -81,7 +81,7 @@ export class EmploymentRecords {
                         })
                     );
                 default:
-                    throw new errors.BelvoApiError({
+                    throw new errors.BelvoError({
                         statusCode: _response.error.statusCode,
                         body: _response.error.body,
                     });
@@ -90,29 +90,29 @@ export class EmploymentRecords {
 
         switch (_response.error.reason) {
             case "non-json":
-                throw new errors.BelvoApiError({
+                throw new errors.BelvoError({
                     statusCode: _response.error.statusCode,
                     body: _response.error.rawBody,
                 });
             case "timeout":
-                throw new errors.BelvoApiTimeoutError();
+                throw new errors.BelvoTimeoutError();
             case "unknown":
-                throw new errors.BelvoApiError({
+                throw new errors.BelvoError({
                     message: _response.error.errorMessage,
                 });
         }
     }
 
     /**
-     * @throws {BelvoApi.BadRequestError}
-     * @throws {BelvoApi.UnauthorizedError}
-     * @throws {BelvoApi.RequestTimeoutError}
-     * @throws {BelvoApi.PreconditionError}
-     * @throws {BelvoApi.InternalServerError}
+     * @throws {Belvo.BadRequestError}
+     * @throws {Belvo.UnauthorizedError}
+     * @throws {Belvo.RequestTimeoutError}
+     * @throws {Belvo.PreconditionError}
+     * @throws {Belvo.InternalServerError}
      */
     public async retrieveEmploymentRecordDetails(
-        request: BelvoApi.RetrieveEmploymentRecordDetailsRequest
-    ): Promise<BelvoApi.EmploymentRecord[]> {
+        request: Belvo.RetrieveEmploymentRecordDetailsRequest
+    ): Promise<Belvo.EmploymentRecord[]> {
         const { omit, fields, body: _body } = request;
         const _queryParams = new URLSearchParams();
         if (omit != null) {
@@ -125,7 +125,7 @@ export class EmploymentRecords {
 
         const _response = await core.fetcher({
             url: urlJoin(
-                this.options.environment ?? environments.BelvoApiEnvironment.Production,
+                this.options.environment ?? environments.BelvoEnvironment.Production,
                 "api/employment-records"
             ),
             method: "POST",
@@ -133,7 +133,7 @@ export class EmploymentRecords {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.13",
+                "X-Fern-SDK-Version": "0.0.14",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -155,7 +155,7 @@ export class EmploymentRecords {
         if (_response.error.reason === "status-code") {
             switch (_response.error.statusCode) {
                 case 400:
-                    throw new BelvoApi.BadRequestError(
+                    throw new Belvo.BadRequestError(
                         await serializers.BadRequestError.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
@@ -164,7 +164,7 @@ export class EmploymentRecords {
                         })
                     );
                 case 401:
-                    throw new BelvoApi.UnauthorizedError(
+                    throw new Belvo.UnauthorizedError(
                         await serializers.UnauthorizedError.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
@@ -173,7 +173,7 @@ export class EmploymentRecords {
                         })
                     );
                 case 408:
-                    throw new BelvoApi.RequestTimeoutError(
+                    throw new Belvo.RequestTimeoutError(
                         await serializers.RequestTimeoutError.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
@@ -182,7 +182,7 @@ export class EmploymentRecords {
                         })
                     );
                 case 428:
-                    throw new BelvoApi.PreconditionError(
+                    throw new Belvo.PreconditionError(
                         await serializers.PreconditionError.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
@@ -191,7 +191,7 @@ export class EmploymentRecords {
                         })
                     );
                 case 500:
-                    throw new BelvoApi.InternalServerError(
+                    throw new Belvo.InternalServerError(
                         await serializers.InternalServerError.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
@@ -200,7 +200,7 @@ export class EmploymentRecords {
                         })
                     );
                 default:
-                    throw new errors.BelvoApiError({
+                    throw new errors.BelvoError({
                         statusCode: _response.error.statusCode,
                         body: _response.error.body,
                     });
@@ -209,27 +209,27 @@ export class EmploymentRecords {
 
         switch (_response.error.reason) {
             case "non-json":
-                throw new errors.BelvoApiError({
+                throw new errors.BelvoError({
                     statusCode: _response.error.statusCode,
                     body: _response.error.rawBody,
                 });
             case "timeout":
-                throw new errors.BelvoApiTimeoutError();
+                throw new errors.BelvoTimeoutError();
             case "unknown":
-                throw new errors.BelvoApiError({
+                throw new errors.BelvoError({
                     message: _response.error.errorMessage,
                 });
         }
     }
 
     /**
-     * @throws {BelvoApi.UnauthorizedError}
-     * @throws {BelvoApi.NotFoundError}
+     * @throws {Belvo.UnauthorizedError}
+     * @throws {Belvo.NotFoundError}
      */
     public async detailEmploymentRecord(
         id: string,
-        request: BelvoApi.DetailEmploymentRecordRequest = {}
-    ): Promise<BelvoApi.EmploymentRecord> {
+        request: Belvo.DetailEmploymentRecordRequest = {}
+    ): Promise<Belvo.EmploymentRecord> {
         const { omit, fields } = request;
         const _queryParams = new URLSearchParams();
         if (omit != null) {
@@ -242,7 +242,7 @@ export class EmploymentRecords {
 
         const _response = await core.fetcher({
             url: urlJoin(
-                this.options.environment ?? environments.BelvoApiEnvironment.Production,
+                this.options.environment ?? environments.BelvoEnvironment.Production,
                 `api/employment-records/${id}`
             ),
             method: "GET",
@@ -250,7 +250,7 @@ export class EmploymentRecords {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.13",
+                "X-Fern-SDK-Version": "0.0.14",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -268,7 +268,7 @@ export class EmploymentRecords {
         if (_response.error.reason === "status-code") {
             switch (_response.error.statusCode) {
                 case 401:
-                    throw new BelvoApi.UnauthorizedError(
+                    throw new Belvo.UnauthorizedError(
                         await serializers.UnauthorizedError.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
@@ -277,7 +277,7 @@ export class EmploymentRecords {
                         })
                     );
                 case 404:
-                    throw new BelvoApi.NotFoundError(
+                    throw new Belvo.NotFoundError(
                         await serializers.NotFoundError.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
@@ -286,7 +286,7 @@ export class EmploymentRecords {
                         })
                     );
                 default:
-                    throw new errors.BelvoApiError({
+                    throw new errors.BelvoError({
                         statusCode: _response.error.statusCode,
                         body: _response.error.body,
                     });
@@ -295,27 +295,27 @@ export class EmploymentRecords {
 
         switch (_response.error.reason) {
             case "non-json":
-                throw new errors.BelvoApiError({
+                throw new errors.BelvoError({
                     statusCode: _response.error.statusCode,
                     body: _response.error.rawBody,
                 });
             case "timeout":
-                throw new errors.BelvoApiTimeoutError();
+                throw new errors.BelvoTimeoutError();
             case "unknown":
-                throw new errors.BelvoApiError({
+                throw new errors.BelvoError({
                     message: _response.error.errorMessage,
                 });
         }
     }
 
     /**
-     * @throws {BelvoApi.UnauthorizedError}
-     * @throws {BelvoApi.NotFoundError}
+     * @throws {Belvo.UnauthorizedError}
+     * @throws {Belvo.NotFoundError}
      */
     public async destroyEmploymentRecord(id: string): Promise<void> {
         const _response = await core.fetcher({
             url: urlJoin(
-                this.options.environment ?? environments.BelvoApiEnvironment.Production,
+                this.options.environment ?? environments.BelvoEnvironment.Production,
                 `api/employment-records/${id}`
             ),
             method: "DELETE",
@@ -323,7 +323,7 @@ export class EmploymentRecords {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.13",
+                "X-Fern-SDK-Version": "0.0.14",
             },
             contentType: "application/json",
             timeoutMs: 60000,
@@ -335,7 +335,7 @@ export class EmploymentRecords {
         if (_response.error.reason === "status-code") {
             switch (_response.error.statusCode) {
                 case 401:
-                    throw new BelvoApi.UnauthorizedError(
+                    throw new Belvo.UnauthorizedError(
                         await serializers.UnauthorizedError.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
@@ -344,7 +344,7 @@ export class EmploymentRecords {
                         })
                     );
                 case 404:
-                    throw new BelvoApi.NotFoundError(
+                    throw new Belvo.NotFoundError(
                         await serializers.NotFoundError.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
@@ -353,7 +353,7 @@ export class EmploymentRecords {
                         })
                     );
                 default:
-                    throw new errors.BelvoApiError({
+                    throw new errors.BelvoError({
                         statusCode: _response.error.statusCode,
                         body: _response.error.body,
                     });
@@ -362,14 +362,14 @@ export class EmploymentRecords {
 
         switch (_response.error.reason) {
             case "non-json":
-                throw new errors.BelvoApiError({
+                throw new errors.BelvoError({
                     statusCode: _response.error.statusCode,
                     body: _response.error.rawBody,
                 });
             case "timeout":
-                throw new errors.BelvoApiTimeoutError();
+                throw new errors.BelvoTimeoutError();
             case "unknown":
-                throw new errors.BelvoApiError({
+                throw new errors.BelvoError({
                     message: _response.error.errorMessage,
                 });
         }

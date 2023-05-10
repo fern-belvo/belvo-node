@@ -3,12 +3,12 @@
  */
 
 import * as serializers from "..";
-import * as BelvoApi from "../../api";
+import * as Belvo from "../../api";
 import * as core from "../../core";
 
 export const ChargePaymentMethodDetailsOfpi: core.serialization.ObjectSchema<
     serializers.ChargePaymentMethodDetailsOfpi.Raw,
-    BelvoApi.ChargePaymentMethodDetailsOfpi
+    Belvo.ChargePaymentMethodDetailsOfpi
 > = core.serialization.object({
     openFinance: core.serialization.property(
         "open_finance",

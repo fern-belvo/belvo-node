@@ -3,12 +3,12 @@
  */
 
 import * as serializers from "..";
-import * as BelvoApi from "../../api";
+import * as Belvo from "../../api";
 import * as core from "../../core";
 
 export const HolderResponseOfpi: core.serialization.ObjectSchema<
     serializers.HolderResponseOfpi.Raw,
-    BelvoApi.HolderResponseOfpi
+    Belvo.HolderResponseOfpi
 > = core.serialization.object({
     type: core.serialization.lazy(async () => (await import("..")).EnumBankAccountHolderTypeOfpi),
     information: core.serialization.lazy(async () => (await import("..")).HolderResponseOfpiInformation),

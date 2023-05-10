@@ -3,12 +3,12 @@
  */
 
 import * as serializers from "..";
-import * as BelvoApi from "../../api";
+import * as Belvo from "../../api";
 import * as core from "../../core";
 
 export const PaymentLinkCallbackUrls: core.serialization.ObjectSchema<
     serializers.PaymentLinkCallbackUrls.Raw,
-    BelvoApi.PaymentLinkCallbackUrls
+    Belvo.PaymentLinkCallbackUrls
 > = core.serialization.object({
     cancel: core.serialization.string().optional(),
     success: core.serialization.string().optional(),

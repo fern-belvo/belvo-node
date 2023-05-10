@@ -3,12 +3,12 @@
  */
 
 import * as serializers from "..";
-import * as BelvoApi from "../../api";
+import * as Belvo from "../../api";
 import * as core from "../../core";
 
 export const EnumIncomeMinimumConfidenceLevelRequest: core.serialization.Schema<
     serializers.EnumIncomeMinimumConfidenceLevelRequest.Raw,
-    BelvoApi.EnumIncomeMinimumConfidenceLevelRequest
+    Belvo.EnumIncomeMinimumConfidenceLevelRequest
 > = core.serialization.enum_(["HIGH", "MEDIUM", "LOW"]);
 
 export declare namespace EnumIncomeMinimumConfidenceLevelRequest {

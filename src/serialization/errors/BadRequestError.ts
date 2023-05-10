@@ -3,12 +3,12 @@
  */
 
 import * as serializers from "..";
-import * as BelvoApi from "../../api";
+import * as Belvo from "../../api";
 import * as core from "../../core";
 
 export const BadRequestError: core.serialization.Schema<
     serializers.BadRequestError.Raw,
-    BelvoApi.BadRequestErrorBodyItem[]
+    Belvo.BadRequestErrorBodyItem[]
 > = core.serialization.list(core.serialization.lazy(async () => (await import("..")).BadRequestErrorBodyItem));
 
 export declare namespace BadRequestError {

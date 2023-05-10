@@ -3,12 +3,12 @@
  */
 
 import * as serializers from "..";
-import * as BelvoApi from "../../api";
+import * as Belvo from "../../api";
 import * as core from "../../core";
 
 export const DisplayPaymentFailed: core.serialization.ObjectSchema<
     serializers.DisplayPaymentFailed.Raw,
-    BelvoApi.DisplayPaymentFailed
+    Belvo.DisplayPaymentFailed
 > = core.serialization.object({
     payerInstitution: core.serialization.property(
         "payer_institution",

@@ -3,12 +3,12 @@
  */
 
 import * as serializers from "..";
-import * as BelvoApi from "../../api";
+import * as Belvo from "../../api";
 import * as core from "../../core";
 
 export const PaymentIntentPaymentMethodDetailsPse: core.serialization.ObjectSchema<
     serializers.PaymentIntentPaymentMethodDetailsPse.Raw,
-    BelvoApi.PaymentIntentPaymentMethodDetailsPse
+    Belvo.PaymentIntentPaymentMethodDetailsPse
 > = core.serialization.object({
     pse: core.serialization
         .lazyObject(async () => (await import("..")).PaymentIntentPaymentMethodDetailsBodyPse)

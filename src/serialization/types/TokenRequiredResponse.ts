@@ -3,12 +3,12 @@
  */
 
 import * as serializers from "..";
-import * as BelvoApi from "../../api";
+import * as Belvo from "../../api";
 import * as core from "../../core";
 
 export const TokenRequiredResponse: core.serialization.ObjectSchema<
     serializers.TokenRequiredResponse.Raw,
-    BelvoApi.TokenRequiredResponse
+    Belvo.TokenRequiredResponse
 > = core.serialization.object({
     code: core.serialization.string().optional(),
     message: core.serialization.string().optional(),

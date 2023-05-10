@@ -3,10 +3,10 @@
  */
 
 import * as serializers from "..";
-import * as BelvoApi from "../../api";
+import * as Belvo from "../../api";
 import * as core from "../../core";
 
-export const Balance: core.serialization.ObjectSchema<serializers.Balance.Raw, BelvoApi.Balance> =
+export const Balance: core.serialization.ObjectSchema<serializers.Balance.Raw, Belvo.Balance> =
     core.serialization.object({
         id: core.serialization.string().optional(),
         account: core.serialization.lazyObject(async () => (await import("..")).Account).optional(),

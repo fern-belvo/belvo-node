@@ -3,12 +3,12 @@
  */
 
 import * as serializers from "..";
-import * as BelvoApi from "../../api";
+import * as Belvo from "../../api";
 import * as core from "../../core";
 
 export const EnumTaxComplianceStatusOutcome: core.serialization.Schema<
     serializers.EnumTaxComplianceStatusOutcome.Raw,
-    BelvoApi.EnumTaxComplianceStatusOutcome
+    Belvo.EnumTaxComplianceStatusOutcome
 > = core.serialization.enum_(["POSITIVE", "NEGATIVE", "NO_OBLIGATIONS"]);
 
 export declare namespace EnumTaxComplianceStatusOutcome {

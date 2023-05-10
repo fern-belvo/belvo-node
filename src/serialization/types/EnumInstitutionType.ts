@@ -3,12 +3,12 @@
  */
 
 import * as serializers from "..";
-import * as BelvoApi from "../../api";
+import * as Belvo from "../../api";
 import * as core from "../../core";
 
 export const EnumInstitutionType: core.serialization.Schema<
     serializers.EnumInstitutionType.Raw,
-    BelvoApi.EnumInstitutionType
+    Belvo.EnumInstitutionType
 > = core.serialization.enum_(["bank", "fiscal", "employment"]);
 
 export declare namespace EnumInstitutionType {

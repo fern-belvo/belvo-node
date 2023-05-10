@@ -3,12 +3,12 @@
  */
 
 import * as serializers from "../../../..";
-import * as BelvoApi from "../../../../../api";
+import * as Belvo from "../../../../../api";
 import * as core from "../../../../../core";
 
 export const CategorizationRequest: core.serialization.Schema<
     serializers.CategorizationRequest.Raw,
-    BelvoApi.CategorizationRequest
+    Belvo.CategorizationRequest
 > = core.serialization.object({
     language: core.serialization.string(),
     transactions: core.serialization.list(

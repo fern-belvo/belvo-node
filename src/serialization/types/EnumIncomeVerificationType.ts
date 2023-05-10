@@ -3,12 +3,12 @@
  */
 
 import * as serializers from "..";
-import * as BelvoApi from "../../api";
+import * as Belvo from "../../api";
 import * as core from "../../core";
 
 export const EnumIncomeVerificationType: core.serialization.Schema<
     serializers.EnumIncomeVerificationType.Raw,
-    BelvoApi.EnumIncomeVerificationType
+    Belvo.EnumIncomeVerificationType
 > = core.serialization.enum_(["INFLOW"]);
 
 export declare namespace EnumIncomeVerificationType {

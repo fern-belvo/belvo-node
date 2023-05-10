@@ -3,10 +3,10 @@
  */
 
 import * as serializers from "..";
-import * as BelvoApi from "../../api";
+import * as Belvo from "../../api";
 import * as core from "../../core";
 
-export const NotFoundError: core.serialization.Schema<serializers.NotFoundError.Raw, BelvoApi.NotFoundErrorBody[]> =
+export const NotFoundError: core.serialization.Schema<serializers.NotFoundError.Raw, Belvo.NotFoundErrorBody[]> =
     core.serialization.list(core.serialization.lazyObject(async () => (await import("..")).NotFoundErrorBody));
 
 export declare namespace NotFoundError {

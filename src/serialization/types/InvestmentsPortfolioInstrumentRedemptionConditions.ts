@@ -3,12 +3,12 @@
  */
 
 import * as serializers from "..";
-import * as BelvoApi from "../../api";
+import * as Belvo from "../../api";
 import * as core from "../../core";
 
 export const InvestmentsPortfolioInstrumentRedemptionConditions: core.serialization.ObjectSchema<
     serializers.InvestmentsPortfolioInstrumentRedemptionConditions.Raw,
-    BelvoApi.InvestmentsPortfolioInstrumentRedemptionConditions
+    Belvo.InvestmentsPortfolioInstrumentRedemptionConditions
 > = core.serialization.object({
     type: core.serialization.string(),
     value: core.serialization.string(),

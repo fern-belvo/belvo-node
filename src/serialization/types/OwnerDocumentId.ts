@@ -3,16 +3,14 @@
  */
 
 import * as serializers from "..";
-import * as BelvoApi from "../../api";
+import * as Belvo from "../../api";
 import * as core from "../../core";
 
-export const OwnerDocumentId: core.serialization.ObjectSchema<
-    serializers.OwnerDocumentId.Raw,
-    BelvoApi.OwnerDocumentId
-> = core.serialization.object({
-    documentType: core.serialization.property("document_type", core.serialization.string().optional()),
-    documentNumber: core.serialization.property("document_number", core.serialization.string().optional()),
-});
+export const OwnerDocumentId: core.serialization.ObjectSchema<serializers.OwnerDocumentId.Raw, Belvo.OwnerDocumentId> =
+    core.serialization.object({
+        documentType: core.serialization.property("document_type", core.serialization.string().optional()),
+        documentNumber: core.serialization.property("document_number", core.serialization.string().optional()),
+    });
 
 export declare namespace OwnerDocumentId {
     interface Raw {

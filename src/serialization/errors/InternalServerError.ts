@@ -3,12 +3,12 @@
  */
 
 import * as serializers from "..";
-import * as BelvoApi from "../../api";
+import * as Belvo from "../../api";
 import * as core from "../../core";
 
 export const InternalServerError: core.serialization.Schema<
     serializers.InternalServerError.Raw,
-    BelvoApi.UnexpectedError[]
+    Belvo.UnexpectedError[]
 > = core.serialization.list(core.serialization.lazyObject(async () => (await import("..")).UnexpectedError));
 
 export declare namespace InternalServerError {

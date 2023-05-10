@@ -4,7 +4,7 @@
 
 import * as environments from "../../../../environments";
 import * as core from "../../../../core";
-import * as BelvoApi from "../../..";
+import * as Belvo from "../../..";
 import URLSearchParams from "@ungap/url-search-params";
 import urlJoin from "url-join";
 import * as serializers from "../../../../serialization";
@@ -12,7 +12,7 @@ import * as errors from "../../../../errors";
 
 export declare namespace BankAccounts {
     interface Options {
-        environment?: environments.BelvoApiEnvironment | string;
+        environment?: environments.BelvoEnvironment | string;
         credentials: core.Supplier<core.BasicAuth>;
     }
 }
@@ -21,11 +21,11 @@ export class BankAccounts {
     constructor(protected readonly options: BankAccounts.Options) {}
 
     /**
-     * @throws {BelvoApi.UnauthorizedError}
+     * @throws {Belvo.UnauthorizedError}
      */
     public async listBankAccount(
-        request: BelvoApi.ListBankAccountRequest = {}
-    ): Promise<BelvoApi.BankAccountPaginatedResponse> {
+        request: Belvo.ListBankAccountRequest = {}
+    ): Promise<Belvo.BankAccountPaginatedResponse> {
         const {
             page,
             idIn,
@@ -106,7 +106,7 @@ export class BankAccounts {
 
         const _response = await core.fetcher({
             url: urlJoin(
-                this.options.environment ?? environments.BelvoApiEnvironment.Production,
+                this.options.environment ?? environments.BelvoEnvironment.Production,
                 "payments/bank-accounts"
             ),
             method: "GET",
@@ -114,7 +114,7 @@ export class BankAccounts {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.13",
+                "X-Fern-SDK-Version": "0.0.14",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -132,7 +132,7 @@ export class BankAccounts {
         if (_response.error.reason === "status-code") {
             switch (_response.error.statusCode) {
                 case 401:
-                    throw new BelvoApi.UnauthorizedError(
+                    throw new Belvo.UnauthorizedError(
                         await serializers.UnauthorizedError.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
@@ -141,7 +141,7 @@ export class BankAccounts {
                         })
                     );
                 default:
-                    throw new errors.BelvoApiError({
+                    throw new errors.BelvoError({
                         statusCode: _response.error.statusCode,
                         body: _response.error.body,
                     });
@@ -150,31 +150,29 @@ export class BankAccounts {
 
         switch (_response.error.reason) {
             case "non-json":
-                throw new errors.BelvoApiError({
+                throw new errors.BelvoError({
                     statusCode: _response.error.statusCode,
                     body: _response.error.rawBody,
                 });
             case "timeout":
-                throw new errors.BelvoApiTimeoutError();
+                throw new errors.BelvoTimeoutError();
             case "unknown":
-                throw new errors.BelvoApiError({
+                throw new errors.BelvoError({
                     message: _response.error.errorMessage,
                 });
         }
     }
 
     /**
-     * @throws {BelvoApi.BadRequestError}
-     * @throws {BelvoApi.UnauthorizedError}
-     * @throws {BelvoApi.RequestTimeoutError}
-     * @throws {BelvoApi.InternalServerError}
+     * @throws {Belvo.BadRequestError}
+     * @throws {Belvo.UnauthorizedError}
+     * @throws {Belvo.RequestTimeoutError}
+     * @throws {Belvo.InternalServerError}
      */
-    public async createBankAccount(
-        request: BelvoApi.CreateBankAccountRequest
-    ): Promise<BelvoApi.CreateBankAccountResponse> {
+    public async createBankAccount(request: Belvo.CreateBankAccountRequest): Promise<Belvo.CreateBankAccountResponse> {
         const _response = await core.fetcher({
             url: urlJoin(
-                this.options.environment ?? environments.BelvoApiEnvironment.Production,
+                this.options.environment ?? environments.BelvoEnvironment.Production,
                 "payments/bank-accounts"
             ),
             method: "POST",
@@ -182,7 +180,7 @@ export class BankAccounts {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.13",
+                "X-Fern-SDK-Version": "0.0.14",
             },
             contentType: "application/json",
             body: await serializers.CreateBankAccountRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
@@ -200,7 +198,7 @@ export class BankAccounts {
         if (_response.error.reason === "status-code") {
             switch (_response.error.statusCode) {
                 case 400:
-                    throw new BelvoApi.BadRequestError(
+                    throw new Belvo.BadRequestError(
                         await serializers.BadRequestError.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
@@ -209,7 +207,7 @@ export class BankAccounts {
                         })
                     );
                 case 401:
-                    throw new BelvoApi.UnauthorizedError(
+                    throw new Belvo.UnauthorizedError(
                         await serializers.UnauthorizedError.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
@@ -218,7 +216,7 @@ export class BankAccounts {
                         })
                     );
                 case 408:
-                    throw new BelvoApi.RequestTimeoutError(
+                    throw new Belvo.RequestTimeoutError(
                         await serializers.RequestTimeoutError.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
@@ -227,7 +225,7 @@ export class BankAccounts {
                         })
                     );
                 case 500:
-                    throw new BelvoApi.InternalServerError(
+                    throw new Belvo.InternalServerError(
                         await serializers.InternalServerError.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
@@ -236,7 +234,7 @@ export class BankAccounts {
                         })
                     );
                 default:
-                    throw new errors.BelvoApiError({
+                    throw new errors.BelvoError({
                         statusCode: _response.error.statusCode,
                         body: _response.error.body,
                     });
@@ -245,27 +243,27 @@ export class BankAccounts {
 
         switch (_response.error.reason) {
             case "non-json":
-                throw new errors.BelvoApiError({
+                throw new errors.BelvoError({
                     statusCode: _response.error.statusCode,
                     body: _response.error.rawBody,
                 });
             case "timeout":
-                throw new errors.BelvoApiTimeoutError();
+                throw new errors.BelvoTimeoutError();
             case "unknown":
-                throw new errors.BelvoApiError({
+                throw new errors.BelvoError({
                     message: _response.error.errorMessage,
                 });
         }
     }
 
     /**
-     * @throws {BelvoApi.UnauthorizedError}
-     * @throws {BelvoApi.NotFoundError}
+     * @throws {Belvo.UnauthorizedError}
+     * @throws {Belvo.NotFoundError}
      */
-    public async detailBankAccount(id: string): Promise<BelvoApi.DetailBankAccountResponse> {
+    public async detailBankAccount(id: string): Promise<Belvo.DetailBankAccountResponse> {
         const _response = await core.fetcher({
             url: urlJoin(
-                this.options.environment ?? environments.BelvoApiEnvironment.Production,
+                this.options.environment ?? environments.BelvoEnvironment.Production,
                 `payments/bank-accounts/${id}`
             ),
             method: "GET",
@@ -273,7 +271,7 @@ export class BankAccounts {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.13",
+                "X-Fern-SDK-Version": "0.0.14",
             },
             contentType: "application/json",
             timeoutMs: 60000,
@@ -290,7 +288,7 @@ export class BankAccounts {
         if (_response.error.reason === "status-code") {
             switch (_response.error.statusCode) {
                 case 401:
-                    throw new BelvoApi.UnauthorizedError(
+                    throw new Belvo.UnauthorizedError(
                         await serializers.UnauthorizedError.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
@@ -299,7 +297,7 @@ export class BankAccounts {
                         })
                     );
                 case 404:
-                    throw new BelvoApi.NotFoundError(
+                    throw new Belvo.NotFoundError(
                         await serializers.NotFoundError.parseOrThrow(_response.error.body, {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
@@ -308,7 +306,7 @@ export class BankAccounts {
                         })
                     );
                 default:
-                    throw new errors.BelvoApiError({
+                    throw new errors.BelvoError({
                         statusCode: _response.error.statusCode,
                         body: _response.error.body,
                     });
@@ -317,14 +315,14 @@ export class BankAccounts {
 
         switch (_response.error.reason) {
             case "non-json":
-                throw new errors.BelvoApiError({
+                throw new errors.BelvoError({
                     statusCode: _response.error.statusCode,
                     body: _response.error.rawBody,
                 });
             case "timeout":
-                throw new errors.BelvoApiTimeoutError();
+                throw new errors.BelvoTimeoutError();
             case "unknown":
-                throw new errors.BelvoApiError({
+                throw new errors.BelvoError({
                     message: _response.error.errorMessage,
                 });
         }

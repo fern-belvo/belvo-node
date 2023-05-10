@@ -3,12 +3,12 @@
  */
 
 import * as serializers from "..";
-import * as BelvoApi from "../../api";
+import * as Belvo from "../../api";
 import * as core from "../../core";
 
 export const TaxAssessmentIndividual: core.serialization.ObjectSchema<
     serializers.TaxAssessmentIndividual.Raw,
-    BelvoApi.TaxAssessmentIndividual
+    Belvo.TaxAssessmentIndividual
 > = core.serialization.object({
     fortuitousProfitTax: core.serialization.property("fortuitous_profit_tax", core.serialization.number()),
     totalTaxOnTaxableNetIncome: core.serialization.property(

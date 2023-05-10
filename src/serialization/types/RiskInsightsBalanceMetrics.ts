@@ -3,12 +3,12 @@
  */
 
 import * as serializers from "..";
-import * as BelvoApi from "../../api";
+import * as Belvo from "../../api";
 import * as core from "../../core";
 
 export const RiskInsightsBalanceMetrics: core.serialization.ObjectSchema<
     serializers.RiskInsightsBalanceMetrics.Raw,
-    BelvoApi.RiskInsightsBalanceMetrics
+    Belvo.RiskInsightsBalanceMetrics
 > = core.serialization.object({
     minBalance1W: core.serialization.property("min_balance_1w", core.serialization.number().optional()),
     minBalance1M: core.serialization.property("min_balance_1m", core.serialization.number().optional()),

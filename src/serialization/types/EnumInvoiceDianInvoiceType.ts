@@ -3,12 +3,12 @@
  */
 
 import * as serializers from "..";
-import * as BelvoApi from "../../api";
+import * as Belvo from "../../api";
 import * as core from "../../core";
 
 export const EnumInvoiceDianInvoiceType: core.serialization.Schema<
     serializers.EnumInvoiceDianInvoiceType.Raw,
-    BelvoApi.EnumInvoiceDianInvoiceType
+    Belvo.EnumInvoiceDianInvoiceType
 > = core.serialization.enum_(["Factura Electr\u00F3nica de Venta"]);
 
 export declare namespace EnumInvoiceDianInvoiceType {

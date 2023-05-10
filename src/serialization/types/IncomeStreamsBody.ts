@@ -3,12 +3,12 @@
  */
 
 import * as serializers from "..";
-import * as BelvoApi from "../../api";
+import * as Belvo from "../../api";
 import * as core from "../../core";
 
 export const IncomeStreamsBody: core.serialization.ObjectSchema<
     serializers.IncomeStreamsBody.Raw,
-    BelvoApi.IncomeStreamsBody
+    Belvo.IncomeStreamsBody
 > = core.serialization.object({
     accountId: core.serialization.property("account_id", core.serialization.string()),
     incomeType: core.serialization.property(

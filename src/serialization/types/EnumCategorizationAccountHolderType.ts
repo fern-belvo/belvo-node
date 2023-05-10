@@ -3,12 +3,12 @@
  */
 
 import * as serializers from "..";
-import * as BelvoApi from "../../api";
+import * as Belvo from "../../api";
 import * as core from "../../core";
 
 export const EnumCategorizationAccountHolderType: core.serialization.Schema<
     serializers.EnumCategorizationAccountHolderType.Raw,
-    BelvoApi.EnumCategorizationAccountHolderType
+    Belvo.EnumCategorizationAccountHolderType
 > = core.serialization.enum_(["INDIVIDUAL", "BUSINESS"]);
 
 export declare namespace EnumCategorizationAccountHolderType {

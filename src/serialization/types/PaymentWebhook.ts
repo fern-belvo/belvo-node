@@ -3,10 +3,10 @@
  */
 
 import * as serializers from "..";
-import * as BelvoApi from "../../api";
+import * as Belvo from "../../api";
 import * as core from "../../core";
 
-export const PaymentWebhook: core.serialization.ObjectSchema<serializers.PaymentWebhook.Raw, BelvoApi.PaymentWebhook> =
+export const PaymentWebhook: core.serialization.ObjectSchema<serializers.PaymentWebhook.Raw, Belvo.PaymentWebhook> =
     core.serialization.object({
         id: core.serialization.string(),
         name: core.serialization.unknown(),

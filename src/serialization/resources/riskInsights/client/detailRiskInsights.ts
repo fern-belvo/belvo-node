@@ -3,12 +3,12 @@
  */
 
 import * as serializers from "../../..";
-import * as BelvoApi from "../../../../api";
+import * as Belvo from "../../../../api";
 import * as core from "../../../../core";
 
 export const Response: core.serialization.Schema<
     serializers.riskInsights.detailRiskInsights.Response.Raw,
-    BelvoApi.RiskInsights[]
+    Belvo.RiskInsights[]
 > = core.serialization.list(core.serialization.lazyObject(async () => (await import("../../..")).RiskInsights));
 
 export declare namespace Response {

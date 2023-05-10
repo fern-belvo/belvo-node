@@ -3,12 +3,12 @@
  */
 
 import * as serializers from "..";
-import * as BelvoApi from "../../api";
+import * as Belvo from "../../api";
 import * as core from "../../core";
 
 export const DocumentIdIndividual: core.serialization.ObjectSchema<
     serializers.DocumentIdIndividual.Raw,
-    BelvoApi.DocumentIdIndividual
+    Belvo.DocumentIdIndividual
 > = core.serialization.object({
     documentType: core.serialization.property("document_type", core.serialization.string()),
     documentNumber: core.serialization.property("document_number", core.serialization.string()),

@@ -3,12 +3,12 @@
  */
 
 import * as serializers from "..";
-import * as BelvoApi from "../../api";
+import * as Belvo from "../../api";
 import * as core from "../../core";
 
 export const TaxStatusAddressBetweenStreetDian: core.serialization.ObjectSchema<
     serializers.TaxStatusAddressBetweenStreetDian.Raw,
-    BelvoApi.TaxStatusAddressBetweenStreetDian
+    Belvo.TaxStatusAddressBetweenStreetDian
 > = core.serialization.object({
     streetOne: core.serialization.property("street_one", core.serialization.string().optional()),
     streetTwo: core.serialization.property("street_two", core.serialization.string().optional()),

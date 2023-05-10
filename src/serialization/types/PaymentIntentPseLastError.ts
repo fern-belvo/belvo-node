@@ -3,12 +3,12 @@
  */
 
 import * as serializers from "..";
-import * as BelvoApi from "../../api";
+import * as Belvo from "../../api";
 import * as core from "../../core";
 
 export const PaymentIntentPseLastError: core.serialization.Schema<
     serializers.PaymentIntentPseLastError.Raw,
-    BelvoApi.PaymentIntentPseLastError
+    Belvo.PaymentIntentPseLastError
 > = core.serialization.undiscriminatedUnion([
     core.serialization.lazyObject(async () => (await import("..")).LastErrorInvalidCredentials),
     core.serialization.lazyObject(async () => (await import("..")).LastErrorInvalidToken),

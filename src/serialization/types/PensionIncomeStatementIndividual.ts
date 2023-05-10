@@ -3,12 +3,12 @@
  */
 
 import * as serializers from "..";
-import * as BelvoApi from "../../api";
+import * as Belvo from "../../api";
 import * as core from "../../core";
 
 export const PensionIncomeStatementIndividual: core.serialization.ObjectSchema<
     serializers.PensionIncomeStatementIndividual.Raw,
-    BelvoApi.PensionIncomeStatementIndividual
+    Belvo.PensionIncomeStatementIndividual
 > = core.serialization.object({
     netPensionIncome: core.serialization.property("net_pension_income", core.serialization.number()),
     netTaxablePensionIncome: core.serialization.property("net_taxable_pension_income", core.serialization.number()),

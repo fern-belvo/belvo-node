@@ -3,12 +3,12 @@
  */
 
 import * as serializers from "..";
-import * as BelvoApi from "../../api";
+import * as Belvo from "../../api";
 import * as core from "../../core";
 
 export const NextStepDisplayPaymentProcessing: core.serialization.ObjectSchema<
     serializers.NextStepDisplayPaymentProcessing.Raw,
-    BelvoApi.NextStepDisplayPaymentProcessing
+    Belvo.NextStepDisplayPaymentProcessing
 > = core.serialization.object({
     type: core.serialization.lazy(async () => (await import("..")).NextStepDisplayPaymentProcessingType).optional(),
     openFinanceDisplayPaymentProcessing: core.serialization.property(

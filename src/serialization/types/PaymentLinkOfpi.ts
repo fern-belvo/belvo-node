@@ -3,31 +3,29 @@
  */
 
 import * as serializers from "..";
-import * as BelvoApi from "../../api";
+import * as Belvo from "../../api";
 import * as core from "../../core";
 
-export const PaymentLinkOfpi: core.serialization.ObjectSchema<
-    serializers.PaymentLinkOfpi.Raw,
-    BelvoApi.PaymentLinkOfpi
-> = core.serialization.object({
-    id: core.serialization.string(),
-    createdAt: core.serialization.property("created_at", core.serialization.string()),
-    createdBy: core.serialization.property("created_by", core.serialization.string()),
-    paymentUrl: core.serialization.property("payment_url", core.serialization.string()),
-    accessToken: core.serialization.property("access_token", core.serialization.string().optional()),
-    callbackUrls: core.serialization.property(
-        "callback_urls",
-        core.serialization.lazyObject(async () => (await import("..")).PaymentLinkCallbackUrlsResponse)
-    ),
-    paymentIntent: core.serialization.property(
-        "payment_intent",
-        core.serialization.lazyObject(async () => (await import("..")).PaymentIntentOfpi).optional()
-    ),
-    updatedAt: core.serialization.property("updated_at", core.serialization.string().optional()),
-    status: core.serialization.lazy(async () => (await import("..")).EnumPaymentLinksStatus),
-    expiresIn: core.serialization.property("expires_in", core.serialization.string()),
-    expiresAt: core.serialization.property("expires_at", core.serialization.string()),
-});
+export const PaymentLinkOfpi: core.serialization.ObjectSchema<serializers.PaymentLinkOfpi.Raw, Belvo.PaymentLinkOfpi> =
+    core.serialization.object({
+        id: core.serialization.string(),
+        createdAt: core.serialization.property("created_at", core.serialization.string()),
+        createdBy: core.serialization.property("created_by", core.serialization.string()),
+        paymentUrl: core.serialization.property("payment_url", core.serialization.string()),
+        accessToken: core.serialization.property("access_token", core.serialization.string().optional()),
+        callbackUrls: core.serialization.property(
+            "callback_urls",
+            core.serialization.lazyObject(async () => (await import("..")).PaymentLinkCallbackUrlsResponse)
+        ),
+        paymentIntent: core.serialization.property(
+            "payment_intent",
+            core.serialization.lazyObject(async () => (await import("..")).PaymentIntentOfpi).optional()
+        ),
+        updatedAt: core.serialization.property("updated_at", core.serialization.string().optional()),
+        status: core.serialization.lazy(async () => (await import("..")).EnumPaymentLinksStatus),
+        expiresIn: core.serialization.property("expires_in", core.serialization.string()),
+        expiresAt: core.serialization.property("expires_at", core.serialization.string()),
+    });
 
 export declare namespace PaymentLinkOfpi {
     interface Raw {

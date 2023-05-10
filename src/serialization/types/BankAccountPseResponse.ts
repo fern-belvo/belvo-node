@@ -3,12 +3,12 @@
  */
 
 import * as serializers from "..";
-import * as BelvoApi from "../../api";
+import * as Belvo from "../../api";
 import * as core from "../../core";
 
 export const BankAccountPseResponse: core.serialization.ObjectSchema<
     serializers.BankAccountPseResponse.Raw,
-    BelvoApi.BankAccountPseResponse
+    Belvo.BankAccountPseResponse
 > = core.serialization.lazyObject(async () => (await import("..")).BankAccountBusinessPse);
 
 export declare namespace BankAccountPseResponse {

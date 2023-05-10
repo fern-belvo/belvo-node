@@ -3,12 +3,12 @@
  */
 
 import * as serializers from "..";
-import * as BelvoApi from "../../api";
+import * as Belvo from "../../api";
 import * as core from "../../core";
 
 export const AccountsLoanDataInterestRate: core.serialization.ObjectSchema<
     serializers.AccountsLoanDataInterestRate.Raw,
-    BelvoApi.AccountsLoanDataInterestRate
+    Belvo.AccountsLoanDataInterestRate
 > = core.serialization.object({
     name: core.serialization.string().optional(),
     type: core.serialization.lazy(async () => (await import("..")).EnumLoanDataInterestRateType),

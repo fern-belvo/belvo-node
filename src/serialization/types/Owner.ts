@@ -3,10 +3,10 @@
  */
 
 import * as serializers from "..";
-import * as BelvoApi from "../../api";
+import * as Belvo from "../../api";
 import * as core from "../../core";
 
-export const Owner: core.serialization.ObjectSchema<serializers.Owner.Raw, BelvoApi.Owner> = core.serialization.object({
+export const Owner: core.serialization.ObjectSchema<serializers.Owner.Raw, Belvo.Owner> = core.serialization.object({
     id: core.serialization.string().optional(),
     link: core.serialization.string().optional(),
     internalIdentification: core.serialization.property(

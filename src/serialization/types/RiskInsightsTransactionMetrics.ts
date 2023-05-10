@@ -3,12 +3,12 @@
  */
 
 import * as serializers from "..";
-import * as BelvoApi from "../../api";
+import * as Belvo from "../../api";
 import * as core from "../../core";
 
 export const RiskInsightsTransactionMetrics: core.serialization.ObjectSchema<
     serializers.RiskInsightsTransactionMetrics.Raw,
-    BelvoApi.RiskInsightsTransactionMetrics
+    Belvo.RiskInsightsTransactionMetrics
 > = core.serialization.object({
     numTransactions1W: core.serialization.property("num_transactions_1w", core.serialization.number()),
     numTransactions1M: core.serialization.property("num_transactions_1m", core.serialization.number()),

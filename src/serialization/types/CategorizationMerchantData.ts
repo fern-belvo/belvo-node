@@ -3,12 +3,12 @@
  */
 
 import * as serializers from "..";
-import * as BelvoApi from "../../api";
+import * as Belvo from "../../api";
 import * as core from "../../core";
 
 export const CategorizationMerchantData: core.serialization.ObjectSchema<
     serializers.CategorizationMerchantData.Raw,
-    BelvoApi.CategorizationMerchantData
+    Belvo.CategorizationMerchantData
 > = core.serialization.object({
     logo: core.serialization.string().optional(),
     website: core.serialization.string().optional(),

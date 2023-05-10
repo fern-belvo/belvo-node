@@ -3,10 +3,10 @@
  */
 
 import * as errors from "../../errors";
-import * as BelvoApi from "..";
+import * as Belvo from "..";
 
-export class RequestTimeoutError extends errors.BelvoApiError {
-    constructor(body: BelvoApi.RequestTimeoutErrorBody[]) {
+export class RequestTimeoutError extends errors.BelvoError {
+    constructor(body: Belvo.RequestTimeoutErrorBody[]) {
         super({
             message: "RequestTimeoutError",
             statusCode: 408,

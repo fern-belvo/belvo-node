@@ -3,12 +3,12 @@
  */
 
 import * as serializers from "..";
-import * as BelvoApi from "../../api";
+import * as Belvo from "../../api";
 import * as core from "../../core";
 
 export const EnumInvestmentPortfolioType: core.serialization.Schema<
     serializers.EnumInvestmentPortfolioType.Raw,
-    BelvoApi.EnumInvestmentPortfolioType
+    Belvo.EnumInvestmentPortfolioType
 > = core.serialization.enum_(["FIXED_INCOME", "OTHER", "PENSION", "VARIABLE_INCOME"]);
 
 export declare namespace EnumInvestmentPortfolioType {

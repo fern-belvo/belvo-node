@@ -3,12 +3,12 @@
  */
 
 import * as serializers from "../../..";
-import * as BelvoApi from "../../../../api";
+import * as Belvo from "../../../../api";
 import * as core from "../../../../core";
 
 export const Response: core.serialization.Schema<
     serializers.taxDeclarations.retrieveTaxDeclarations.Response.Raw,
-    BelvoApi.RetrieveTaxDeclarationsResponseItem[]
+    Belvo.RetrieveTaxDeclarationsResponseItem[]
 > = core.serialization.list(
     core.serialization.lazy(async () => (await import("../../..")).RetrieveTaxDeclarationsResponseItem)
 );

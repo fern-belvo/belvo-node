@@ -3,12 +3,12 @@
  */
 
 import * as serializers from "..";
-import * as BelvoApi from "../../api";
+import * as Belvo from "../../api";
 import * as core from "../../core";
 
 export const EnumEmploymentRecordStatus: core.serialization.Schema<
     serializers.EnumEmploymentRecordStatus.Raw,
-    BelvoApi.EnumEmploymentRecordStatus
+    Belvo.EnumEmploymentRecordStatus
 > = core.serialization.enum_(["EMPLOYED", "UNEMPLOYED"]);
 
 export declare namespace EnumEmploymentRecordStatus {

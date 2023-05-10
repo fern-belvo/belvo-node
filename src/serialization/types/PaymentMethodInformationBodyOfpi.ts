@@ -3,12 +3,12 @@
  */
 
 import * as serializers from "..";
-import * as BelvoApi from "../../api";
+import * as Belvo from "../../api";
 import * as core from "../../core";
 
 export const PaymentMethodInformationBodyOfpi: core.serialization.ObjectSchema<
     serializers.PaymentMethodInformationBodyOfpi.Raw,
-    BelvoApi.PaymentMethodInformationBodyOfpi
+    Belvo.PaymentMethodInformationBodyOfpi
 > = core.serialization.object({
     providerRequestId: core.serialization.property("provider_request_id", core.serialization.string().optional()),
     redirectUrl: core.serialization.property("redirect_url", core.serialization.string().optional()),

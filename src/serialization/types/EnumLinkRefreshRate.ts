@@ -3,12 +3,12 @@
  */
 
 import * as serializers from "..";
-import * as BelvoApi from "../../api";
+import * as Belvo from "../../api";
 import * as core from "../../core";
 
 export const EnumLinkRefreshRate: core.serialization.Schema<
     serializers.EnumLinkRefreshRate.Raw,
-    BelvoApi.EnumLinkRefreshRate
+    Belvo.EnumLinkRefreshRate
 > = core.serialization.string().optional();
 
 export declare namespace EnumLinkRefreshRate {

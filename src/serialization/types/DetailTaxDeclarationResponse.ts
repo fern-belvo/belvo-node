@@ -3,12 +3,12 @@
  */
 
 import * as serializers from "..";
-import * as BelvoApi from "../../api";
+import * as Belvo from "../../api";
 import * as core from "../../core";
 
 export const DetailTaxDeclarationResponse: core.serialization.Schema<
     serializers.DetailTaxDeclarationResponse.Raw,
-    BelvoApi.DetailTaxDeclarationResponse
+    Belvo.DetailTaxDeclarationResponse
 > = core.serialization.undiscriminatedUnion([
     core.serialization.lazyObject(async () => (await import("..")).TaxDeclarationIndividual),
     core.serialization.lazyObject(async () => (await import("..")).TaxDeclarationBusiness),

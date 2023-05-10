@@ -3,20 +3,18 @@
  */
 
 import * as serializers from "..";
-import * as BelvoApi from "../../api";
+import * as Belvo from "../../api";
 import * as core from "../../core";
 
-export const InvoicesRequest: core.serialization.ObjectSchema<
-    serializers.InvoicesRequest.Raw,
-    BelvoApi.InvoicesRequest
-> = core.serialization.object({
-    link: core.serialization.string(),
-    dateFrom: core.serialization.property("date_from", core.serialization.string()),
-    dateTo: core.serialization.property("date_to", core.serialization.string()),
-    type: core.serialization.lazy(async () => (await import("..")).EnumInvoiceType),
-    attachXml: core.serialization.property("attach_xml", core.serialization.boolean().optional()),
-    saveData: core.serialization.property("save_data", core.serialization.boolean().optional()),
-});
+export const InvoicesRequest: core.serialization.ObjectSchema<serializers.InvoicesRequest.Raw, Belvo.InvoicesRequest> =
+    core.serialization.object({
+        link: core.serialization.string(),
+        dateFrom: core.serialization.property("date_from", core.serialization.string()),
+        dateTo: core.serialization.property("date_to", core.serialization.string()),
+        type: core.serialization.lazy(async () => (await import("..")).EnumInvoiceType),
+        attachXml: core.serialization.property("attach_xml", core.serialization.boolean().optional()),
+        saveData: core.serialization.property("save_data", core.serialization.boolean().optional()),
+    });
 
 export declare namespace InvoicesRequest {
     interface Raw {

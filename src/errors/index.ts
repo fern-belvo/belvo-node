@@ -1,2 +1,2 @@
-export { BelvoApiError } from "./BelvoApiError";
-export { BelvoApiTimeoutError } from "./BelvoApiTimeoutError";
+export { BelvoError } from "./BelvoError";
+export { BelvoTimeoutError } from "./BelvoTimeoutError";

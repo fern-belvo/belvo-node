@@ -3,12 +3,12 @@
  */
 
 import * as serializers from "..";
-import * as BelvoApi from "../../api";
+import * as Belvo from "../../api";
 import * as core from "../../core";
 
 export const EnumIncomeStreamFrequency: core.serialization.Schema<
     serializers.EnumIncomeStreamFrequency.Raw,
-    BelvoApi.EnumIncomeStreamFrequency
+    Belvo.EnumIncomeStreamFrequency
 > = core.serialization.enum_(["MONTHLY", "FORTNIGHTLY", "WEEKLY", "IRREGULAR", "SINGLE"]);
 
 export declare namespace EnumIncomeStreamFrequency {

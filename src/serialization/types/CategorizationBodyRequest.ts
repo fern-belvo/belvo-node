@@ -3,12 +3,12 @@
  */
 
 import * as serializers from "..";
-import * as BelvoApi from "../../api";
+import * as Belvo from "../../api";
 import * as core from "../../core";
 
 export const CategorizationBodyRequest: core.serialization.ObjectSchema<
     serializers.CategorizationBodyRequest.Raw,
-    BelvoApi.CategorizationBodyRequest
+    Belvo.CategorizationBodyRequest
 > = core.serialization.object({
     transactionId: core.serialization.property("transaction_id", core.serialization.string()),
     accountHolderType: core.serialization.property(
