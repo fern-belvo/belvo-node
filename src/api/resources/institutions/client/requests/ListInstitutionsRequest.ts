@@ -3,19 +3,64 @@
  */
 
 export interface ListInstitutionsRequest {
+    /**
+     * A page number within the paginated result set.
+     */
     page?: number;
+    /**
+     * Indicates how many results to return per page. By default we return 100 results per page.
+     *
+     * ℹ️ The minimum number of results returned per page is 1 and the maximum is 1000. If you enter a value greater than 1000, our API will default to the maximum value (1000).
+     *
+     */
     pageSize?: number;
+    /**
+     * Omit certain fields from being returned in the response. For more information, see our [Filtering responses](https://developers.belvo.com/docs/searching-and-filtering) DevPortal article.
+     */
     omit?: string;
+    /**
+     * Return only the specified fields in the response. For more information, see our [Filtering responses](https://developers.belvo.com/docs/searching-and-filtering) DevPortal article.
+     */
     fields?: string;
+    /**
+     * Return institutions only for this two-letter country code.
+     */
     countryCode?: string;
+    /**
+     * Return institutions only for these two-letter country codes.
+     */
     countryCodeIn?: string;
+    /**
+     * Return institutions that partially match this display name.
+     */
     displayName?: string;
     name?: string;
+    /**
+     * Return institutions with one or more of these Belvo-designated names.
+     */
     nameIn?: string;
+    /**
+     * Return institutions that support these resources.
+     */
     resourcesAllin?: string;
+    /**
+     * Return institutions with the given status. You can choose between `healthy` or `down`.
+     */
     status?: string;
+    /**
+     * Return institutions with one of the given statuses. You can choose between `healthy` or `down`.
+     */
     statusIn?: string;
+    /**
+     * Return institutions of this type. You can choose between `bank` or `fiscal`.
+     */
     type?: string;
+    /**
+     * Return institutions of one of these types. You can choose between `bank` or `fiscal`.
+     */
     typeIn?: string;
+    /**
+     * Return institutions with this website URL.
+     */
     website?: string;
 }

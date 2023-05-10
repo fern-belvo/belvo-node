@@ -3,23 +3,80 @@
  */
 
 export interface ListPaymentIntentsRequest {
+    /**
+     * A page number within the paginated result set.
+     */
     page?: number;
+    /**
+     * One or more `payment-intent.id`s (comma separated) that you want to get results for.
+     */
     idIn?: string;
+    /**
+     * Return results only for this date (in `YYYY-MM-DD` format).
+     */
     createdAt?: string;
+    /**
+     * Return results only after this date (in `YYYY-MM-DD` format).
+     */
     createdAtGt?: string;
+    /**
+     * Return results only for this date and after (in `YYYY-MM-DD` format).
+     */
     createdAtGte?: string;
+    /**
+     * Return results only before this date (in `YYYY-MM-DD` format).
+     */
     createdAtLt?: string;
+    /**
+     * Return results only for this date and before (in `YYYY-MM-DD` format).
+     */
     createdAtLte?: string;
+    /**
+     * Return results between this date range (in `YYYY-MM-DD` format).
+     */
     createdAtRange?: string;
+    /**
+     * Return results only for this value.
+     */
     provider?: string;
+    /**
+     * Return results only for this value.
+     */
     paymentMethodType?: string;
+    /**
+     * The `customer.id` you want to get results for.
+     */
     customer?: string;
+    /**
+     * One or more `customer.id`s (comma separated) that you want to get results for.
+     */
     customerIn?: string;
+    /**
+     * Return results only for this value.
+     */
     amount?: string;
+    /**
+     * Return results only for more than this amount.
+     */
     amountGt?: string;
+    /**
+     * Return results only for and more than this amount.
+     */
     amountGte?: string;
+    /**
+     * Return results only for less than this amount.
+     */
     amountLt?: string;
+    /**
+     * Return results only for this amount or less.
+     */
     amountLte?: string;
+    /**
+     * Return results only for this value.
+     */
     status?: string;
+    /**
+     * Return results for listed status.
+     */
     statusIn?: string;
 }

@@ -3,62 +3,245 @@
  */
 
 export interface ListTransactionsRequest {
+    /**
+     * A page number within the paginated result set.
+     */
     page?: number;
+    /**
+     * Indicates how many results to return per page. By default we return 100 results per page.
+     *
+     * ℹ️ The minimum number of results returned per page is 1 and the maximum is 1000. If you enter a value greater than 1000, our API will default to the maximum value (1000).
+     *
+     */
     pageSize?: number;
+    /**
+     * Omit certain fields from being returned in the response. For more information, see our [Filtering responses](https://developers.belvo.com/docs/searching-and-filtering) DevPortal article.
+     */
     omit?: string;
+    /**
+     * Return only the specified fields in the response. For more information, see our [Filtering responses](https://developers.belvo.com/docs/searching-and-filtering) DevPortal article.
+     */
     fields?: string;
+    /**
+     * The `link.id` you want to filter by.
+     *
+     * ℹ️ We highly recommend adding the `account.id` filter as well in order to improve your performance.
+     *
+     */
     link: string;
+    /**
+     * The `account.id` you want to filter by.
+     *
+     * ℹ️ We highly recommend adding the `account.id` filter in order to improve your performance.
+     *
+     */
     account?: string;
+    /**
+     * Return transactions that have a `account.balance.available` matching exactly this value.
+     */
     accountBalanceAvailable?: string;
+    /**
+     * Return transactions that have a `account.balance.available` less than this value.
+     */
     accountBalanceAvailableLt?: string;
+    /**
+     * Return transactions that have a `account.balance.available` less than or equal to this value.
+     */
     accountBalanceAvailableLte?: string;
+    /**
+     * Return transactions that have a `account.balance.available` within a range of two values.
+     */
     accountBalanceAvailableRange?: string;
+    /**
+     * Return transactions that have a `account.balance.current` matching exactly this value.
+     */
     accountBalanceCurrent?: string;
+    /**
+     * Return transactions that have a `account.balance.current` greater than this value.
+     */
     accountBalanceCurrentGt?: string;
+    /**
+     * Return transactions that have a `account.balance.current` greater than or equal to this value.
+     */
     accountBalanceCurrentGte?: string;
+    /**
+     * Return transactions that have a `account.balance.current` less than this value.
+     */
     accountBalanceCurrentLt?: string;
+    /**
+     * Return transactions that have a `account.balance.current` less than or equal to this value.
+     */
     accountBalanceCurrentLte?: string;
+    /**
+     * Return transactions that have a `account.balance.current` within a range of two values.
+     */
     accountBalanceCurrentRange?: string;
+    /**
+     * Return transactions only for these `account.id`s.
+     */
     accountIn?: string;
+    /**
+     * Return information only for transactions matching this account type, as designated by the institution.
+     */
     accountType?: string;
+    /**
+     * Return information only for transactions matching these account types, as designated by the institution.
+     */
     accountTypeIn?: string;
+    /**
+     * Return transactions that were processed by the institution on exactly this date (`YYYY-MM-DD` or full ISO-8601 timestamp).
+     */
     accountingDate?: string;
+    /**
+     * Return transactions that were processed by the institution after this date (`YYYY-MM-DD` or full ISO-8601 timestamp).
+     */
     accountingDateGt?: string;
+    /**
+     * Return transactions that were processed by the institution on this date or later (`YYYY-MM-DD` or full ISO-8601 timestamp).
+     */
     accountingDateGte?: string;
+    /**
+     * Return transactions that were processed by the institution before this date (`YYYY-MM-DD` or full ISO-8601 timestamp).
+     */
     accountingDateLt?: string;
+    /**
+     * Return transactions that were processed by the institution on this date or earlier (`YYYY-MM-DD` or full ISO-8601 timestamp).
+     */
     accountingDateLte?: string;
+    /**
+     * Return transactions that were processed by the institution in this date range (`YYYY-MM-DD` or full ISO-8601 timestamp).
+     */
     accountingDateRange?: string;
+    /**
+     * Return transactions matching exactly this value.
+     */
     amount?: string;
+    /**
+     * Return transactions greater than this value.
+     */
     amountGt?: string;
+    /**
+     * Return transactions greater than or equal to this value.
+     */
     amountGte?: string;
+    /**
+     * Return transactions less than this value.
+     */
     amountLt?: string;
+    /**
+     * Return transactions less than or equal to this value.
+     */
     amountLte?: string;
+    /**
+     * Return transactions between these two values.
+     */
     amountRange?: string;
+    /**
+     * Return transactions that were retrieved from the institution on this date (`YYYY-MM-DD` or full `ISO-8601` timestamp).
+     */
     collectedAt?: string;
+    /**
+     * Return transactions that were retrieved from the institution after this date (`YYYY-MM-DD` or full `ISO-8601` timestamp).
+     */
     collectedAtGt?: string;
+    /**
+     * Return transactions that were retrieved from the institution after or on this date (`YYYY-MM-DD` or full `ISO-8601` timestamp).
+     */
     collectedAtGte?: string;
+    /**
+     * Return transactions that were retrieved from the institution before this date (`YYYY-MM-DD` or full `ISO-8601` timestamp).
+     */
     collectedAtLt?: string;
+    /**
+     * Return transactions that were retrieved from the institution before or on this date (`YYYY-MM-DD` or full `ISO-8601` timestamp).
+     */
     collectedAtLte?: string;
+    /**
+     * Return transactions that were retrieved from the institution between two dates (`YYYY-MM-DD` or full `ISO-8601` timestamp).
+     */
     collectedAtRange?: string;
+    /**
+     * Return transactions that were last updated in Belvo's database on this date (`YYYY-MM-DD` or full `ISO-8601` timestamp).
+     */
     createdAt?: string;
+    /**
+     * Return transactions that were last updated in Belvo's database after this date (`YYYY-MM-DD` or full `ISO-8601` timestamp).
+     */
     createdAtGt?: string;
+    /**
+     * Return transactions that were last updated in Belvo's database after or on this date (`YYYY-MM-DD` or full `ISO-8601` timestamp).
+     */
     createdAtGte?: string;
+    /**
+     * Return transactions that were last updated in Belvo's database before this date (`YYYY-MM-DD` or full `ISO-8601` timestamp).
+     */
     createdAtLt?: string;
+    /**
+     * Return transactions that were last updated in Belvo's database before or on this date (`YYYY-MM-DD` or full `ISO-8601` timestamp).
+     */
     createdAtLte?: string;
+    /**
+     * Return transactions that were last updated in Belvo's database between two dates (`YYYY-MM-DD` or full `ISO-8601` timestamp).
+     */
     createdAtRange?: string;
+    /**
+     * Return transactions for one of these bill names.
+     */
     creditCardDataBillNameIn?: string;
+    /**
+     * Return transactions in only this three-letter currency code.
+     */
     currency?: string;
+    /**
+     * Return transactions in one of these three-letter currency codes.
+     */
     currencyIn?: string;
+    /**
+     * Returns transactions with this institution-assigned reference number.
+     */
     reference?: string;
+    /**
+     * Returns transactions with these institution-assigned reference numbers.
+     */
     referenceIn?: string;
+    /**
+     * Return transactions with this status. Can be either `PENDING`, `PROCESSED`, or `UNCATEGORIZED`.
+     */
     status?: string;
+    /**
+     * Return transactions with these statuses. Can be either `PENDING`, `PROCESSED`, or `UNCATEGORIZED`.
+     */
     statusIn?: string;
+    /**
+     * Return transactions with this type. Can be either `INFLOW` or `OUTFLOW`.
+     */
     type?: string;
+    /**
+     * Return transactions with this types. Can be either `INFLOW` or `OUTFLOW`.
+     */
     typeIn?: string;
+    /**
+     * Return transactions that occurred on exactly this date (`YYYY-MM-DD` or full ISO-8601 timestamp).
+     */
     valueDate?: string;
+    /**
+     * Return transactions that occurred after this date (`YYYY-MM-DD` or full ISO-8601 timestamp).
+     */
     valueDateGt?: string;
+    /**
+     * Return transactions that occurred on this date or later (`YYYY-MM-DD` or full ISO-8601 timestamp).
+     */
     valueDateGte?: string;
+    /**
+     * Return transactions that occurred before this date (`YYYY-MM-DD` or full ISO-8601 timestamp).
+     */
     valueDateLt?: string;
+    /**
+     * Return transactions that occurred on this date or earlier (`YYYY-MM-DD` or full ISO-8601 timestamp).
+     */
     valueDateLte?: string;
+    /**
+     * Return transactions for this date range (`YYYY-MM-DD` or full ISO-8601 timestamp).
+     */
     valueDateRange?: string;
 }

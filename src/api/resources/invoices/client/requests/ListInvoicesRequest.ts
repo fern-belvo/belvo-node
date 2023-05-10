@@ -3,35 +3,134 @@
  */
 
 export interface ListInvoicesRequest {
+    /**
+     * A page number within the paginated result set.
+     */
     page?: number;
+    /**
+     * Indicates how many results to return per page. By default we return 100 results per page.
+     *
+     * ℹ️ The minimum number of results returned per page is 1 and the maximum is 1000. If you enter a value greater than 1000, our API will default to the maximum value (1000).
+     *
+     */
     pageSize?: number;
+    /**
+     * Omit certain fields from being returned in the response. For more information, see our [Filtering responses](https://developers.belvo.com/docs/searching-and-filtering) DevPortal article.
+     */
     omit?: string;
+    /**
+     * Return only the specified fields in the response. For more information, see our [Filtering responses](https://developers.belvo.com/docs/searching-and-filtering) DevPortal article.
+     */
     fields?: string;
+    /**
+     * The `link.id` you want to filter by.
+     *
+     * ℹ️ We highly recommend adding the `link.id` filter in order to improve your performance.
+     *
+     */
     link?: string;
+    /**
+     * Return invoices that were last updated in Belvo's database after this date (`YYYY-MM-DD` or full `ISO-8601` timestamp).
+     */
     createdAtGt?: string;
+    /**
+     * Return invoices that were last updated in Belvo's database after or on this date (`YYYY-MM-DD` or full `ISO-8601` timestamp).
+     */
     createdAtGte?: string;
+    /**
+     * Return invoices that were last updated in Belvo's database before this date (`YYYY-MM-DD` or full `ISO-8601` timestamp).
+     */
     createdAtLt?: string;
+    /**
+     * Return invoices that were last updated in Belvo's database before or on this date (`YYYY-MM-DD` or full `ISO-8601` timestamp).
+     */
     createdAtLte?: string;
+    /**
+     * Return invoices that were last updated in Belvo's database between two dates (`YYYY-MM-DD` or full `ISO-8601` timestamp).
+     */
     createdAtRange?: string;
+    /**
+     * Return information only for this `invoice.id`.
+     */
     id?: string;
+    /**
+     * Return information only for these `invoice.id`s.
+     */
     idIn?: string;
+    /**
+     * Return invoices issued exactly on this date (`YYYY-MM-DD` or full ISO-8601 timestamp).
+     */
     invoiceDate?: string;
+    /**
+     * Return balances issued before this date (`YYYY-MM-DD` or full ISO-8601 timestamp).
+     */
     invoiceDateLt?: string;
+    /**
+     * Return balances issued on this date or earlier (`YYYY-MM-DD` or full ISO-8601 timestamp).
+     */
     invoiceDateLte?: string;
+    /**
+     * Return invoices issued after this date (`YYYY-MM-DD` or full ISO-8601 timestamp).
+     */
     invoiceDateGt?: string;
+    /**
+     * Return invoices issued on this date or later (`YYYY-MM-DD` or full ISO-8601 timestamp).
+     */
     invoiceDateGte?: string;
+    /**
+     * Return invoices issued within this date range (`YYYY-MM-DD` or full ISO-8601 timestamp).
+     */
     invoiceDateRange?: string;
+    /**
+     * Return an invoice with this ID (as provided by the insitution).
+     */
     invoiceIdentification?: string;
+    /**
+     * Return invoices with these IDs (as provided by the institution).
+     */
     invoiceIdentificationIn?: string;
+    /**
+     * Return invoices only for these `link.id`s.
+     */
     linkIn?: string;
+    /**
+     * Return invoices with this status. Can be either `Vigente` (valid) or `Cancelado` (cancelled).
+     */
     status?: string;
+    /**
+     * Return invoices with these statuses. Can be either `Vigente` (valid) or `Cancelado` (cancelled).
+     */
     statusIn?: string;
+    /**
+     * Return invoices matching exactly this value.
+     */
     totalAmount?: string;
+    /**
+     * Return invoices less than this value.
+     */
     totalAmountLt?: string;
+    /**
+     * Return invoices less than or equal to this value.
+     */
     totalAmountLte?: string;
+    /**
+     * Return invoices greater than this value.
+     */
     totalAmountGt?: string;
+    /**
+     * Return invoices greater than or equal to this value.
+     */
     totalAmountGte?: string;
+    /**
+     * Return invoices between these two values.
+     */
     totalAmountRange?: string;
+    /**
+     * Return invoices of this type. Can be either `OUTFLOW` or `INFLOW`.
+     */
     type?: string;
+    /**
+     * Return invoices of these types. Can be either `OUTFLOW` or `INFLOW`.
+     */
     typeIn?: string;
 }

@@ -3,42 +3,162 @@
  */
 
 export interface ListAccountsRequest {
+    /**
+     * A page number within the paginated result set.
+     */
     page?: number;
+    /**
+     * Indicates how many results to return per page. By default we return 100 results per page.
+     *
+     * ℹ️ The minimum number of results returned per page is 1 and the maximum is 1000. If you enter a value greater than 1000, our API will default to the maximum value (1000).
+     *
+     */
     pageSize?: number;
+    /**
+     * Omit certain fields from being returned in the response. For more information, see our [Filtering responses](https://developers.belvo.com/docs/searching-and-filtering) DevPortal article.
+     */
     omit?: string;
+    /**
+     * Return only the specified fields in the response. For more information, see our [Filtering responses](https://developers.belvo.com/docs/searching-and-filtering) DevPortal article.
+     */
     fields?: string;
+    /**
+     * The `link.id` you want to filter by.
+     *
+     * ℹ️ We highly recommend adding the `link.id` filter in order to improve your performance.
+     *
+     */
     link?: string;
+    /**
+     * Return accounts that have a `balance.available` matching exactly this value.
+     */
     balanceAvailable?: string;
+    /**
+     * Return accounts that have a `balance.available` less than this value.
+     */
     balanceAvailableLt?: string;
+    /**
+     * Return accounts that have a `balance.available` less than or equal to this value.
+     */
     balanceAvailableLte?: string;
+    /**
+     * Return accounts that have a `balance.available` greater than this value.
+     */
     balanceAvailableGt?: string;
+    /**
+     * Return accounts that have a `balance.available` greater than or equal to this value.
+     */
     balanceAvailableGte?: string;
+    /**
+     * Return accounts that have a `balance.available` within a range of two values.
+     */
     balanceAvailableRange?: string;
+    /**
+     * Return accounts that have a `balance.current` matching exactly this value.
+     */
     balanceCurrent?: string;
+    /**
+     * Return accounts that have a `balance.current` less than this value.
+     */
     balanceCurrentLt?: string;
+    /**
+     * Return accounts that have a `balance.available` less than or equal to this value.
+     */
     balanceCurrentLte?: string;
+    /**
+     * Return accounts that have a `balance.current` greater than this value.
+     */
     balanceCurrentGt?: string;
+    /**
+     * Return accounts that have a `balance.available` greater than or equal to this value.
+     */
     balanceCurrentGte?: string;
+    /**
+     * Return accounts that have a `balance.available` within a range of two values.
+     */
     balanceCurrentRange?: string;
+    /**
+     * Return accounts only for the given category (for example, `CHECKING_ACCOUNT` and `SAVINGS_ACCOUNT`).
+     */
     category?: string;
+    /**
+     * Return accounts only for the given categories (for example, `CHECKING_ACCOUNT` and `SAVINGS_ACCOUNT`).
+     */
     categoryIn?: string;
+    /**
+     * Return accounts that were last updated in Belvo's database after this date (`YYYY-MM-DD` or full `ISO-8601` timestamp).
+     */
     createdAtGt?: string;
+    /**
+     * Return accounts that were last updated in Belvo's database after or on this date (`YYYY-MM-DD` or full `ISO-8601` timestamp).
+     */
     createdAtGte?: string;
+    /**
+     * Return accounts that were last updated in Belvo's database before this date (`YYYY-MM-DD` or full `ISO-8601` timestamp).
+     */
     createdAtLt?: string;
+    /**
+     * Return accounts that were last updated in Belvo's database before or on this date (`YYYY-MM-DD` or full `ISO-8601` timestamp).
+     */
     createdAtLte?: string;
+    /**
+     * Return accounts that were last updated in Belvo's database between two dates (`YYYY-MM-DD` or full `ISO-8601` timestamp).
+     */
     createdAtRange?: string;
+    /**
+     * Return accounts that hold finances in only this three-letter currency code.
+     */
     currency?: string;
+    /**
+     * Return accounts that hold finances in one of these three-letter currency codes.
+     */
     currencyIn?: string;
+    /**
+     * Return information only for this `account.id`.
+     */
     id?: string;
+    /**
+     * Return information for these `account.id`s.
+     */
     idIn?: string;
+    /**
+     * Return accounts only for this institution (use the Belvo-designated name, such as `erebor_mx_retail`).
+     */
     institution?: string;
+    /**
+     * Return accounts only for these institutions (use the Belvo-designated names, such as `erebor_mx_retail` and `gringotts_mx_retail`).
+     */
     institutionIn?: string;
+    /**
+     * Return accounts only for these `link.id`s.
+     */
     linkIn?: string;
+    /**
+     * Return accounts with exactly this internal (specified by the institution) name.
+     */
     name?: string;
+    /**
+     * Return accounts partially matching this internal (specified by the institution) name.
+     */
     nameIcontains?: string;
+    /**
+     * Return information only for this account number (as specified by the institution).
+     */
     number?: string;
+    /**
+     * Return information for these account numbers (as specified by the institution).
+     */
     numberIn?: string;
+    /**
+     * Return information only for this type of account ID. For example, CLABE accounts.
+     */
     publicIdentificationName?: string;
+    /**
+     * Return information only for this account ID. For example, the account number for a CLABE account.
+     */
     publicIdentificationValue?: string;
+    /**
+     * Return information only for accounts matching this account type, as designated by the institution.
+     */
     type?: string;
 }

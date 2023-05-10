@@ -3,19 +3,64 @@
  */
 
 export interface ListBankAccountRequest {
+    /**
+     * A page number within the paginated result set.
+     */
     page?: number;
+    /**
+     * One or more `bank-account.id`s (comma separated) that you want to get results for.
+     */
     idIn?: string;
+    /**
+     * Return results only for this date (in `YYYY-MM-DD` format).
+     */
     createdAt?: string;
+    /**
+     * Return results only after this date (in `YYYY-MM-DD` format).
+     */
     createdAtGt?: string;
+    /**
+     * Return results only for this date and after (in `YYYY-MM-DD` format).
+     */
     createdAtGte?: string;
+    /**
+     * Return results only before this date (in `YYYY-MM-DD` format).
+     */
     createdAtLt?: string;
+    /**
+     * Return results only for this date and before (in `YYYY-MM-DD` format).
+     */
     createdAtLte?: string;
+    /**
+     * Return results between this date range (in `YYYY-MM-DD` format).
+     */
     createdAtRange?: string;
+    /**
+     * Return results that exactly match a value.
+     */
     number?: string;
+    /**
+     * Return results for listed numbers.
+     */
     numberIn?: string;
+    /**
+     * The `customer.id` you want to get results for.
+     */
     customer?: string;
+    /**
+     * The `institution.id` you want to get results for.
+     */
     institution?: string;
+    /**
+     * Return results for a matched value type.
+     */
     holderType?: string;
+    /**
+     * Return results for listed holder types.
+     */
     holderTypeIn?: string;
+    /**
+     * Return results only for this value.
+     */
     providers?: string;
 }

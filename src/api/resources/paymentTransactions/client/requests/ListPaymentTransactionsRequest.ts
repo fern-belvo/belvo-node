@@ -3,27 +3,96 @@
  */
 
 export interface ListPaymentTransactionsRequest {
+    /**
+     * A page number within the paginated result set.
+     */
     page?: number;
+    /**
+     * One or more payment `transaction.id`s (comma separated) that you want to get results for.
+     */
     idIn?: string;
+    /**
+     * Return results only for this date (in `YYYY-MM-DD` format).
+     */
     createdAt?: string;
+    /**
+     * Return results only after this date (in `YYYY-MM-DD` format).
+     */
     createdAtGt?: string;
+    /**
+     * Return results only for this date and after (in `YYYY-MM-DD` format).
+     */
     createdAtGte?: string;
+    /**
+     * Return results only before this date (in `YYYY-MM-DD` format).
+     */
     createdAtLt?: string;
+    /**
+     * Return results only for this date and before (in `YYYY-MM-DD` format).
+     */
     createdAtLte?: string;
+    /**
+     * Return results between this date range (in `YYYY-MM-DD` format).
+     */
     createdAtRange?: string;
+    /**
+     * The `charge.id` you want to get results for.
+     */
     charge?: string;
+    /**
+     * One or more `charge.id`s (comma separated) that you want to get results for.
+     */
     chargeIn?: string;
+    /**
+     * The `beneficiary.id` you want to get results for.
+     */
     beneficiary?: string;
+    /**
+     * One or more `beneficiary.id`s (comma separated) that you want to get results for.
+     */
     beneficiaryIn?: string;
+    /**
+     * The payer's `bank-account.id` you want to get results for.
+     */
     payer?: string;
+    /**
+     * One or more payer `bank-account.id`s (comma separated) that you want to get results for.
+     */
     payerIn?: string;
+    /**
+     * Return results for a matched value type.
+     */
     transactionType?: string;
+    /**
+     * Return results for a matched value type.
+     */
     currency?: string;
+    /**
+     * Return results for a matched value type.
+     */
     description?: string;
+    /**
+     * Return results only for this value.
+     */
     amount?: string;
+    /**
+     * Return results only for more than this amount.
+     */
     amountGt?: string;
+    /**
+     * Return results only for and more than this amount.
+     */
     amountGte?: string;
+    /**
+     * Return results only for less than this amount.
+     */
     amountLt?: string;
+    /**
+     * Return results only for this amount or less.
+     */
     amountLte?: string;
+    /**
+     * Return results between this amount range
+     */
     amountRange?: string;
 }

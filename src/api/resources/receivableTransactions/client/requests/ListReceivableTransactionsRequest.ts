@@ -3,23 +3,89 @@
  */
 
 export interface ListReceivableTransactionsRequest {
+    /**
+     * A page number within the paginated result set.
+     */
     page?: number;
+    /**
+     * Indicates how many results to return per page. By default we return 100 results per page.
+     *
+     * ℹ️ The minimum number of results returned per page is 1 and the maximum is 1000. If you enter a value greater than 1000, our API will default to the maximum value (1000).
+     *
+     */
     pageSize?: number;
+    /**
+     * Omit certain fields from being returned in the response. For more information, see our [Filtering responses](https://developers.belvo.com/docs/searching-and-filtering) DevPortal article.
+     */
     omit?: string;
+    /**
+     * Return only the specified fields in the response. For more information, see our [Filtering responses](https://developers.belvo.com/docs/searching-and-filtering) DevPortal article.
+     */
     fields?: string;
+    /**
+     * The `link.id` you want to filter by.
+     *
+     * ℹ️ We highly recommend adding either the `link.id` or the `account.id` filters in order to improve your performance.
+     *
+     */
     link?: string;
+    /**
+     * The `account.id` you want to filter by.
+     *
+     * ℹ️ We highly recommend adding either the `link.id` or the `account.id` filters in order to improve your performance.
+     *
+     */
     account?: string;
+    /**
+     * Return receivable transactions only for these `account.id`s.
+     */
     accountIn?: string;
+    /**
+     * Return receivable transactions that were last updated in Belvo's database after this date (`YYYY-MM-DD` or full `ISO-8601` timestamp).
+     */
     createdAtGt?: string;
+    /**
+     * Return receivable transactions that were last updated in Belvo's database after or on this date (`YYYY-MM-DD` or full `ISO-8601` timestamp).
+     */
     createdAtGte?: string;
+    /**
+     * Return receivable transactions that were last updated in Belvo's database before this date (`YYYY-MM-DD` or full `ISO-8601` timestamp).
+     */
     createdAtLt?: string;
+    /**
+     * Return receivable transactions that were last updated in Belvo's database before or on this date (`YYYY-MM-DD` or full `ISO-8601` timestamp).
+     */
     createdAtLte?: string;
+    /**
+     * Return receivable transactions that were last updated in Belvo's database between two dates (`YYYY-MM-DD` or full `ISO-8601` timestamp).
+     */
     createdAtRange?: string;
+    /**
+     * Return information for these `link.id`s.
+     */
     linkIn?: string;
+    /**
+     * Return receivable transactions for exactly this date (`YYYY-MM-DD` or full ISO-8601 timestamp).
+     */
     valueDate?: string;
+    /**
+     * Return receivable transactions for after this date (`YYYY-MM-DD` or full ISO-8601 timestamp).
+     */
     valueDateGt?: string;
+    /**
+     * Return receivable transactions for this date or later (`YYYY-MM-DD` or full ISO-8601 timestamp).
+     */
     valueDateGte?: string;
+    /**
+     * Return receivable transactions for before this date (`YYYY-MM-DD` or full ISO-8601 timestamp).
+     */
     valueDateLt?: string;
+    /**
+     * Return receivable transactions for this date or earlier (`YYYY-MM-DD` or full ISO-8601 timestamp).
+     */
     valueDateLte?: string;
+    /**
+     * Return receivable transactions for this date range (`YYYY-MM-DD` or full ISO-8601 timestamp).
+     */
     valueDateRange?: string;
 }

@@ -3,13 +3,40 @@
  */
 
 export interface ListPaymentInstitutionsRequest {
+    /**
+     * A page number within the paginated result set.
+     */
     page?: number;
+    /**
+     * Return institutions only for this country.
+     */
     country?: string;
+    /**
+     * Return institutions only for one of these countries.
+     */
     countryIn?: string;
+    /**
+     * Return results only for this date (in `YYYY-MM-DD` format).
+     */
     createdAt?: string;
+    /**
+     * Return results only after this date (in `YYYY-MM-DD` format).
+     */
     createdAtGt?: string;
+    /**
+     * Return results only for this date and after (in `YYYY-MM-DD` format).
+     */
     createdAtGte?: string;
+    /**
+     * Return results only before this date (in `YYYY-MM-DD` format).
+     */
     createdAtLt?: string;
+    /**
+     * Return results only for this date and before (in `YYYY-MM-DD` format).
+     */
     createdAtLte?: string;
+    /**
+     * Return results between this date range (in `YYYY-MM-DD` format).
+     */
     createdAtRange?: string;
 }

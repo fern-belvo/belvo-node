@@ -3,27 +3,99 @@
  */
 
 export interface ListLinksRequest {
+    /**
+     * A page number within the paginated result set.
+     */
     page?: number;
+    /**
+     * Indicates how many results to return per page. By default we return 100 results per page.
+     *
+     * ℹ️ The minimum number of results returned per page is 1 and the maximum is 1000. If you enter a value greater than 1000, our API will default to the maximum value (1000).
+     *
+     */
     pageSize?: number;
+    /**
+     * Omit certain fields from being returned in the response. For more information, see our [Filtering responses](https://developers.belvo.com/docs/searching-and-filtering) DevPortal article.
+     */
     omit?: string;
+    /**
+     * Return only the specified fields in the response. For more information, see our [Filtering responses](https://developers.belvo.com/docs/searching-and-filtering) DevPortal article.
+     */
     fields?: string;
+    /**
+     * Return links only with this access mode. Can be either `single` or `recurrent`.
+     */
     accessMode?: string;
+    /**
+     * Return links that were last updated in Belvo's database on this date (`YYYY-MM-DD` or full `ISO-8601` timestamp).
+     */
     createdAt?: string;
+    /**
+     * Return links that were last updated in Belvo's database after this date (`YYYY-MM-DD` or full `ISO-8601` timestamp).
+     */
     createdAtGt?: string;
+    /**
+     * Return links that were last updated in Belvo's database after or on this date (`YYYY-MM-DD` or full `ISO-8601` timestamp).
+     */
     createdAtGte?: string;
+    /**
+     * Return links that were last updated in Belvo's database before this date (`YYYY-MM-DD` or full `ISO-8601` timestamp).
+     */
     createdAtLt?: string;
+    /**
+     * Return links that were last updated in Belvo's database before or on this date (`YYYY-MM-DD` or full `ISO-8601` timestamp).
+     */
     createdAtLte?: string;
+    /**
+     * Return links that were last updated in Belvo's database between two dates (`YYYY-MM-DD` or full `ISO-8601` timestamp).
+     */
     createdAtRange?: string;
+    /**
+     * Return links that were not created by these Belvo users.
+     */
     createdByNotIn?: string;
+    /**
+     * Return links with this external ID.
+     */
     externalId?: string;
+    /**
+     * Return links with these external IDs.
+     */
     externalIdIn?: string;
+    /**
+     * Return information only for this `link.id`.
+     */
     id?: string;
+    /**
+     * Return information only for these `link.id`s.
+     */
     idIn?: string;
+    /**
+     * Return links created for this institution (use the Belvo-designated name, such as `erebor_mx_retail`).
+     */
     institution?: string;
+    /**
+     * Return links created for these institutions (use the Belvo-designated name, such as `erebor_mx_retail` and `gringotts_co_retail`).
+     */
     institutionIn?: string;
+    /**
+     * Return links with this specific institution user ID.
+     */
     institutionUserId?: string;
+    /**
+     * Return links with these institution user IDs.
+     */
     institutionUserIdIn?: string;
+    /**
+     * Return links with this refresh rate. Choose between `6h`, `12h`, `24h`, `7d`, or `30d`.
+     */
     refreshRate?: string;
+    /**
+     * Return links with this status. Choose between `valid`, `invalid`, `unconfirmed`, or `token_required`.
+     */
     status?: string;
+    /**
+     * Return links with these statuses. Choose between `valid`, `invalid`, `unconfirmed`, or `token_required`.
+     */
     statusIn?: string;
 }

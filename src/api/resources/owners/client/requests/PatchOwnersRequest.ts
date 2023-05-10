@@ -5,7 +5,13 @@
 import * as Belvo from "../../../..";
 
 export interface PatchOwnersRequest {
+    /**
+     * Omit certain fields from being returned in the response. For more information, see our [Filtering responses](https://developers.belvo.com/docs/searching-and-filtering) DevPortal article.
+     */
     omit?: string;
+    /**
+     * Return only the specified fields in the response. For more information, see our [Filtering responses](https://developers.belvo.com/docs/searching-and-filtering) DevPortal article.
+     */
     fields?: string;
     /**
      * A JSON object containing a session UUID and a MFA token

@@ -5,15 +5,59 @@
 import * as Belvo from "../../../..";
 
 export interface ListPaymentLinksRequest {
+    /**
+     * A page number within the paginated result set.
+     */
     page?: number;
+    /**
+     * Indicates how many results to return per page. By default we return 100 results per page.
+     *
+     * ℹ️ The minimum number of results returned per page is 1 and the maximum is 100. If you enter a value greater than 100, our API will default to the maximum value (1000).
+     *
+     */
     pageSize?: number;
+    /**
+     * Return results only for this date (in `YYYY-MM-DD` format).
+     */
     createdAt?: string;
+    /**
+     * Return results only after this date (in `YYYY-MM-DD` format).
+     */
     createdAtGt?: string;
+    /**
+     * Return results only for this date and after (in `YYYY-MM-DD` format).
+     */
     createdAtGte?: string;
+    /**
+     * Return results only before this date (in `YYYY-MM-DD` format).
+     */
     createdAtLt?: string;
+    /**
+     * Return results only for this date and before (in `YYYY-MM-DD` format).
+     */
     createdAtLte?: string;
+    /**
+     * Return results between this date range (in `YYYY-MM-DD` format).
+     */
     createdAtRange?: string;
+    /**
+     * Return payment links with this status. Can be either `ACTIVE` or `INACTIVE`.
+     */
     status?: Belvo.ListPaymentLinksRequestStatus;
+    /**
+     * Return results in a specified time order. Can be either:
+     *
+     *   - `created_at` returns payment links from newest to oldest (in ascending order).
+     *   - `-created_at` returns payment links from oldest to newest (in descending order).
+     */
     ordering?: Belvo.ListPaymentLinksRequestOrdering;
+    /**
+     * Return results for one or more payment links that match the description you searched for.
+     *
+     * **Note:** This filter supports both full and partial search queries, with a minimum of three characters required. For example, searching for `trai` may match the following values:
+     *
+     *   - `Awesome training sneakers`
+     *   - `Training equipment`
+     */
     search?: string;
 }

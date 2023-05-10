@@ -3,32 +3,125 @@
  */
 
 export interface ListBalancesRequest {
+    /**
+     * A page number within the paginated result set.
+     */
     page?: number;
+    /**
+     * Indicates how many results to return per page. By default we return 100 results per page.
+     *
+     * ℹ️ The minimum number of results returned per page is 1 and the maximum is 1000. If you enter a value greater than 1000, our API will default to the maximum value (1000).
+     *
+     */
     pageSize?: number;
+    /**
+     * Omit certain fields from being returned in the response. For more information, see our [Filtering responses](https://developers.belvo.com/docs/searching-and-filtering) DevPortal article.
+     */
     omit?: string;
+    /**
+     * Return only the specified fields in the response. For more information, see our [Filtering responses](https://developers.belvo.com/docs/searching-and-filtering) DevPortal article.
+     */
     fields?: string;
+    /**
+     * The `link.id` you want to filter by.
+     *
+     * ℹ️ We highly recommend adding either the `link.id` or the `account.id` filters in order to improve your performance.
+     *
+     */
     link?: string;
+    /**
+     * The `account.id` you want to filter by.
+     *
+     * ℹ️ We highly recommend adding either the `link.id` or the `account.id` filters in order to improve your performance.
+     *
+     */
     account?: string;
+    /**
+     * Return balances only for these `account.id`s.
+     */
     accountIn?: string;
+    /**
+     * Return information only for accounts matching this account type, as designated by the institution.
+     */
     accountType?: string;
+    /**
+     * Return information only for accounts matching these account types, as designated by the institution.
+     */
     accountTypeIn?: string;
+    /**
+     * Return balances matching exactly this value.
+     */
     balance?: string;
+    /**
+     * Return balances less than this value.
+     */
     balanceLt?: string;
+    /**
+     * Return balances less than or equal to this value.
+     */
     balanceLte?: string;
+    /**
+     * Return balances greater than this value.
+     */
     balanceGt?: string;
+    /**
+     * Return balances greater than or equal to this value.
+     */
     balanceGte?: string;
+    /**
+     * Return balances between these two values.
+     */
     balanceRange?: string;
+    /**
+     * Return balances that are in this three-letter currency code.
+     */
     currency?: string;
+    /**
+     * Return balances that are in these three-letter currency codes.
+     */
     currencyIn?: string;
+    /**
+     * Return information only for this `balance.id`.
+     */
     id?: string;
+    /**
+     * Return information only for these `balance.id`s.
+     */
     idIn?: string;
+    /**
+     * Return balances only for this institution (use the Belvo-designated name, such as `erebor_mx_retail`).
+     */
     institution?: string;
+    /**
+     * Return balances only for these institutions (use the Belvo-designated names, such as `erebor_mx_retail` and `gringotts_mx_retail`).
+     */
     institutionIn?: string;
+    /**
+     * Return balances only for these `link.id`s.
+     */
     linkIn?: string;
+    /**
+     * Return balances for exactly this date (`YYYY-MM-DD` or full ISO-8601 timestamp).
+     */
     valueDate?: string;
+    /**
+     * Return balances for after this date (`YYYY-MM-DD` or full ISO-8601 timestamp).
+     */
     valueDateGt?: string;
+    /**
+     * Return balances for this date or later (`YYYY-MM-DD` or full ISO-8601 timestamp).
+     */
     valueDateGte?: string;
+    /**
+     * Return balances for before this date (`YYYY-MM-DD` or full ISO-8601 timestamp).
+     */
     valueDateLt?: string;
+    /**
+     * Return balances for this date or earlier (`YYYY-MM-DD` or full ISO-8601 timestamp).
+     */
     valueDateLte?: string;
+    /**
+     * Return balances for this date range (`YYYY-MM-DD` or full ISO-8601 timestamp).
+     */
     valueDateRange?: string;
 }

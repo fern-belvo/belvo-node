@@ -3,14 +3,50 @@
  */
 
 export interface ListCustomersRequest {
+    /**
+     * A page number within the paginated result set.
+     */
     page?: number;
+    /**
+     * One or more `customer.id`s (comma separated) that you want to get results for.
+     */
     idIn?: string;
+    /**
+     * Return results only for this date (in `YYYY-MM-DD` format).
+     */
     createdAt?: string;
+    /**
+     * Return results only after this date (in `YYYY-MM-DD` format).
+     */
     createdAtGt?: string;
+    /**
+     * Return results only for this date and after (in `YYYY-MM-DD` format).
+     */
     createdAtGte?: string;
+    /**
+     * Return results only before this date (in `YYYY-MM-DD` format).
+     */
     createdAtLt?: string;
+    /**
+     * Return results only for this date and before (in `YYYY-MM-DD` format).
+     */
     createdAtLte?: string;
+    /**
+     * Return results between this date range (in `YYYY-MM-DD` format).
+     */
     createdAtRange?: string;
+    /**
+     * Return results only for this customer type (either `INDIVIDUAL` or `BUSINESS`).
+     */
     customerType?: string;
+    /**
+     * Return results for one or more customers that match either the name or email you searched for.
+     *
+     * **Note:** This filter supports both full and partial search queries, with a minimum of three characters required. For example, searching for `car` may match the following values:
+     *
+     *   - `Carlos Vives`
+     *   - `Carmen Domínguez`
+     *   - `carlos.vives@musicacolombia.co`
+     */
     search?: string;
 }
