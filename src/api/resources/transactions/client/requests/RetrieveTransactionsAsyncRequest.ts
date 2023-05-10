@@ -7,6 +7,5 @@ import * as BelvoApi from "../../../..";
 export interface RetrieveTransactionsAsyncRequest {
     omit?: string;
     fields?: string;
-    belvoRequestMode: "async";
     body: BelvoApi.TransactionsRequest;
 }

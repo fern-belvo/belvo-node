@@ -323,7 +323,7 @@ export class Transactions {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.10",
+                "X-Fern-SDK-Version": "0.0.13",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -334,6 +334,7 @@ export class Transactions {
                 unrecognizedObjectKeys: "passthrough",
                 allowUnrecognizedUnionMembers: true,
                 allowUnrecognizedEnumValues: true,
+                breadcrumbsPrefix: ["response"],
             });
         }
 
@@ -345,6 +346,7 @@ export class Transactions {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
                         })
                     );
                 default:
@@ -395,7 +397,7 @@ export class Transactions {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.10",
+                "X-Fern-SDK-Version": "0.0.13",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -407,6 +409,7 @@ export class Transactions {
                 unrecognizedObjectKeys: "passthrough",
                 allowUnrecognizedUnionMembers: true,
                 allowUnrecognizedEnumValues: true,
+                breadcrumbsPrefix: ["response"],
             });
         }
 
@@ -418,6 +421,7 @@ export class Transactions {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
                         })
                     );
                 case 401:
@@ -426,6 +430,7 @@ export class Transactions {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
                         })
                     );
                 case 408:
@@ -434,6 +439,7 @@ export class Transactions {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
                         })
                     );
                 case 428:
@@ -442,6 +448,7 @@ export class Transactions {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
                         })
                     );
                 case 500:
@@ -450,6 +457,7 @@ export class Transactions {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
                         })
                     );
                 default:
@@ -485,7 +493,7 @@ export class Transactions {
     public async retrieveTransactionsAsync(
         request: BelvoApi.RetrieveTransactionsAsyncRequest
     ): Promise<BelvoApi.AsynchronousAccepted202> {
-        const { omit, fields, belvoRequestMode, body: _body } = request;
+        const { omit, fields, body: _body } = request;
         const _queryParams = new URLSearchParams();
         if (omit != null) {
             _queryParams.append("omit", omit);
@@ -502,8 +510,8 @@ export class Transactions {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.10",
-                "X-Belvo-Request-Mode": belvoRequestMode,
+                "X-Fern-SDK-Version": "0.0.13",
+                "X-Belvo-Request-Mode": "async",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -515,6 +523,7 @@ export class Transactions {
                 unrecognizedObjectKeys: "passthrough",
                 allowUnrecognizedUnionMembers: true,
                 allowUnrecognizedEnumValues: true,
+                breadcrumbsPrefix: ["response"],
             });
         }
 
@@ -526,6 +535,7 @@ export class Transactions {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
                         })
                     );
                 case 401:
@@ -534,6 +544,7 @@ export class Transactions {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
                         })
                     );
                 case 408:
@@ -542,6 +553,7 @@ export class Transactions {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
                         })
                     );
                 case 428:
@@ -550,6 +562,7 @@ export class Transactions {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
                         })
                     );
                 case 500:
@@ -558,6 +571,7 @@ export class Transactions {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
                         })
                     );
                 default:
@@ -608,7 +622,7 @@ export class Transactions {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.10",
+                "X-Fern-SDK-Version": "0.0.13",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -620,6 +634,7 @@ export class Transactions {
                 unrecognizedObjectKeys: "passthrough",
                 allowUnrecognizedUnionMembers: true,
                 allowUnrecognizedEnumValues: true,
+                breadcrumbsPrefix: ["response"],
             });
         }
 
@@ -631,6 +646,7 @@ export class Transactions {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
                         })
                     );
                 case 401:
@@ -639,6 +655,7 @@ export class Transactions {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
                         })
                     );
                 case 408:
@@ -647,6 +664,7 @@ export class Transactions {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
                         })
                     );
                 case 428:
@@ -655,6 +673,7 @@ export class Transactions {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
                         })
                     );
                 case 500:
@@ -663,6 +682,7 @@ export class Transactions {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
                         })
                     );
                 default:
@@ -716,7 +736,7 @@ export class Transactions {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.10",
+                "X-Fern-SDK-Version": "0.0.13",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -727,6 +747,7 @@ export class Transactions {
                 unrecognizedObjectKeys: "passthrough",
                 allowUnrecognizedUnionMembers: true,
                 allowUnrecognizedEnumValues: true,
+                breadcrumbsPrefix: ["response"],
             });
         }
 
@@ -738,6 +759,7 @@ export class Transactions {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
                         })
                     );
                 case 404:
@@ -746,6 +768,7 @@ export class Transactions {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
                         })
                     );
                 default:
@@ -786,7 +809,7 @@ export class Transactions {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.10",
+                "X-Fern-SDK-Version": "0.0.13",
             },
             contentType: "application/json",
             timeoutMs: 60000,
@@ -803,6 +826,7 @@ export class Transactions {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
                         })
                     );
                 case 404:
@@ -811,6 +835,7 @@ export class Transactions {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
                         })
                     );
                 default:

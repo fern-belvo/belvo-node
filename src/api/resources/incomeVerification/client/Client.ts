@@ -5,8 +5,8 @@
 import * as environments from "../../../../environments";
 import * as core from "../../../../core";
 import * as BelvoApi from "../../..";
-import urlJoin from "url-join";
 import * as serializers from "../../../../serialization";
+import urlJoin from "url-join";
 import * as errors from "../../../../errors";
 
 export declare namespace IncomeVerification {
@@ -33,7 +33,7 @@ export class IncomeVerification {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.10",
+                "X-Fern-SDK-Version": "0.0.13",
             },
             contentType: "application/json",
             body: await serializers.EyodIncomeVerificationRequest.jsonOrThrow(request, {
@@ -46,6 +46,7 @@ export class IncomeVerification {
                 unrecognizedObjectKeys: "passthrough",
                 allowUnrecognizedUnionMembers: true,
                 allowUnrecognizedEnumValues: true,
+                breadcrumbsPrefix: ["response"],
             });
         }
 
@@ -57,6 +58,7 @@ export class IncomeVerification {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
                         })
                     );
                 case 401:
@@ -65,6 +67,7 @@ export class IncomeVerification {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
                         })
                     );
                 case 403:
@@ -73,6 +76,7 @@ export class IncomeVerification {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
                         })
                     );
                 case 500:
@@ -81,6 +85,7 @@ export class IncomeVerification {
                             unrecognizedObjectKeys: "passthrough",
                             allowUnrecognizedUnionMembers: true,
                             allowUnrecognizedEnumValues: true,
+                            breadcrumbsPrefix: ["response"],
                         })
                     );
                 default:
