@@ -9,6 +9,14 @@ The Belvo Node.js library provides access to the Belvo API from JavaScript/TypeS
 
 API reference documentation is available [here](https://developers.belvo.com/reference/using-the-api-reference).
 
+## Installation
+
+```bash
+npm install @fern-api/belvo
+# or
+yarn add @fern-api/belvo
+```
+
 ## Usage
 
 [![Try it out](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/edit/typescript-example-using-sdk-built-with-fern-mqxmdh?file=package.json&view=editor)
