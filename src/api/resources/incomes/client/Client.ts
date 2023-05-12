@@ -13,7 +13,8 @@ import * as errors from "../../../../errors";
 export declare namespace Incomes {
     interface Options {
         environment?: environments.BelvoEnvironment | string;
-        credentials: core.Supplier<core.BasicAuth>;
+        username: core.Supplier<string>;
+        password: core.Supplier<string>;
     }
 }
 
@@ -22,7 +23,7 @@ export class Incomes {
 
     /**
      * Get a paginated list of all incomes in your Belvo account. By default, we return up to 100 results per page.
-     * @throws {Belvo.UnauthorizedError}
+     * @throws {@link Belvo.UnauthorizedError}
      */
     public async listIncomes(request: Belvo.ListIncomesRequest = {}): Promise<Belvo.IncomesPaginatedResponse> {
         const { page, pageSize, omit, fields, account, accountIn, link, linkIn } = request;
@@ -66,7 +67,7 @@ export class Incomes {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.22",
+                "X-Fern-SDK-Version": "0.0.23",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -119,11 +120,11 @@ export class Incomes {
 
     /**
      * Retrieve income insights for <b>checking and savings accounts</b> from a specific link. You can receive insights for a period of up to 365 days, depending on the transaction history available for each [bank](https://developers.belvo.com/docs/institution).
-     * @throws {Belvo.BadRequestError}
-     * @throws {Belvo.UnauthorizedError}
-     * @throws {Belvo.RequestTimeoutError}
-     * @throws {Belvo.PreconditionError}
-     * @throws {Belvo.InternalServerError}
+     * @throws {@link Belvo.BadRequestError}
+     * @throws {@link Belvo.UnauthorizedError}
+     * @throws {@link Belvo.RequestTimeoutError}
+     * @throws {@link Belvo.PreconditionError}
+     * @throws {@link Belvo.InternalServerError}
      */
     public async retrieveIncome(request: Belvo.RetrieveIncomeRequest): Promise<Belvo.Income> {
         const { omit, fields, body: _body } = request;
@@ -143,7 +144,7 @@ export class Incomes {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.22",
+                "X-Fern-SDK-Version": "0.0.23",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -237,11 +238,11 @@ export class Incomes {
 
     /**
      * Used to resume an Income retrieve session that was paused because an MFA token was required by the institution.
-     * @throws {Belvo.BadRequestError}
-     * @throws {Belvo.UnauthorizedError}
-     * @throws {Belvo.RequestTimeoutError}
-     * @throws {Belvo.PreconditionError}
-     * @throws {Belvo.InternalServerError}
+     * @throws {@link Belvo.BadRequestError}
+     * @throws {@link Belvo.UnauthorizedError}
+     * @throws {@link Belvo.RequestTimeoutError}
+     * @throws {@link Belvo.PreconditionError}
+     * @throws {@link Belvo.InternalServerError}
      */
     public async patchIncomes(request: Belvo.PatchIncomesRequest): Promise<Belvo.Income[]> {
         const { omit, fields, body: _body } = request;
@@ -261,7 +262,7 @@ export class Incomes {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.22",
+                "X-Fern-SDK-Version": "0.0.23",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -355,8 +356,8 @@ export class Incomes {
 
     /**
      * Get the details of a specific income.
-     * @throws {Belvo.UnauthorizedError}
-     * @throws {Belvo.NotFoundError}
+     * @throws {@link Belvo.UnauthorizedError}
+     * @throws {@link Belvo.NotFoundError}
      */
     public async detailIncome(id: string, request: Belvo.DetailIncomeRequest = {}): Promise<Belvo.Income[]> {
         const { omit, fields } = request;
@@ -376,7 +377,7 @@ export class Incomes {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.22",
+                "X-Fern-SDK-Version": "0.0.23",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -439,8 +440,8 @@ export class Incomes {
 
     /**
      * Delete a specific income from your Belvo account.
-     * @throws {Belvo.UnauthorizedError}
-     * @throws {Belvo.NotFoundError}
+     * @throws {@link Belvo.UnauthorizedError}
+     * @throws {@link Belvo.NotFoundError}
      */
     public async destroyIncomes(id: string): Promise<void> {
         const _response = await core.fetcher({
@@ -450,7 +451,7 @@ export class Incomes {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.22",
+                "X-Fern-SDK-Version": "0.0.23",
             },
             contentType: "application/json",
             timeoutMs: 60000,
@@ -505,11 +506,9 @@ export class Incomes {
     }
 
     protected async _getAuthorizationHeader() {
-        const credentials = await core.Supplier.get(this.options.credentials);
-        if (credentials != null) {
-            return core.BasicAuth.toAuthorizationHeader(await core.Supplier.get(credentials));
-        }
-
-        return undefined;
+        return core.BasicAuth.toAuthorizationHeader({
+            username: await core.Supplier.get(this.options.username),
+            password: await core.Supplier.get(this.options.password),
+        });
     }
 }

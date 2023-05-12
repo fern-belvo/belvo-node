@@ -12,7 +12,8 @@ import * as errors from "../../../../errors";
 export declare namespace SecretKeys {
     interface Options {
         environment?: environments.BelvoEnvironment | string;
-        credentials: core.Supplier<core.BasicAuth>;
+        username: core.Supplier<string>;
+        password: core.Supplier<string>;
     }
 }
 
@@ -24,7 +25,7 @@ export class SecretKeys {
      *
      *
      *   **Note**: We only return the ID of the secret keys.
-     * @throws {Belvo.UnauthorizedError}
+     * @throws {@link Belvo.UnauthorizedError}
      */
     public async listSecretKeys(): Promise<Belvo.SecretKeysPaginatedResponse> {
         const _response = await core.fetcher({
@@ -34,7 +35,7 @@ export class SecretKeys {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.22",
+                "X-Fern-SDK-Version": "0.0.23",
             },
             contentType: "application/json",
             timeoutMs: 60000,
@@ -96,8 +97,8 @@ export class SecretKeys {
      *   Authorization: Basic username:password
      *   ```
      *
-     * @throws {Belvo.BadRequestError}
-     * @throws {Belvo.RequestTimeoutError}
+     * @throws {@link Belvo.BadRequestError}
+     * @throws {@link Belvo.RequestTimeoutError}
      */
     public async createSecretKeys(): Promise<Belvo.SecretKeys[]> {
         const _response = await core.fetcher({
@@ -107,7 +108,7 @@ export class SecretKeys {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.22",
+                "X-Fern-SDK-Version": "0.0.23",
             },
             contentType: "application/json",
             timeoutMs: 60000,
@@ -168,11 +169,9 @@ export class SecretKeys {
     }
 
     protected async _getAuthorizationHeader() {
-        const credentials = await core.Supplier.get(this.options.credentials);
-        if (credentials != null) {
-            return core.BasicAuth.toAuthorizationHeader(await core.Supplier.get(credentials));
-        }
-
-        return undefined;
+        return core.BasicAuth.toAuthorizationHeader({
+            username: await core.Supplier.get(this.options.username),
+            password: await core.Supplier.get(this.options.password),
+        });
     }
 }

@@ -13,7 +13,8 @@ import * as errors from "../../../../errors";
 export declare namespace BankAccounts {
     interface Options {
         environment?: environments.BelvoEnvironment | string;
-        credentials: core.Supplier<core.BasicAuth>;
+        username: core.Supplier<string>;
+        password: core.Supplier<string>;
     }
 }
 
@@ -22,7 +23,7 @@ export class BankAccounts {
 
     /**
      * List all bank accounts associated with your Belvo account.
-     * @throws {Belvo.UnauthorizedError}
+     * @throws {@link Belvo.UnauthorizedError}
      */
     public async listBankAccount(
         request: Belvo.ListBankAccountRequest = {}
@@ -115,7 +116,7 @@ export class BankAccounts {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.22",
+                "X-Fern-SDK-Version": "0.0.23",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -168,10 +169,10 @@ export class BankAccounts {
 
     /**
      * Create a new bank account from which to send or request funds.
-     * @throws {Belvo.BadRequestError}
-     * @throws {Belvo.UnauthorizedError}
-     * @throws {Belvo.RequestTimeoutError}
-     * @throws {Belvo.InternalServerError}
+     * @throws {@link Belvo.BadRequestError}
+     * @throws {@link Belvo.UnauthorizedError}
+     * @throws {@link Belvo.RequestTimeoutError}
+     * @throws {@link Belvo.InternalServerError}
      */
     public async createBankAccount(request: Belvo.CreateBankAccountRequest): Promise<Belvo.CreateBankAccountResponse> {
         const _response = await core.fetcher({
@@ -184,7 +185,7 @@ export class BankAccounts {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.22",
+                "X-Fern-SDK-Version": "0.0.23",
             },
             contentType: "application/json",
             body: await serializers.CreateBankAccountRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
@@ -267,8 +268,8 @@ export class BankAccounts {
 
     /**
      * Get the details about a specific bank account
-     * @throws {Belvo.UnauthorizedError}
-     * @throws {Belvo.NotFoundError}
+     * @throws {@link Belvo.UnauthorizedError}
+     * @throws {@link Belvo.NotFoundError}
      */
     public async detailBankAccount(id: string): Promise<Belvo.DetailBankAccountResponse> {
         const _response = await core.fetcher({
@@ -281,7 +282,7 @@ export class BankAccounts {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.22",
+                "X-Fern-SDK-Version": "0.0.23",
             },
             contentType: "application/json",
             timeoutMs: 60000,
@@ -342,11 +343,9 @@ export class BankAccounts {
     }
 
     protected async _getAuthorizationHeader() {
-        const credentials = await core.Supplier.get(this.options.credentials);
-        if (credentials != null) {
-            return core.BasicAuth.toAuthorizationHeader(await core.Supplier.get(credentials));
-        }
-
-        return undefined;
+        return core.BasicAuth.toAuthorizationHeader({
+            username: await core.Supplier.get(this.options.username),
+            password: await core.Supplier.get(this.options.password),
+        });
     }
 }

@@ -1,6 +1,6 @@
 {
     "name": "@fern-api/belvo",
-    "version": "0.0.22",
+    "version": "0.0.23",
     "private": false,
     "repository": "https://github.com/fern-belvo/belvo-node",
     "main": "./index.js",
@@ -14,8 +14,8 @@
         "@ungap/url-search-params": "0.2.2",
         "url-join": "4.0.1",
         "@types/url-join": "4.0.1",
-        "js-base64": "3.7.2",
-        "axios": "0.27.2"
+        "axios": "0.27.2",
+        "js-base64": "3.7.2"
     },
     "devDependencies": {
         "@types/node": "17.0.33",

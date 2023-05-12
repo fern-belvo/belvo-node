@@ -13,7 +13,8 @@ import * as errors from "../../../../errors";
 export declare namespace Accounts {
     interface Options {
         environment?: environments.BelvoEnvironment | string;
-        credentials: core.Supplier<core.BasicAuth>;
+        username: core.Supplier<string>;
+        password: core.Supplier<string>;
     }
 }
 
@@ -22,7 +23,7 @@ export class Accounts {
 
     /**
      * Get a paginated list of all existing accounts in your Belvo account. By default, we return up to 100 results per page.
-     * @throws {Belvo.UnauthorizedError}
+     * @throws {@link Belvo.UnauthorizedError}
      */
     public async listAccounts(request: Belvo.ListAccountsRequest = {}): Promise<Belvo.AccountsPaginatedResponse> {
         const {
@@ -225,7 +226,7 @@ export class Accounts {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.22",
+                "X-Fern-SDK-Version": "0.0.23",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -292,11 +293,11 @@ export class Accounts {
      *   > - `limit_date`: replaced by the `payment_day ` field.
      *   > - `no_interest_payment`
      *   > - `payment_due_day`
-     * @throws {Belvo.BadRequestError}
-     * @throws {Belvo.UnauthorizedError}
-     * @throws {Belvo.RequestTimeoutError}
-     * @throws {Belvo.PreconditionError}
-     * @throws {Belvo.InternalServerError}
+     * @throws {@link Belvo.BadRequestError}
+     * @throws {@link Belvo.UnauthorizedError}
+     * @throws {@link Belvo.RequestTimeoutError}
+     * @throws {@link Belvo.PreconditionError}
+     * @throws {@link Belvo.InternalServerError}
      */
     public async retrieveAccounts(request: Belvo.RetrieveAccountsRequest): Promise<Belvo.Account[]> {
         const { omit, fields, body: _body } = request;
@@ -316,7 +317,7 @@ export class Accounts {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.22",
+                "X-Fern-SDK-Version": "0.0.23",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -424,11 +425,11 @@ export class Accounts {
      *   > - `limit_date`: replaced by the `payment_day ` field.
      *   > - `no_interest_payment`
      *   > - `payment_due_day`
-     * @throws {Belvo.BadRequestError}
-     * @throws {Belvo.UnauthorizedError}
-     * @throws {Belvo.RequestTimeoutError}
-     * @throws {Belvo.PreconditionError}
-     * @throws {Belvo.InternalServerError}
+     * @throws {@link Belvo.BadRequestError}
+     * @throws {@link Belvo.UnauthorizedError}
+     * @throws {@link Belvo.RequestTimeoutError}
+     * @throws {@link Belvo.PreconditionError}
+     * @throws {@link Belvo.InternalServerError}
      */
     public async patchAccounts(request: Belvo.PatchAccountsRequest): Promise<Belvo.Account[]> {
         const { omit, fields, body: _body } = request;
@@ -448,7 +449,7 @@ export class Accounts {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.22",
+                "X-Fern-SDK-Version": "0.0.23",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -556,8 +557,8 @@ export class Accounts {
      *   > - `limit_date`: replaced by the `payment_day ` field.
      *   > - `no_interest_payment`
      *   > - `payment_due_day`
-     * @throws {Belvo.UnauthorizedError}
-     * @throws {Belvo.NotFoundError}
+     * @throws {@link Belvo.UnauthorizedError}
+     * @throws {@link Belvo.NotFoundError}
      */
     public async detailAccount(id: string, request: Belvo.DetailAccountRequest = {}): Promise<Belvo.Account> {
         const { omit, fields } = request;
@@ -577,7 +578,7 @@ export class Accounts {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.22",
+                "X-Fern-SDK-Version": "0.0.23",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -640,8 +641,8 @@ export class Accounts {
 
     /**
      * Delete a specific account and all associated transactions, as well as owners, from your Belvo account.
-     * @throws {Belvo.UnauthorizedError}
-     * @throws {Belvo.NotFoundError}
+     * @throws {@link Belvo.UnauthorizedError}
+     * @throws {@link Belvo.NotFoundError}
      */
     public async destroyAccount(id: string): Promise<void> {
         const _response = await core.fetcher({
@@ -651,7 +652,7 @@ export class Accounts {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.22",
+                "X-Fern-SDK-Version": "0.0.23",
             },
             contentType: "application/json",
             timeoutMs: 60000,
@@ -706,11 +707,9 @@ export class Accounts {
     }
 
     protected async _getAuthorizationHeader() {
-        const credentials = await core.Supplier.get(this.options.credentials);
-        if (credentials != null) {
-            return core.BasicAuth.toAuthorizationHeader(await core.Supplier.get(credentials));
-        }
-
-        return undefined;
+        return core.BasicAuth.toAuthorizationHeader({
+            username: await core.Supplier.get(this.options.username),
+            password: await core.Supplier.get(this.options.password),
+        });
     }
 }

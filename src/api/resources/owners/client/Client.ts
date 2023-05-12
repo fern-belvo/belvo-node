@@ -13,7 +13,8 @@ import * as errors from "../../../../errors";
 export declare namespace Owners {
     interface Options {
         environment?: environments.BelvoEnvironment | string;
-        credentials: core.Supplier<core.BasicAuth>;
+        username: core.Supplier<string>;
+        password: core.Supplier<string>;
     }
 }
 
@@ -22,7 +23,7 @@ export class Owners {
 
     /**
      * Get a paginated list of all existing owners in your Belvo account. We return up to 100 results per page.
-     * @throws {Belvo.UnauthorizedError}
+     * @throws {@link Belvo.UnauthorizedError}
      */
     public async listOwners(request: Belvo.ListOwnersRequest = {}): Promise<Belvo.OwnersPaginatedResponse> {
         const {
@@ -110,7 +111,7 @@ export class Owners {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.22",
+                "X-Fern-SDK-Version": "0.0.23",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -163,11 +164,11 @@ export class Owners {
 
     /**
      * Retrieve owner information from a specific link.
-     * @throws {Belvo.BadRequestError}
-     * @throws {Belvo.UnauthorizedError}
-     * @throws {Belvo.RequestTimeoutError}
-     * @throws {Belvo.PreconditionError}
-     * @throws {Belvo.InternalServerError}
+     * @throws {@link Belvo.BadRequestError}
+     * @throws {@link Belvo.UnauthorizedError}
+     * @throws {@link Belvo.RequestTimeoutError}
+     * @throws {@link Belvo.PreconditionError}
+     * @throws {@link Belvo.InternalServerError}
      */
     public async retrieveOwners(request: Belvo.RetrieveOwnersRequest): Promise<Belvo.Owner[]> {
         const { omit, fields, body: _body } = request;
@@ -187,7 +188,7 @@ export class Owners {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.22",
+                "X-Fern-SDK-Version": "0.0.23",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -281,11 +282,11 @@ export class Owners {
 
     /**
      * Used to resume an Owner retrieve session that was paused because an MFA token was required by the institution.
-     * @throws {Belvo.BadRequestError}
-     * @throws {Belvo.UnauthorizedError}
-     * @throws {Belvo.RequestTimeoutError}
-     * @throws {Belvo.PreconditionError}
-     * @throws {Belvo.InternalServerError}
+     * @throws {@link Belvo.BadRequestError}
+     * @throws {@link Belvo.UnauthorizedError}
+     * @throws {@link Belvo.RequestTimeoutError}
+     * @throws {@link Belvo.PreconditionError}
+     * @throws {@link Belvo.InternalServerError}
      */
     public async patchOwners(request: Belvo.PatchOwnersRequest): Promise<Belvo.Owner[]> {
         const { omit, fields, body: _body } = request;
@@ -305,7 +306,7 @@ export class Owners {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.22",
+                "X-Fern-SDK-Version": "0.0.23",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -399,8 +400,8 @@ export class Owners {
 
     /**
      * Get the details of a specific owner.
-     * @throws {Belvo.UnauthorizedError}
-     * @throws {Belvo.NotFoundError}
+     * @throws {@link Belvo.UnauthorizedError}
+     * @throws {@link Belvo.NotFoundError}
      */
     public async detailOwner(id: string, request: Belvo.DetailOwnerRequest = {}): Promise<Belvo.Owner> {
         const { omit, fields } = request;
@@ -420,7 +421,7 @@ export class Owners {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.22",
+                "X-Fern-SDK-Version": "0.0.23",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -483,8 +484,8 @@ export class Owners {
 
     /**
      * Delete a specific owner from your Belvo account.
-     * @throws {Belvo.UnauthorizedError}
-     * @throws {Belvo.NotFoundError}
+     * @throws {@link Belvo.UnauthorizedError}
+     * @throws {@link Belvo.NotFoundError}
      */
     public async destroyOwner(id: string): Promise<void> {
         const _response = await core.fetcher({
@@ -494,7 +495,7 @@ export class Owners {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.22",
+                "X-Fern-SDK-Version": "0.0.23",
             },
             contentType: "application/json",
             timeoutMs: 60000,
@@ -549,11 +550,9 @@ export class Owners {
     }
 
     protected async _getAuthorizationHeader() {
-        const credentials = await core.Supplier.get(this.options.credentials);
-        if (credentials != null) {
-            return core.BasicAuth.toAuthorizationHeader(await core.Supplier.get(credentials));
-        }
-
-        return undefined;
+        return core.BasicAuth.toAuthorizationHeader({
+            username: await core.Supplier.get(this.options.username),
+            password: await core.Supplier.get(this.options.password),
+        });
     }
 }

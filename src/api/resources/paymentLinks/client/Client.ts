@@ -13,7 +13,8 @@ import * as errors from "../../../../errors";
 export declare namespace PaymentLinks {
     interface Options {
         environment?: environments.BelvoEnvironment | string;
-        credentials: core.Supplier<core.BasicAuth>;
+        username: core.Supplier<string>;
+        password: core.Supplier<string>;
     }
 }
 
@@ -22,7 +23,7 @@ export class PaymentLinks {
 
     /**
      * List all payment links associated with your Belvo account. By default, we return up to 100 results per page.
-     * @throws {Belvo.UnauthorizedError}
+     * @throws {@link Belvo.UnauthorizedError}
      */
     public async listPaymentLinks(
         request: Belvo.ListPaymentLinksRequest = {}
@@ -95,7 +96,7 @@ export class PaymentLinks {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.22",
+                "X-Fern-SDK-Version": "0.0.23",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -148,10 +149,10 @@ export class PaymentLinks {
 
     /**
      * Create a new payment link to start a hosted-widget payment.
-     * @throws {Belvo.BadRequestError}
-     * @throws {Belvo.UnauthorizedError}
-     * @throws {Belvo.RequestTimeoutError}
-     * @throws {Belvo.InternalServerError}
+     * @throws {@link Belvo.BadRequestError}
+     * @throws {@link Belvo.UnauthorizedError}
+     * @throws {@link Belvo.RequestTimeoutError}
+     * @throws {@link Belvo.InternalServerError}
      */
     public async createPaymentlink(request: Belvo.CreatePaymentlinkRequest): Promise<Belvo.CreatePaymentlinkResponse> {
         const _response = await core.fetcher({
@@ -164,7 +165,7 @@ export class PaymentLinks {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.22",
+                "X-Fern-SDK-Version": "0.0.23",
             },
             contentType: "application/json",
             body: await serializers.CreatePaymentlinkRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
@@ -247,8 +248,8 @@ export class PaymentLinks {
 
     /**
      * Get the details about a payment link.
-     * @throws {Belvo.UnauthorizedError}
-     * @throws {Belvo.NotFoundError}
+     * @throws {@link Belvo.UnauthorizedError}
+     * @throws {@link Belvo.NotFoundError}
      */
     public async detailCreatePaymentlink(accessToken: string): Promise<Belvo.DetailCreatePaymentlinkResponse> {
         const _response = await core.fetcher({
@@ -261,7 +262,7 @@ export class PaymentLinks {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.22",
+                "X-Fern-SDK-Version": "0.0.23",
             },
             contentType: "application/json",
             timeoutMs: 60000,
@@ -322,11 +323,9 @@ export class PaymentLinks {
     }
 
     protected async _getAuthorizationHeader() {
-        const credentials = await core.Supplier.get(this.options.credentials);
-        if (credentials != null) {
-            return core.BasicAuth.toAuthorizationHeader(await core.Supplier.get(credentials));
-        }
-
-        return undefined;
+        return core.BasicAuth.toAuthorizationHeader({
+            username: await core.Supplier.get(this.options.username),
+            password: await core.Supplier.get(this.options.password),
+        });
     }
 }

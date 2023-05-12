@@ -12,7 +12,8 @@ import * as errors from "../../../../errors";
 export declare namespace IncomeVerification {
     interface Options {
         environment?: environments.BelvoEnvironment | string;
-        credentials: core.Supplier<core.BasicAuth>;
+        username: core.Supplier<string>;
+        password: core.Supplier<string>;
     }
 }
 
@@ -25,10 +26,10 @@ export class IncomeVerification {
      * <div style="background-color:#f4f6f8; border-left: 6px solid #5bc0de;padding: 12px;margin-left: 25px; border-radius: 4px; margin-right: 25px">
      * <strong>Note: </strong> Belvo can process up to 10,000 unique transactions per request.
      * </div>
-     * @throws {Belvo.BadRequestError}
-     * @throws {Belvo.UnauthorizedError}
-     * @throws {Belvo.ForbiddenError}
-     * @throws {Belvo.InternalServerError}
+     * @throws {@link Belvo.BadRequestError}
+     * @throws {@link Belvo.UnauthorizedError}
+     * @throws {@link Belvo.ForbiddenError}
+     * @throws {@link Belvo.InternalServerError}
      */
     public async verifyIncome(request: Belvo.EyodIncomeVerificationRequest): Promise<Belvo.Income[]> {
         const _response = await core.fetcher({
@@ -38,7 +39,7 @@ export class IncomeVerification {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.22",
+                "X-Fern-SDK-Version": "0.0.23",
             },
             contentType: "application/json",
             body: await serializers.EyodIncomeVerificationRequest.jsonOrThrow(request, {
@@ -122,11 +123,9 @@ export class IncomeVerification {
     }
 
     protected async _getAuthorizationHeader() {
-        const credentials = await core.Supplier.get(this.options.credentials);
-        if (credentials != null) {
-            return core.BasicAuth.toAuthorizationHeader(await core.Supplier.get(credentials));
-        }
-
-        return undefined;
+        return core.BasicAuth.toAuthorizationHeader({
+            username: await core.Supplier.get(this.options.username),
+            password: await core.Supplier.get(this.options.password),
+        });
     }
 }

@@ -13,7 +13,8 @@ import * as errors from "../../../../errors";
 export declare namespace Customers {
     interface Options {
         environment?: environments.BelvoEnvironment | string;
-        credentials: core.Supplier<core.BasicAuth>;
+        username: core.Supplier<string>;
+        password: core.Supplier<string>;
     }
 }
 
@@ -22,7 +23,7 @@ export class Customers {
 
     /**
      * List all customers associated with your Belvo account.
-     * @throws {Belvo.UnauthorizedError}
+     * @throws {@link Belvo.UnauthorizedError}
      */
     public async listCustomers(request: Belvo.ListCustomersRequest = {}): Promise<Belvo.CustomerPaginatedResponse> {
         const {
@@ -85,7 +86,7 @@ export class Customers {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.22",
+                "X-Fern-SDK-Version": "0.0.23",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -138,9 +139,9 @@ export class Customers {
 
     /**
      * Create a new customer to send or request funds.
-     * @throws {Belvo.BadRequestError}
-     * @throws {Belvo.UnauthorizedError}
-     * @throws {Belvo.InternalServerError}
+     * @throws {@link Belvo.BadRequestError}
+     * @throws {@link Belvo.UnauthorizedError}
+     * @throws {@link Belvo.InternalServerError}
      */
     public async createCustomer(request: Belvo.CreateCustomerRequest): Promise<Belvo.CreateCustomerResponse> {
         const _response = await core.fetcher({
@@ -150,7 +151,7 @@ export class Customers {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.22",
+                "X-Fern-SDK-Version": "0.0.23",
             },
             contentType: "application/json",
             body: await serializers.CreateCustomerRequest.jsonOrThrow(request, { unrecognizedObjectKeys: "strip" }),
@@ -223,8 +224,8 @@ export class Customers {
 
     /**
      * Get the details about a specific customer
-     * @throws {Belvo.UnauthorizedError}
-     * @throws {Belvo.NotFoundError}
+     * @throws {@link Belvo.UnauthorizedError}
+     * @throws {@link Belvo.NotFoundError}
      */
     public async detailCustomer(id: string): Promise<Belvo.DetailCustomerResponse> {
         const _response = await core.fetcher({
@@ -237,7 +238,7 @@ export class Customers {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.22",
+                "X-Fern-SDK-Version": "0.0.23",
             },
             contentType: "application/json",
             timeoutMs: 60000,
@@ -298,11 +299,9 @@ export class Customers {
     }
 
     protected async _getAuthorizationHeader() {
-        const credentials = await core.Supplier.get(this.options.credentials);
-        if (credentials != null) {
-            return core.BasicAuth.toAuthorizationHeader(await core.Supplier.get(credentials));
-        }
-
-        return undefined;
+        return core.BasicAuth.toAuthorizationHeader({
+            username: await core.Supplier.get(this.options.username),
+            password: await core.Supplier.get(this.options.password),
+        });
     }
 }
