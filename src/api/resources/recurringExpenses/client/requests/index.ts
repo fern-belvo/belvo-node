@@ -1,4 +1,4 @@
 export { ListRecurringExpensesRequest } from "./ListRecurringExpensesRequest";
-export { RetrieveRecurringExpensesRequest } from "./RetrieveRecurringExpensesRequest";
+export { RecurringExpensesRequest } from "./RecurringExpensesRequest";
 export { PatchRecurringExpensesRequest } from "./PatchRecurringExpensesRequest";
 export { DetailRecurringExpenseRequest } from "./DetailRecurringExpenseRequest";

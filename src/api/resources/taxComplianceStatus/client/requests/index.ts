@@ -1,3 +1,3 @@
 export { ListTaxComplianceStatusRequest } from "./ListTaxComplianceStatusRequest";
-export { RetrieveTaxComplianceStatusRequest } from "./RetrieveTaxComplianceStatusRequest";
+export { TaxComplianceStatusRequest } from "./TaxComplianceStatusRequest";
 export { DetailTaxComplianceStatusRequest } from "./DetailTaxComplianceStatusRequest";

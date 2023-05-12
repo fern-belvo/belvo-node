@@ -176,7 +176,7 @@ export class Balances {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.25",
+                "X-Fern-SDK-Version": "0.0.27",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -235,8 +235,8 @@ export class Balances {
      * @throws {@link Belvo.PreconditionError}
      * @throws {@link Belvo.InternalServerError}
      */
-    public async retrieveBalances(request: Belvo.RetrieveBalancesRequest): Promise<Belvo.Balance[]> {
-        const { omit, fields, body: _body } = request;
+    public async retrieveBalances(request: Belvo.BalancesRequest): Promise<Belvo.Balance[]> {
+        const { omit, fields, ..._body } = request;
         const _queryParams = new URLSearchParams();
         if (omit != null) {
             _queryParams.append("omit", omit);
@@ -253,7 +253,7 @@ export class Balances {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.25",
+                "X-Fern-SDK-Version": "0.0.27",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -371,7 +371,7 @@ export class Balances {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.25",
+                "X-Fern-SDK-Version": "0.0.27",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -486,7 +486,7 @@ export class Balances {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.25",
+                "X-Fern-SDK-Version": "0.0.27",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -560,7 +560,7 @@ export class Balances {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.25",
+                "X-Fern-SDK-Version": "0.0.27",
             },
             contentType: "application/json",
             timeoutMs: 60000,

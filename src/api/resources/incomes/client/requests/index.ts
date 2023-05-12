@@ -1,4 +1,4 @@
 export { ListIncomesRequest } from "./ListIncomesRequest";
-export { RetrieveIncomeRequest } from "./RetrieveIncomeRequest";
+export { IncomesRequest } from "./IncomesRequest";
 export { PatchIncomesRequest } from "./PatchIncomesRequest";
 export { DetailIncomeRequest } from "./DetailIncomeRequest";

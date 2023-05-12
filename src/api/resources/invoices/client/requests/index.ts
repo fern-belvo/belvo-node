@@ -1,4 +1,4 @@
 export { ListInvoicesRequest } from "./ListInvoicesRequest";
-export { RetrieveInvoicesRequest } from "./RetrieveInvoicesRequest";
+export { InvoicesRequest } from "./InvoicesRequest";
 export { PatchInvoicesRequest } from "./PatchInvoicesRequest";
 export { DetailInvoiceRequest } from "./DetailInvoiceRequest";

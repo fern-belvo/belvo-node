@@ -1,3 +1,3 @@
 export { ListTaxDeclarationsRequest } from "./ListTaxDeclarationsRequest";
-export { RetrieveTaxDeclarationsRequest } from "./RetrieveTaxDeclarationsRequest";
+export { TaxDeclarationsRequest } from "./TaxDeclarationsRequest";
 export { DetailTaxDeclarationRequest } from "./DetailTaxDeclarationRequest";

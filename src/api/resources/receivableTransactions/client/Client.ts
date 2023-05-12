@@ -136,7 +136,7 @@ export class ReceivableTransactions {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.25",
+                "X-Fern-SDK-Version": "0.0.27",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -195,9 +195,9 @@ export class ReceivableTransactions {
      * @throws {@link Belvo.InternalServerError}
      */
     public async retrieveReceivableTransactions(
-        request: Belvo.RetrieveReceivableTransactionsRequest
+        request: Belvo.ReceivableTransactionRequest
     ): Promise<Belvo.ReceivablesTransaction> {
-        const { omit, fields, body: _body } = request;
+        const { omit, fields, ..._body } = request;
         const _queryParams = new URLSearchParams();
         if (omit != null) {
             _queryParams.append("omit", omit);
@@ -217,7 +217,7 @@ export class ReceivableTransactions {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.25",
+                "X-Fern-SDK-Version": "0.0.27",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -330,7 +330,7 @@ export class ReceivableTransactions {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.25",
+                "X-Fern-SDK-Version": "0.0.27",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -407,7 +407,7 @@ export class ReceivableTransactions {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.25",
+                "X-Fern-SDK-Version": "0.0.27",
             },
             contentType: "application/json",
             timeoutMs: 60000,

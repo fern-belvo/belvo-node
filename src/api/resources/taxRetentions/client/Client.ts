@@ -93,7 +93,7 @@ export class TaxRetentions {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.25",
+                "X-Fern-SDK-Version": "0.0.27",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -151,8 +151,8 @@ export class TaxRetentions {
      * @throws {@link Belvo.RequestTimeoutError}
      * @throws {@link Belvo.InternalServerError}
      */
-    public async retrieveTaxRetentions(request: Belvo.RetrieveTaxRetentionsRequest): Promise<Belvo.TaxRetentions[]> {
-        const { omit, fields, body: _body } = request;
+    public async retrieveTaxRetentions(request: Belvo.TaxRetentionsRequest): Promise<Belvo.TaxRetentions[]> {
+        const { omit, fields, ..._body } = request;
         const _queryParams = new URLSearchParams();
         if (omit != null) {
             _queryParams.append("omit", omit);
@@ -169,7 +169,7 @@ export class TaxRetentions {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.25",
+                "X-Fern-SDK-Version": "0.0.27",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -280,7 +280,7 @@ export class TaxRetentions {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.25",
+                "X-Fern-SDK-Version": "0.0.27",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -357,7 +357,7 @@ export class TaxRetentions {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.25",
+                "X-Fern-SDK-Version": "0.0.27",
             },
             contentType: "application/json",
             timeoutMs: 60000,

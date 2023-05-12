@@ -1,3 +1,3 @@
 export { ListEmploymentRecordsRequest } from "./ListEmploymentRecordsRequest";
-export { RetrieveEmploymentRecordDetailsRequest } from "./RetrieveEmploymentRecordDetailsRequest";
+export { EmploymentRecordRequest } from "./EmploymentRecordRequest";
 export { DetailEmploymentRecordRequest } from "./DetailEmploymentRecordRequest";

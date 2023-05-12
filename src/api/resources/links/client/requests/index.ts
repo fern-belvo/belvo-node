@@ -1,6 +1,6 @@
 export { ListLinksRequest } from "./ListLinksRequest";
-export { RegisterLinkRequest } from "./RegisterLinkRequest";
+export { LinksRequest } from "./LinksRequest";
 export { PatchLinksRequest } from "./PatchLinksRequest";
 export { DetailLinkRequest } from "./DetailLinkRequest";
-export { UpdateLinkRequest } from "./UpdateLinkRequest";
-export { ChangeLinkAccessModeRequest } from "./ChangeLinkAccessModeRequest";
+export { LinksPutRequest } from "./LinksPutRequest";
+export { ChangeAccessMode } from "./ChangeAccessMode";

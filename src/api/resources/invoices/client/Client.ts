@@ -193,7 +193,7 @@ export class Invoices {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.25",
+                "X-Fern-SDK-Version": "0.0.27",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -253,10 +253,8 @@ export class Invoices {
      * @throws {@link Belvo.RequestTimeoutError}
      * @throws {@link Belvo.InternalServerError}
      */
-    public async retrieveInvoices(
-        request: Belvo.RetrieveInvoicesRequest
-    ): Promise<Belvo.RetrieveInvoicesResponseItem[]> {
-        const { omit, fields, body: _body } = request;
+    public async retrieveInvoices(request: Belvo.InvoicesRequest): Promise<Belvo.RetrieveInvoicesResponseItem[]> {
+        const { omit, fields, ..._body } = request;
         const _queryParams = new URLSearchParams();
         if (omit != null) {
             _queryParams.append("omit", omit);
@@ -273,7 +271,7 @@ export class Invoices {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.25",
+                "X-Fern-SDK-Version": "0.0.27",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -381,7 +379,7 @@ export class Invoices {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.25",
+                "X-Fern-SDK-Version": "0.0.27",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -499,7 +497,7 @@ export class Invoices {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.25",
+                "X-Fern-SDK-Version": "0.0.27",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -573,7 +571,7 @@ export class Invoices {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.25",
+                "X-Fern-SDK-Version": "0.0.27",
             },
             contentType: "application/json",
             timeoutMs: 60000,

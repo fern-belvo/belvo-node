@@ -1,3 +1,3 @@
 export { ListReceivableTransactionsRequest } from "./ListReceivableTransactionsRequest";
-export { RetrieveReceivableTransactionsRequest } from "./RetrieveReceivableTransactionsRequest";
+export { ReceivableTransactionRequest } from "./ReceivableTransactionRequest";
 export { DetailReceivableTransactionRequest } from "./DetailReceivableTransactionRequest";
