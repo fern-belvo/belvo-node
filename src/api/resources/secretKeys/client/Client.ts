@@ -12,8 +12,8 @@ import * as errors from "../../../../errors";
 export declare namespace SecretKeys {
     interface Options {
         environment?: environments.BelvoEnvironment | string;
-        username: core.Supplier<string>;
-        password: core.Supplier<string>;
+        secretId: core.Supplier<string>;
+        secretPassword: core.Supplier<string>;
     }
 }
 
@@ -35,7 +35,7 @@ export class SecretKeys {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.23",
+                "X-Fern-SDK-Version": "0.0.24",
             },
             contentType: "application/json",
             timeoutMs: 60000,
@@ -108,7 +108,7 @@ export class SecretKeys {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.23",
+                "X-Fern-SDK-Version": "0.0.24",
             },
             contentType: "application/json",
             timeoutMs: 60000,
@@ -170,8 +170,8 @@ export class SecretKeys {
 
     protected async _getAuthorizationHeader() {
         return core.BasicAuth.toAuthorizationHeader({
-            username: await core.Supplier.get(this.options.username),
-            password: await core.Supplier.get(this.options.password),
+            username: await core.Supplier.get(this.options.secretId),
+            password: await core.Supplier.get(this.options.secretPassword),
         });
     }
 }

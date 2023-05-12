@@ -36,8 +36,8 @@ import { PaymentTransactions } from "./api/resources/paymentTransactions/client/
 export declare namespace BelvoClient {
     interface Options {
         environment?: environments.BelvoEnvironment | string;
-        username: core.Supplier<string>;
-        password: core.Supplier<string>;
+        secretId: core.Supplier<string>;
+        secretPassword: core.Supplier<string>;
     }
 }
 
