@@ -30,13 +30,11 @@ const belvo = new BelvoClient({
 });
 
 const link = await belvo.links.registerLink({
-    body: {
-        institution: "banamex_mx_retail",
-        username: "username",
-        password: "password",
-        accessMode: Belvo.EnumLinkAccessModeRequest.Single,
-        credentialsStorage: "30d",
-    },
+    institution: "banamex_mx_retail",
+    username: "username",
+    password: "password",
+    accessMode: Belvo.EnumLinkAccessModeRequest.Single,
+    credentialsStorage: "30d",
 });
 ```
 
