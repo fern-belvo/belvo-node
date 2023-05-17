@@ -6,11 +6,23 @@ import * as serializers from "..";
 import * as Belvo from "../../api";
 import * as core from "../../core";
 
-export const TaxReturnsPersonalMonthlyPaginated: core.serialization.Schema<
+export const TaxReturnsPersonalMonthlyPaginated: core.serialization.ObjectSchema<
     serializers.TaxReturnsPersonalMonthlyPaginated.Raw,
     Belvo.TaxReturnsPersonalMonthlyPaginated
-> = core.serialization.record(core.serialization.string(), core.serialization.unknown());
+> = core.serialization.object({
+    count: core.serialization.number().optional(),
+    next: core.serialization.string().optional(),
+    previous: core.serialization.string().optional(),
+    results: core.serialization
+        .list(core.serialization.lazyObject(async () => (await import("..")).TaxReturnPersonalMonthly))
+        .optional(),
+});
 
 export declare namespace TaxReturnsPersonalMonthlyPaginated {
-    type Raw = Record<string, unknown>;
+    interface Raw {
+        count?: number | null;
+        next?: string | null;
+        previous?: string | null;
+        results?: serializers.TaxReturnPersonalMonthly.Raw[] | null;
+    }
 }

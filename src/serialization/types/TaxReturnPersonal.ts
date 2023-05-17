@@ -6,9 +6,59 @@ import * as serializers from "..";
 import * as Belvo from "../../api";
 import * as core from "../../core";
 
-export const TaxReturnPersonal: core.serialization.Schema<serializers.TaxReturnPersonal.Raw, Belvo.TaxReturnPersonal> =
-    core.serialization.record(core.serialization.string(), core.serialization.unknown());
+export const TaxReturnPersonal: core.serialization.ObjectSchema<
+    serializers.TaxReturnPersonal.Raw,
+    Belvo.TaxReturnPersonal
+> = core.serialization.object({
+    id: core.serialization.string().optional(),
+    link: core.serialization.string().optional(),
+    collectedAt: core.serialization.property("collected_at", core.serialization.string().optional()),
+    createdAt: core.serialization.property("created_at", core.serialization.string().optional()),
+    informacionGeneral: core.serialization.property(
+        "informacion_general",
+        core.serialization.record(core.serialization.string(), core.serialization.unknown()).optional()
+    ),
+    sueldosSalarios: core.serialization.property(
+        "sueldos_salarios",
+        core.serialization.record(core.serialization.string(), core.serialization.unknown()).optional()
+    ),
+    serviciosProfesionales: core.serialization.property(
+        "servicios_profesionales",
+        core.serialization.record(core.serialization.string(), core.serialization.unknown()).optional()
+    ),
+    deduccionesPersonales: core.serialization.property(
+        "deducciones_personales",
+        core.serialization.record(core.serialization.string(), core.serialization.unknown()).optional()
+    ),
+    determinacionImpuesto: core.serialization.property(
+        "determinacion_impuesto",
+        core.serialization.record(core.serialization.string(), core.serialization.unknown()).optional()
+    ),
+    retenciones: core.serialization.record(core.serialization.string(), core.serialization.unknown()).optional(),
+    dividendos: core.serialization.record(core.serialization.string(), core.serialization.unknown()).optional(),
+    datosInformativos: core.serialization.property(
+        "datos_informativos",
+        core.serialization.record(core.serialization.string(), core.serialization.unknown()).optional()
+    ),
+    pdf: core.serialization.string().optional(),
+    receiptPdf: core.serialization.property("receipt_pdf", core.serialization.string().optional()),
+});
 
 export declare namespace TaxReturnPersonal {
-    type Raw = Record<string, unknown>;
+    interface Raw {
+        id?: string | null;
+        link?: string | null;
+        collected_at?: string | null;
+        created_at?: string | null;
+        informacion_general?: Record<string, unknown> | null;
+        sueldos_salarios?: Record<string, unknown> | null;
+        servicios_profesionales?: Record<string, unknown> | null;
+        deducciones_personales?: Record<string, unknown> | null;
+        determinacion_impuesto?: Record<string, unknown> | null;
+        retenciones?: Record<string, unknown> | null;
+        dividendos?: Record<string, unknown> | null;
+        datos_informativos?: Record<string, unknown> | null;
+        pdf?: string | null;
+        receipt_pdf?: string | null;
+    }
 }

@@ -10,10 +10,10 @@ export const RetrieveTaxReturnsResponseItem: core.serialization.Schema<
     serializers.RetrieveTaxReturnsResponseItem.Raw,
     Belvo.RetrieveTaxReturnsResponseItem
 > = core.serialization.undiscriminatedUnion([
-    core.serialization.lazy(async () => (await import("..")).TaxReturnPersonal),
-    core.serialization.lazy(async () => (await import("..")).TaxReturnPersonalMonthly),
-    core.serialization.lazy(async () => (await import("..")).TaxReturnBusiness),
-    core.serialization.lazy(async () => (await import("..")).TaxReturnBusinessMonthly),
+    core.serialization.lazyObject(async () => (await import("..")).TaxReturnPersonal),
+    core.serialization.lazyObject(async () => (await import("..")).TaxReturnPersonalMonthly),
+    core.serialization.lazyObject(async () => (await import("..")).TaxReturnBusiness),
+    core.serialization.lazyObject(async () => (await import("..")).TaxReturnBusinessMonthly),
 ]);
 
 export declare namespace RetrieveTaxReturnsResponseItem {

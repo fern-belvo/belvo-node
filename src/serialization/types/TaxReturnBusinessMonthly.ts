@@ -6,11 +6,50 @@ import * as serializers from "..";
 import * as Belvo from "../../api";
 import * as core from "../../core";
 
-export const TaxReturnBusinessMonthly: core.serialization.Schema<
+export const TaxReturnBusinessMonthly: core.serialization.ObjectSchema<
     serializers.TaxReturnBusinessMonthly.Raw,
     Belvo.TaxReturnBusinessMonthly
-> = core.serialization.record(core.serialization.string(), core.serialization.unknown());
+> = core.serialization.object({
+    id: core.serialization.string().optional(),
+    collectedAt: core.serialization.property("collected_at", core.serialization.string().optional()),
+    createdAt: core.serialization.property("created_at", core.serialization.string().optional()),
+    informacionGeneral: core.serialization.property(
+        "informacion_general",
+        core.serialization.record(core.serialization.string(), core.serialization.unknown()).optional()
+    ),
+    determinacionIsr: core.serialization.property(
+        "determinacion_isr",
+        core.serialization.record(core.serialization.string(), core.serialization.unknown()).optional()
+    ),
+    detallePagoIsr: core.serialization.property(
+        "detalle_pago_isr",
+        core.serialization.record(core.serialization.string(), core.serialization.unknown()).optional()
+    ),
+    determinacionIva: core.serialization.property(
+        "determinacion_iva",
+        core.serialization.record(core.serialization.string(), core.serialization.unknown()).optional()
+    ),
+    detallePagoIva: core.serialization.property(
+        "detalle_pago_iva",
+        core.serialization.record(core.serialization.string(), core.serialization.unknown()).optional()
+    ),
+    pdf: core.serialization.string().optional(),
+    receiptPdf: core.serialization.property("receipt_pdf", core.serialization.string().optional()),
+    type: core.serialization.string().optional(),
+});
 
 export declare namespace TaxReturnBusinessMonthly {
-    type Raw = Record<string, unknown>;
+    interface Raw {
+        id?: string | null;
+        collected_at?: string | null;
+        created_at?: string | null;
+        informacion_general?: Record<string, unknown> | null;
+        determinacion_isr?: Record<string, unknown> | null;
+        detalle_pago_isr?: Record<string, unknown> | null;
+        determinacion_iva?: Record<string, unknown> | null;
+        detalle_pago_iva?: Record<string, unknown> | null;
+        pdf?: string | null;
+        receipt_pdf?: string | null;
+        type?: string | null;
+    }
 }

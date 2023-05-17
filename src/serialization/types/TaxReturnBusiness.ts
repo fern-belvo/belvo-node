@@ -6,9 +6,73 @@ import * as serializers from "..";
 import * as Belvo from "../../api";
 import * as core from "../../core";
 
-export const TaxReturnBusiness: core.serialization.Schema<serializers.TaxReturnBusiness.Raw, Belvo.TaxReturnBusiness> =
-    core.serialization.record(core.serialization.string(), core.serialization.unknown());
+export const TaxReturnBusiness: core.serialization.ObjectSchema<
+    serializers.TaxReturnBusiness.Raw,
+    Belvo.TaxReturnBusiness
+> = core.serialization.object({
+    id: core.serialization.string().optional(),
+    collectedAt: core.serialization.property("collected_at", core.serialization.string().optional()),
+    createdAt: core.serialization.property("created_at", core.serialization.string().optional()),
+    informacionGeneral: core.serialization.property(
+        "informacion_general",
+        core.serialization.record(core.serialization.string(), core.serialization.unknown()).optional()
+    ),
+    datosAdicionales: core.serialization.property(
+        "datos_adicionales",
+        core.serialization.record(core.serialization.string(), core.serialization.unknown()).optional()
+    ),
+    estadoResultados: core.serialization.property(
+        "estado_resultados",
+        core.serialization.record(core.serialization.string(), core.serialization.unknown()).optional()
+    ),
+    estadoPosicionFinancieraBalance: core.serialization.property(
+        "estado_posicion_financiera_balance",
+        core.serialization.record(core.serialization.string(), core.serialization.unknown()).optional()
+    ),
+    conciliacionEntreResultadoContableFiscal: core.serialization.property(
+        "conciliacion_entre_resultado_contable_fiscal",
+        core.serialization.record(core.serialization.string(), core.serialization.unknown()).optional()
+    ),
+    deduccionesAutorizadas: core.serialization.property(
+        "deducciones_autorizadas",
+        core.serialization.record(core.serialization.string(), core.serialization.unknown()).optional()
+    ),
+    cifrasCierreEjercicio: core.serialization.property(
+        "cifras_cierre_ejercicio",
+        core.serialization.record(core.serialization.string(), core.serialization.unknown()).optional()
+    ),
+    determinacionDelImpuestoSobreLaRenta: core.serialization.property(
+        "determinacion_del_impuesto_sobre_la_renta",
+        core.serialization.record(core.serialization.string(), core.serialization.unknown()).optional()
+    ),
+    dividendosOUtilidadesDistribuidos: core.serialization.property(
+        "dividendos_o_utilidades_distribuidos",
+        core.serialization.record(core.serialization.string(), core.serialization.unknown()).optional()
+    ),
+    detallePagoR1IsrPersonasMorales: core.serialization.property(
+        "detalle_pago_r1_isr_personas_morales",
+        core.serialization.record(core.serialization.string(), core.serialization.unknown()).optional()
+    ),
+    pdf: core.serialization.string().optional(),
+    receiptPdf: core.serialization.property("receipt_pdf", core.serialization.string().optional()),
+});
 
 export declare namespace TaxReturnBusiness {
-    type Raw = Record<string, unknown>;
+    interface Raw {
+        id?: string | null;
+        collected_at?: string | null;
+        created_at?: string | null;
+        informacion_general?: Record<string, unknown> | null;
+        datos_adicionales?: Record<string, unknown> | null;
+        estado_resultados?: Record<string, unknown> | null;
+        estado_posicion_financiera_balance?: Record<string, unknown> | null;
+        conciliacion_entre_resultado_contable_fiscal?: Record<string, unknown> | null;
+        deducciones_autorizadas?: Record<string, unknown> | null;
+        cifras_cierre_ejercicio?: Record<string, unknown> | null;
+        determinacion_del_impuesto_sobre_la_renta?: Record<string, unknown> | null;
+        dividendos_o_utilidades_distribuidos?: Record<string, unknown> | null;
+        detalle_pago_r1_isr_personas_morales?: Record<string, unknown> | null;
+        pdf?: string | null;
+        receipt_pdf?: string | null;
+    }
 }

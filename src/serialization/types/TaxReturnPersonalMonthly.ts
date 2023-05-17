@@ -6,11 +6,34 @@ import * as serializers from "..";
 import * as Belvo from "../../api";
 import * as core from "../../core";
 
-export const TaxReturnPersonalMonthly: core.serialization.Schema<
+export const TaxReturnPersonalMonthly: core.serialization.ObjectSchema<
     serializers.TaxReturnPersonalMonthly.Raw,
     Belvo.TaxReturnPersonalMonthly
-> = core.serialization.record(core.serialization.string(), core.serialization.unknown());
+> = core.serialization.object({
+    id: core.serialization.string().optional(),
+    collectedAt: core.serialization.property("collected_at", core.serialization.string().optional()),
+    createdAt: core.serialization.property("created_at", core.serialization.string().optional()),
+    informacionGeneral: core.serialization.property(
+        "informacion_general",
+        core.serialization.record(core.serialization.string(), core.serialization.unknown()).optional()
+    ),
+    isr: core.serialization.record(core.serialization.string(), core.serialization.unknown()).optional(),
+    iva: core.serialization.record(core.serialization.string(), core.serialization.unknown()).optional(),
+    pdf: core.serialization.string().optional(),
+    receiptPdf: core.serialization.property("receipt_pdf", core.serialization.string().optional()),
+    type: core.serialization.string(),
+});
 
 export declare namespace TaxReturnPersonalMonthly {
-    type Raw = Record<string, unknown>;
+    interface Raw {
+        id?: string | null;
+        collected_at?: string | null;
+        created_at?: string | null;
+        informacion_general?: Record<string, unknown> | null;
+        isr?: Record<string, unknown> | null;
+        iva?: Record<string, unknown> | null;
+        pdf?: string | null;
+        receipt_pdf?: string | null;
+        type: string;
+    }
 }
