@@ -9,8 +9,8 @@ import * as core from "../../core";
 export const EnumInvoiceDianPaymentMethod: core.serialization.Schema<
     serializers.EnumInvoiceDianPaymentMethod.Raw,
     Belvo.EnumInvoiceDianPaymentMethod
-> = core.serialization.string().optional();
+> = core.serialization.string();
 
 export declare namespace EnumInvoiceDianPaymentMethod {
-    type Raw = string | null | undefined;
+    type Raw = string;
 }

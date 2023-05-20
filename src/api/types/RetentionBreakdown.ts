@@ -23,5 +23,5 @@ export interface RetentionBreakdown {
      *
      */
     retainedAmount?: number;
-    paymentStatus: Belvo.EnumTaxRetentionPaymentStatus;
+    paymentStatus?: Belvo.EnumTaxRetentionPaymentStatus;
 }

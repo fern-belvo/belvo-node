@@ -29,13 +29,13 @@ export declare namespace Link {
     interface Raw {
         id?: string | null;
         institution?: string | null;
-        access_mode?: (serializers.EnumLinkAccessModeResponse.Raw | undefined) | null;
+        access_mode?: serializers.EnumLinkAccessModeResponse.Raw | null;
         last_accessed_at?: string | null;
         created_at?: string | null;
         external_id?: string | null;
         institution_user_id?: string | null;
         status?: serializers.EnumLinkStatus.Raw | null;
         created_by?: string | null;
-        refresh_rate?: (serializers.EnumLinkRefreshRate.Raw | undefined) | null;
+        refresh_rate?: serializers.EnumLinkRefreshRate.Raw | null;
     }
 }

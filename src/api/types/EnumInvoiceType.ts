@@ -7,4 +7,4 @@
  * - `OUTFLOW` indicates a sent invoice. - `INFLOW` indicates a received invoice.
  *
  */
-export type EnumInvoiceType = string | undefined;
+export type EnumInvoiceType = string;

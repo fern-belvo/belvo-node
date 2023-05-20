@@ -12,4 +12,4 @@
  *   - `null`
  *
  */
-export type EnumInvoiceDianPaymentMethod = string | undefined;
+export type EnumInvoiceDianPaymentMethod = string;

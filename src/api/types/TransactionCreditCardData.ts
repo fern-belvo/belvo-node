@@ -4,6 +4,9 @@
 
 import * as Belvo from "..";
 
+/**
+ * Additional data provided by the institution for credit card transactions.
+ */
 export interface TransactionCreditCardData {
     /** The ISO-8601 timestamp when the data point was collected. */
     collectedAt?: string;
@@ -16,7 +19,7 @@ export interface TransactionCreditCardData {
      *
      */
     billName?: string;
-    billStatus?: Belvo.EnumTransactionBillStatus | undefined;
+    billStatus?: Belvo.EnumTransactionBillStatus;
     /** The aggregate bill amount, as of `collected_at`. */
     billAmount?: number;
     /** The total amount of the previous month's bill, if available. */

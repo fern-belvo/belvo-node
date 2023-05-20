@@ -13,7 +13,7 @@ export const Transaction: core.serialization.ObjectSchema<serializers.Transactio
             "internal_identification",
             core.serialization.string().optional()
         ),
-        account: core.serialization.lazyObject(async () => (await import("..")).Account),
+        account: core.serialization.lazyObject(async () => (await import("..")).Account).optional(),
         collectedAt: core.serialization.property("collected_at", core.serialization.string().optional()),
         createdAt: core.serialization.property("created_at", core.serialization.string().optional()),
         valueDate: core.serialization.property("value_date", core.serialization.string().optional()),
@@ -23,12 +23,12 @@ export const Transaction: core.serialization.ObjectSchema<serializers.Transactio
         currency: core.serialization.string().optional(),
         description: core.serialization.string().optional(),
         observations: core.serialization.string().optional(),
-        merchant: core.serialization.lazyObject(async () => (await import("..")).TransactionMerchantData),
-        category: core.serialization.lazy(async () => (await import("..")).EnumTransactionCategory),
+        merchant: core.serialization.lazyObject(async () => (await import("..")).TransactionMerchantData).optional(),
+        category: core.serialization.lazy(async () => (await import("..")).EnumTransactionCategory).optional(),
         subcategory: core.serialization.lazy(async () => (await import("..")).EnumTransactionSubcategory).optional(),
         reference: core.serialization.string().optional(),
-        type: core.serialization.lazy(async () => (await import("..")).EnumTransactionType),
-        status: core.serialization.lazy(async () => (await import("..")).EnumTransactionStatus),
+        type: core.serialization.lazy(async () => (await import("..")).EnumTransactionType).optional(),
+        status: core.serialization.lazy(async () => (await import("..")).EnumTransactionStatus).optional(),
         creditCardData: core.serialization.property(
             "credit_card_data",
             core.serialization.lazyObject(async () => (await import("..")).TransactionCreditCardData).optional()
@@ -39,7 +39,7 @@ export declare namespace Transaction {
     interface Raw {
         id?: string | null;
         internal_identification?: string | null;
-        account: serializers.Account.Raw;
+        account?: serializers.Account.Raw | null;
         collected_at?: string | null;
         created_at?: string | null;
         value_date?: string | null;
@@ -49,12 +49,12 @@ export declare namespace Transaction {
         currency?: string | null;
         description?: string | null;
         observations?: string | null;
-        merchant: serializers.TransactionMerchantData.Raw;
-        category?: serializers.EnumTransactionCategory.Raw;
-        subcategory?: (serializers.EnumTransactionSubcategory.Raw | undefined) | null;
+        merchant?: serializers.TransactionMerchantData.Raw | null;
+        category?: serializers.EnumTransactionCategory.Raw | null;
+        subcategory?: serializers.EnumTransactionSubcategory.Raw | null;
         reference?: string | null;
-        type?: serializers.EnumTransactionType.Raw;
-        status?: serializers.EnumTransactionStatus.Raw;
+        type?: serializers.EnumTransactionType.Raw | null;
+        status?: serializers.EnumTransactionStatus.Raw | null;
         credit_card_data?: serializers.TransactionCreditCardData.Raw | null;
     }
 }

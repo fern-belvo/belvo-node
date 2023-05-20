@@ -17,7 +17,7 @@ export interface EyodIncomeVerificationBodyRequest {
     valueDate: string;
     /** The description of the income. */
     description: string;
-    type: Belvo.EnumIncomeVerificationType;
+    type?: Belvo.EnumIncomeVerificationType;
     /** The income amount. */
     amount: number;
     /**

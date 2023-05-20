@@ -24,7 +24,7 @@ export declare namespace TransactionCreditCardData {
     interface Raw {
         collected_at?: string | null;
         bill_name?: string | null;
-        bill_status?: (serializers.EnumTransactionBillStatus.Raw | undefined) | null;
+        bill_status?: serializers.EnumTransactionBillStatus.Raw | null;
         bill_amount?: number | null;
         previous_bill_total?: string | null;
     }

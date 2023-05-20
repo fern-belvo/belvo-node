@@ -26,4 +26,4 @@
  *   - `null`
  *
  */
-export type EnumCategorizationTransactionCategory = string | undefined;
+export type EnumCategorizationTransactionCategory = string;

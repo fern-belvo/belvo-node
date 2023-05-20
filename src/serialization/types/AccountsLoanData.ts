@@ -25,7 +25,7 @@ export const AccountsLoanData: core.serialization.ObjectSchema<
             .optional()
     ),
     fees: core.serialization
-        .list(core.serialization.lazyObject(async () => (await import("..")).AccountsLoanDataFees))
+        .list(core.serialization.lazyObject(async () => (await import("..")).AccountsLoanDataFees).optional())
         .optional(),
     numberOfInstallmentsTotal: core.serialization.property(
         "number_of_installments_total",
@@ -59,7 +59,7 @@ export declare namespace AccountsLoanData {
         outstanding_balance?: number | null;
         monthly_payment?: number | null;
         interest_rates?: serializers.AccountsLoanDataInterestRate.Raw[] | null;
-        fees?: serializers.AccountsLoanDataFees.Raw[] | null;
+        fees?: (serializers.AccountsLoanDataFees.Raw | null | undefined)[] | null;
         number_of_installments_total?: number | null;
         number_of_installments_outstanding?: number | null;
         contract_start_date?: string | null;

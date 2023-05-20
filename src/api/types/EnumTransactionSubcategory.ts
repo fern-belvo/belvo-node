@@ -90,4 +90,4 @@
  *   - `Other`
  *   - `null`
  */
-export type EnumTransactionSubcategory = string | undefined;
+export type EnumTransactionSubcategory = string;

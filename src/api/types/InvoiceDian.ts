@@ -32,7 +32,7 @@ export interface InvoiceDian {
      *
      */
     expirationDate?: string;
-    invoiceType: Belvo.EnumInvoiceDianInvoiceType;
+    invoiceType?: Belvo.EnumInvoiceDianInvoiceType;
     type?: Belvo.EnumInvoiceType;
     /** The fiscal ID of the invoice sender. */
     senderId?: string;
@@ -80,7 +80,7 @@ export interface InvoiceDian {
      *
      */
     paymentTypeDescription?: string;
-    paymentMethod?: Belvo.EnumInvoiceDianPaymentMethod | undefined;
+    paymentMethod?: Belvo.EnumInvoiceDianPaymentMethod;
     /**
      * The description of the payment method used for this invoice.
      *
@@ -143,7 +143,7 @@ export interface InvoiceDian {
      *
      */
     payments: Belvo.InvoicesPaymentsDian[];
-    payroll: Belvo.InvoicesPayrollDian;
+    payroll?: Belvo.InvoicesPayrollDian;
     /**
      * **Note**: This field is not applicable for DIAN Colombia and will return `null`.
      *

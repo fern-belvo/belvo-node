@@ -11,14 +11,14 @@ export const AccountsLoanDataInterestRate: core.serialization.ObjectSchema<
     Belvo.AccountsLoanDataInterestRate
 > = core.serialization.object({
     name: core.serialization.string().optional(),
-    type: core.serialization.lazy(async () => (await import("..")).EnumLoanDataInterestRateType),
+    type: core.serialization.lazy(async () => (await import("..")).EnumLoanDataInterestRateType).optional(),
     value: core.serialization.number().optional(),
 });
 
 export declare namespace AccountsLoanDataInterestRate {
     interface Raw {
         name?: string | null;
-        type: serializers.EnumLoanDataInterestRateType.Raw;
+        type?: serializers.EnumLoanDataInterestRateType.Raw | null;
         value?: number | null;
     }
 }

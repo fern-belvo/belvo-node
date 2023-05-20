@@ -226,7 +226,7 @@ export class Accounts {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.33",
+                "X-Fern-SDK-Version": "0.0.34",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -299,7 +299,7 @@ export class Accounts {
      * @throws {@link Belvo.PreconditionError}
      * @throws {@link Belvo.InternalServerError}
      */
-    public async retrieveAccounts(request: Belvo.RetrieveAccountsRequest): Promise<Belvo.Account[]> {
+    public async retrieveAccounts(request: Belvo.RetrieveAccountsRequest): Promise<(Belvo.Account | undefined)[]> {
         const { omit, fields, body: _body } = request;
         const _queryParams = new URLSearchParams();
         if (omit != null) {
@@ -317,7 +317,7 @@ export class Accounts {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.33",
+                "X-Fern-SDK-Version": "0.0.34",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -431,7 +431,7 @@ export class Accounts {
      * @throws {@link Belvo.PreconditionError}
      * @throws {@link Belvo.InternalServerError}
      */
-    public async patchAccounts(request: Belvo.PatchAccountsRequest): Promise<Belvo.Account[]> {
+    public async patchAccounts(request: Belvo.PatchAccountsRequest): Promise<(Belvo.Account | undefined)[]> {
         const { omit, fields, body: _body } = request;
         const _queryParams = new URLSearchParams();
         if (omit != null) {
@@ -449,7 +449,7 @@ export class Accounts {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.33",
+                "X-Fern-SDK-Version": "0.0.34",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
@@ -560,7 +560,10 @@ export class Accounts {
      * @throws {@link Belvo.UnauthorizedError}
      * @throws {@link Belvo.NotFoundError}
      */
-    public async detailAccount(id: string, request: Belvo.DetailAccountRequest = {}): Promise<Belvo.Account> {
+    public async detailAccount(
+        id: string,
+        request: Belvo.DetailAccountRequest = {}
+    ): Promise<Belvo.Account | undefined> {
         const { omit, fields } = request;
         const _queryParams = new URLSearchParams();
         if (omit != null) {
@@ -578,14 +581,14 @@ export class Accounts {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.33",
+                "X-Fern-SDK-Version": "0.0.34",
             },
             contentType: "application/json",
             queryParameters: _queryParams,
             timeoutMs: 60000,
         });
         if (_response.ok) {
-            return await serializers.Account.parseOrThrow(_response.body, {
+            return await serializers.accounts.detailAccount.Response.parseOrThrow(_response.body, {
                 unrecognizedObjectKeys: "passthrough",
                 allowUnrecognizedUnionMembers: true,
                 allowUnrecognizedEnumValues: true,
@@ -652,7 +655,7 @@ export class Accounts {
                 Authorization: await this._getAuthorizationHeader(),
                 "X-Fern-Language": "JavaScript",
                 "X-Fern-SDK-Name": "@fern-api/belvo",
-                "X-Fern-SDK-Version": "0.0.33",
+                "X-Fern-SDK-Version": "0.0.34",
             },
             contentType: "application/json",
             timeoutMs: 60000,

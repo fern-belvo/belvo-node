@@ -12,7 +12,7 @@ export interface Link {
      *
      */
     institution?: string;
-    accessMode?: Belvo.EnumLinkAccessModeResponse | undefined;
+    accessMode?: Belvo.EnumLinkAccessModeResponse;
     /** The ISO-8601 timestamp of Belvo's most recent successful access to the institution for the given link. */
     lastAccessedAt?: string;
     /** The ISO-8601 timestamp of when the data point was last updated in Belvo's database. */
@@ -30,5 +30,5 @@ export interface Link {
     status?: Belvo.EnumLinkStatus;
     /** The unique ID for the user that created this link. */
     createdBy?: string;
-    refreshRate?: Belvo.EnumLinkRefreshRate | undefined;
+    refreshRate?: Belvo.EnumLinkRefreshRate;
 }

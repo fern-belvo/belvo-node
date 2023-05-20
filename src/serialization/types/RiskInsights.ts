@@ -14,23 +14,23 @@ export const RiskInsights: core.serialization.ObjectSchema<serializers.RiskInsig
         createdAt: core.serialization.property("created_at", core.serialization.string()),
         transactionsMetrics: core.serialization.property(
             "transactions_metrics",
-            core.serialization.lazyObject(async () => (await import("..")).RiskInsightsTransactionMetrics)
+            core.serialization.lazyObject(async () => (await import("..")).RiskInsightsTransactionMetrics).optional()
         ),
         balancesMetrics: core.serialization.property(
             "balances_metrics",
-            core.serialization.lazyObject(async () => (await import("..")).RiskInsightsBalanceMetrics)
+            core.serialization.lazyObject(async () => (await import("..")).RiskInsightsBalanceMetrics).optional()
         ),
         cashflowMetrics: core.serialization.property(
             "cashflow_metrics",
-            core.serialization.lazyObject(async () => (await import("..")).RiskInsightsCashflowMetrics)
+            core.serialization.lazyObject(async () => (await import("..")).RiskInsightsCashflowMetrics).optional()
         ),
         creditCardsMetrics: core.serialization.property(
             "credit_cards_metrics",
-            core.serialization.lazyObject(async () => (await import("..")).RiskInsightsCreditCardMetrics)
+            core.serialization.lazyObject(async () => (await import("..")).RiskInsightsCreditCardMetrics).optional()
         ),
         loansMetrics: core.serialization.property(
             "loans_metrics",
-            core.serialization.lazyObject(async () => (await import("..")).RiskInsightsLoansMetrics)
+            core.serialization.lazyObject(async () => (await import("..")).RiskInsightsLoansMetrics).optional()
         ),
     });
 
@@ -40,10 +40,10 @@ export declare namespace RiskInsights {
         link: string;
         accounts?: string[] | null;
         created_at: string;
-        transactions_metrics: serializers.RiskInsightsTransactionMetrics.Raw;
-        balances_metrics: serializers.RiskInsightsBalanceMetrics.Raw;
-        cashflow_metrics: serializers.RiskInsightsCashflowMetrics.Raw;
-        credit_cards_metrics: serializers.RiskInsightsCreditCardMetrics.Raw;
-        loans_metrics: serializers.RiskInsightsLoansMetrics.Raw;
+        transactions_metrics?: serializers.RiskInsightsTransactionMetrics.Raw | null;
+        balances_metrics?: serializers.RiskInsightsBalanceMetrics.Raw | null;
+        cashflow_metrics?: serializers.RiskInsightsCashflowMetrics.Raw | null;
+        credit_cards_metrics?: serializers.RiskInsightsCreditCardMetrics.Raw | null;
+        loans_metrics?: serializers.RiskInsightsLoansMetrics.Raw | null;
     }
 }

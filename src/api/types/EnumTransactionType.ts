@@ -9,4 +9,4 @@
  * - `null` when no information was present regarding the direction of the transaction.
  *
  */
-export type EnumTransactionType = string | undefined;
+export type EnumTransactionType = string;

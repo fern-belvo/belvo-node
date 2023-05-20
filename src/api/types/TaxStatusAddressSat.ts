@@ -4,6 +4,9 @@
 
 import * as Belvo from "..";
 
+/**
+ * The tax payer's address details.
+ */
 export interface TaxStatusAddressSat {
     /**
      * The postcode of the address.

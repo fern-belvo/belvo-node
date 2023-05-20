@@ -20,9 +20,9 @@ export const TaxStatusSat: core.serialization.ObjectSchema<serializers.TaxStatus
         idCif: core.serialization.property("id_cif", core.serialization.string().optional()),
         taxPayerInformation: core.serialization.property(
             "tax_payer_information",
-            core.serialization.lazyObject(async () => (await import("..")).TaxStatusTaxPayerInformationSat)
+            core.serialization.lazyObject(async () => (await import("..")).TaxStatusTaxPayerInformationSat).optional()
         ),
-        address: core.serialization.lazyObject(async () => (await import("..")).TaxStatusAddressSat),
+        address: core.serialization.lazyObject(async () => (await import("..")).TaxStatusAddressSat).optional(),
         economicActivity: core.serialization.property(
             "economic_activity",
             core.serialization
@@ -49,8 +49,8 @@ export declare namespace TaxStatusSat {
         place_and_date_of_issuance?: string | null;
         official_name?: string | null;
         id_cif?: string | null;
-        tax_payer_information: serializers.TaxStatusTaxPayerInformationSat.Raw;
-        address: serializers.TaxStatusAddressSat.Raw;
+        tax_payer_information?: serializers.TaxStatusTaxPayerInformationSat.Raw | null;
+        address?: serializers.TaxStatusAddressSat.Raw | null;
         economic_activity?: serializers.TaxStatusEconomicActivitySat.Raw[] | null;
         regimes?: serializers.TaxStatusRegimensSat.Raw[] | null;
         obligations?: serializers.TaxStatusObligationsSat.Raw[] | null;

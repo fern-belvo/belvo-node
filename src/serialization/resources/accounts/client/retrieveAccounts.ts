@@ -6,9 +6,11 @@ import * as serializers from "../../..";
 import * as Belvo from "../../../../api";
 import * as core from "../../../../core";
 
-export const Response: core.serialization.Schema<serializers.accounts.retrieveAccounts.Response.Raw, Belvo.Account[]> =
-    core.serialization.list(core.serialization.lazyObject(async () => (await import("../../..")).Account));
+export const Response: core.serialization.Schema<
+    serializers.accounts.retrieveAccounts.Response.Raw,
+    (Belvo.Account | undefined)[]
+> = core.serialization.list(core.serialization.lazyObject(async () => (await import("../../..")).Account).optional());
 
 export declare namespace Response {
-    type Raw = serializers.Account.Raw[];
+    type Raw = (serializers.Account.Raw | null | undefined)[];
 }

@@ -36,6 +36,6 @@ export interface CategorizationBody {
     /** The four-digit ISO 18245 Merchant Category Code (MCC). We only return this value when `account_type` = `CREDIT_CARD`. */
     mcc?: number;
     category?: Belvo.EnumCategorizationTransactionCategory;
-    subcategory?: Belvo.EnumCategorizationTransactionSubcategory | undefined;
-    merchant: Belvo.CategorizationMerchantData;
+    subcategory?: Belvo.EnumCategorizationTransactionSubcategory;
+    merchant?: Belvo.CategorizationMerchantData;
 }

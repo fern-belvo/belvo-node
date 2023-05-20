@@ -16,4 +16,4 @@
  *   - `null`
  *
  */
-export type EnumAccountCategory = string | undefined;
+export type EnumAccountCategory = string;

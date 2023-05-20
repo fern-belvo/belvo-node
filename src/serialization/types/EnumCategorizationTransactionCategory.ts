@@ -9,8 +9,8 @@ import * as core from "../../core";
 export const EnumCategorizationTransactionCategory: core.serialization.Schema<
     serializers.EnumCategorizationTransactionCategory.Raw,
     Belvo.EnumCategorizationTransactionCategory
-> = core.serialization.string().optional();
+> = core.serialization.string();
 
 export declare namespace EnumCategorizationTransactionCategory {
-    type Raw = string | null | undefined;
+    type Raw = string;
 }

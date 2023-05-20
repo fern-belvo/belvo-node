@@ -22,8 +22,8 @@ export interface TaxStatusSat {
      *
      */
     idCif?: string;
-    taxPayerInformation: Belvo.TaxStatusTaxPayerInformationSat;
-    address: Belvo.TaxStatusAddressSat;
+    taxPayerInformation?: Belvo.TaxStatusTaxPayerInformationSat;
+    address?: Belvo.TaxStatusAddressSat;
     /**
      * A list of economic activity objects.
      *

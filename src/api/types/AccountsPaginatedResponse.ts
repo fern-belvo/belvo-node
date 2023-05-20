@@ -17,5 +17,5 @@ export interface AccountsPaginatedResponse {
     /** The URL to the previous page of results. If there is no previous page, the value is `null`. */
     previous?: string;
     /** An array of Account objects. */
-    results?: Belvo.Account[];
+    results?: (Belvo.Account | undefined)[];
 }

@@ -21,9 +21,9 @@ export const InvoiceDian: core.serialization.ObjectSchema<serializers.InvoiceDia
         expirationDate: core.serialization.property("expiration_date", core.serialization.string().optional()),
         invoiceType: core.serialization.property(
             "invoice_type",
-            core.serialization.lazy(async () => (await import("..")).EnumInvoiceDianInvoiceType)
+            core.serialization.lazy(async () => (await import("..")).EnumInvoiceDianInvoiceType).optional()
         ),
-        type: core.serialization.lazy(async () => (await import("..")).EnumInvoiceType),
+        type: core.serialization.lazy(async () => (await import("..")).EnumInvoiceType).optional(),
         senderId: core.serialization.property("sender_id", core.serialization.string().optional()),
         senderName: core.serialization.property("sender_name", core.serialization.string().optional()),
         senderDetails: core.serialization.property(
@@ -83,7 +83,7 @@ export const InvoiceDian: core.serialization.ObjectSchema<serializers.InvoiceDia
         payments: core.serialization.list(
             core.serialization.lazyObject(async () => (await import("..")).InvoicesPaymentsDian)
         ),
-        payroll: core.serialization.lazyObject(async () => (await import("..")).InvoicesPayrollDian),
+        payroll: core.serialization.lazyObject(async () => (await import("..")).InvoicesPayrollDian).optional(),
         folio: core.serialization.string().optional(),
         xml: core.serialization.string().optional(),
         warnings: core.serialization.lazyObject(async () => (await import("..")).InvoiceWarningsDian).optional(),
@@ -99,8 +99,8 @@ export declare namespace InvoiceDian {
         invoice_date?: string | null;
         status?: string | null;
         expiration_date?: string | null;
-        invoice_type: serializers.EnumInvoiceDianInvoiceType.Raw;
-        type?: serializers.EnumInvoiceType.Raw;
+        invoice_type?: serializers.EnumInvoiceDianInvoiceType.Raw | null;
+        type?: serializers.EnumInvoiceType.Raw | null;
         sender_id?: string | null;
         sender_name?: string | null;
         sender_details?: serializers.InvoiceSenderDetailsDian.Raw | null;
@@ -115,7 +115,7 @@ export declare namespace InvoiceDian {
         certification_authority?: string | null;
         payment_type?: string | null;
         payment_type_description?: string | null;
-        payment_method?: (serializers.EnumInvoiceDianPaymentMethod.Raw | undefined) | null;
+        payment_method?: serializers.EnumInvoiceDianPaymentMethod.Raw | null;
         payment_method_description?: string | null;
         usage?: string | null;
         version?: string | null;
@@ -128,7 +128,7 @@ export declare namespace InvoiceDian {
         discount_amount?: number | null;
         total_amount?: number | null;
         payments: serializers.InvoicesPaymentsDian.Raw[];
-        payroll: serializers.InvoicesPayrollDian.Raw;
+        payroll?: serializers.InvoicesPayrollDian.Raw | null;
         folio?: string | null;
         xml?: string | null;
         warnings?: serializers.InvoiceWarningsDian.Raw | null;

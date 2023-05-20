@@ -13,4 +13,4 @@
  *
  * ℹ️ Note: Some banks consider CLOSED as PAID.
  */
-export type EnumTransactionBillStatus = string | undefined;
+export type EnumTransactionBillStatus = string;

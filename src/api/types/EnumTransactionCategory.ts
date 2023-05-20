@@ -32,4 +32,4 @@
  *   \* For clients not using our Transaction Categorization product, we return `null` instead.
  *
  */
-export type EnumTransactionCategory = string | undefined;
+export type EnumTransactionCategory = string;

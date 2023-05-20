@@ -4,6 +4,9 @@
 
 import * as Belvo from "..";
 
+/**
+ * Breakdown of the fees applied to the loan.
+ */
 export interface AccountsLoanDataFees {
     type: Belvo.EnumLoanDataFeeType;
     /**

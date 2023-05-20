@@ -13,4 +13,4 @@
  *   - `null` (for single links)
  *
  */
-export type EnumLinkRefreshRate = string | undefined;
+export type EnumLinkRefreshRate = string;

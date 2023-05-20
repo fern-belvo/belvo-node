@@ -4,6 +4,12 @@
 
 import * as Belvo from "..";
 
+/**
+ * Details regarding the account.
+ *
+ * **Note**: For our recurring expenses resource, this account relates to the account that was analyzed to generate the recurring expenses report.
+ *
+ */
 export interface Account {
     /** The unique identifier created by Belvo used to reference the current account. */
     id?: string;
@@ -53,8 +59,8 @@ export interface Account {
     publicIdentificationValue?: string;
     /** The ISO-8601 timestamp of Belvo's most recent successful access to the institution for the given link. */
     lastAccessedAt?: string;
-    creditData: Belvo.AccountsCreditData;
-    loanData: Belvo.AccountsLoanData;
+    creditData?: Belvo.AccountsCreditData;
+    loanData?: Belvo.AccountsLoanData;
     /** One or more funds that contribute to the the pension account. */
     fundsData?: Belvo.AccountsFundsData[];
     receivablesData?: Belvo.AccountsReceivablesData;

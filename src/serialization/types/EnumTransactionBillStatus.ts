@@ -9,8 +9,8 @@ import * as core from "../../core";
 export const EnumTransactionBillStatus: core.serialization.Schema<
     serializers.EnumTransactionBillStatus.Raw,
     Belvo.EnumTransactionBillStatus
-> = core.serialization.string().optional();
+> = core.serialization.string();
 
 export declare namespace EnumTransactionBillStatus {
-    type Raw = string | null | undefined;
+    type Raw = string;
 }

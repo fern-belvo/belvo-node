@@ -59,7 +59,7 @@ export interface TaxRetentions {
      *
      */
     senderName?: string;
-    receiverNationality: Belvo.EnumTaxRetentionReceiverNationality;
+    receiverNationality?: Belvo.EnumTaxRetentionReceiverNationality;
     /**
      * The fiscal ID of the invoice receiver.
      *

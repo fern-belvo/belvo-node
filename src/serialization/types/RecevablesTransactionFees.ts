@@ -10,13 +10,13 @@ export const RecevablesTransactionFees: core.serialization.ObjectSchema<
     serializers.RecevablesTransactionFees.Raw,
     Belvo.RecevablesTransactionFees
 > = core.serialization.object({
-    type: core.serialization.lazy(async () => (await import("..")).EnumReceivableTransactionFeeType),
+    type: core.serialization.lazy(async () => (await import("..")).EnumReceivableTransactionFeeType).optional(),
     value: core.serialization.number(),
 });
 
 export declare namespace RecevablesTransactionFees {
     interface Raw {
-        type: serializers.EnumReceivableTransactionFeeType.Raw;
+        type?: serializers.EnumReceivableTransactionFeeType.Raw | null;
         value: number;
     }
 }

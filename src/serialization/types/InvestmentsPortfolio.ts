@@ -18,7 +18,7 @@ export const InvestmentsPortfolio: core.serialization.ObjectSchema<
     balanceNet: core.serialization.property("balance_net", core.serialization.number().optional()),
     currency: core.serialization.string(),
     instruments: core.serialization
-        .list(core.serialization.lazyObject(async () => (await import("..")).InvestmentsPortfolioInstrument))
+        .list(core.serialization.lazyObject(async () => (await import("..")).InvestmentsPortfolioInstrument).optional())
         .optional(),
 });
 
@@ -31,6 +31,6 @@ export declare namespace InvestmentsPortfolio {
         balance_gross?: number | null;
         balance_net?: number | null;
         currency: string;
-        instruments?: serializers.InvestmentsPortfolioInstrument.Raw[] | null;
+        instruments?: (serializers.InvestmentsPortfolioInstrument.Raw | null | undefined)[] | null;
     }
 }

@@ -14,7 +14,7 @@ import * as Belvo from "..";
 export interface RecurringExpenses {
     /** Belvo's unique identifier used to reference the current recurring expense. */
     id?: string;
-    account: Belvo.Account;
+    account?: Belvo.Account;
     /**
      * The name for the recurring expense.
      *
@@ -23,7 +23,7 @@ export interface RecurringExpenses {
      */
     name?: string;
     /** An array of minified transaction objects used to evaluate the recurring expense. If no transactions were found, we return an empty array. */
-    transactions: Belvo.RecurringExpenseSourceTransaction[];
+    transactions: (Belvo.RecurringExpenseSourceTransaction | undefined)[];
     frequency: Belvo.EnumRecurringExpenseFrequency;
     /** The average transaction amount of the recurring expense. */
     averageTransactionAmount: number;
@@ -37,5 +37,5 @@ export interface RecurringExpenses {
      */
     daysSinceLastTransaction: number;
     category: Belvo.EnumRecurringExpenseCategory;
-    paymentType: Belvo.EnumRecurringExpensePaymentType;
+    paymentType?: Belvo.EnumRecurringExpensePaymentType;
 }

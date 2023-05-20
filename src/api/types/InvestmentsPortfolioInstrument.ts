@@ -47,9 +47,9 @@ export interface InvestmentsPortfolioInstrument {
      * For example, the due date, the liquidity date, the previdencia type, and so on.
      *
      */
-    redemptionConditions?: Belvo.InvestmentsPortfolioInstrumentRedemptionConditions[];
+    redemptionConditions?: (Belvo.InvestmentsPortfolioInstrumentRedemptionConditions | undefined)[];
     /** An array of fees that apply to the instrument. */
-    fees?: Belvo.InvestmentsPortfolioInstrumentFees[];
+    fees?: (Belvo.InvestmentsPortfolioInstrumentFees | undefined)[];
     /** An array of interest rates that apply to the instrument. */
-    interestRates?: Belvo.InvestmentsPortfolioInstrumentInterestRate[];
+    interestRates?: (Belvo.InvestmentsPortfolioInstrumentInterestRate | undefined)[];
 }

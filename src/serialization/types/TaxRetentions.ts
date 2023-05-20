@@ -25,7 +25,7 @@ export const TaxRetentions: core.serialization.ObjectSchema<serializers.TaxReten
         senderName: core.serialization.property("sender_name", core.serialization.string().optional()),
         receiverNationality: core.serialization.property(
             "receiver_nationality",
-            core.serialization.lazy(async () => (await import("..")).EnumTaxRetentionReceiverNationality)
+            core.serialization.lazy(async () => (await import("..")).EnumTaxRetentionReceiverNationality).optional()
         ),
         receiverId: core.serialization.property("receiver_id", core.serialization.string().optional()),
         receiverName: core.serialization.property("receiver_name", core.serialization.string().optional()),
@@ -59,7 +59,7 @@ export declare namespace TaxRetentions {
         cancelled_at?: string | null;
         sender_id?: string | null;
         sender_name?: string | null;
-        receiver_nationality: serializers.EnumTaxRetentionReceiverNationality.Raw;
+        receiver_nationality?: serializers.EnumTaxRetentionReceiverNationality.Raw | null;
         receiver_id?: string | null;
         receiver_name?: string | null;
         total_invoice_amount?: number | null;

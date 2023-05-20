@@ -15,7 +15,7 @@ export const RetentionBreakdown: core.serialization.ObjectSchema<
     retainedAmount: core.serialization.property("retained_amount", core.serialization.number().optional()),
     paymentStatus: core.serialization.property(
         "payment_status",
-        core.serialization.lazy(async () => (await import("..")).EnumTaxRetentionPaymentStatus)
+        core.serialization.lazy(async () => (await import("..")).EnumTaxRetentionPaymentStatus).optional()
     ),
 });
 
@@ -24,6 +24,6 @@ export declare namespace RetentionBreakdown {
         base_amount?: number | null;
         tax_type?: string | null;
         retained_amount?: number | null;
-        payment_status: serializers.EnumTaxRetentionPaymentStatus.Raw;
+        payment_status?: serializers.EnumTaxRetentionPaymentStatus.Raw | null;
     }
 }

@@ -19,7 +19,7 @@ export interface InvoiceWithIdSat {
     invoiceDate?: string;
     /** The status of the invoice. Can be either *Vigente* (valid) or *Cancelado* (cancelled). */
     status?: string;
-    invoiceType: Belvo.EnumInvoiceSatInvoiceType;
+    invoiceType?: Belvo.EnumInvoiceSatInvoiceType;
     type?: Belvo.EnumInvoiceType;
     /** The fiscal ID of the invoice sender */
     senderId?: string;
@@ -74,7 +74,7 @@ export interface InvoiceWithIdSat {
      *
      */
     paymentTypeDescription?: string;
-    paymentMethod?: Belvo.EnumInvoiceSatPaymentMethod | undefined;
+    paymentMethod?: Belvo.EnumInvoiceSatPaymentMethod;
     /**
      * *This field has been deprecated.*
      *
@@ -141,7 +141,7 @@ export interface InvoiceWithIdSat {
      *
      */
     payments: Belvo.InvoicesPaymentsSat[];
-    payroll: Belvo.InvoicesPayrollSat;
+    payroll?: Belvo.InvoicesPayrollSat;
     /**
      * The internal control number that the taxpayer assigns to the invoice.
      *

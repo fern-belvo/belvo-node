@@ -14,7 +14,7 @@ export const AccountsPaginatedResponse: core.serialization.ObjectSchema<
     next: core.serialization.string().optional(),
     previous: core.serialization.string().optional(),
     results: core.serialization
-        .list(core.serialization.lazyObject(async () => (await import("..")).Account))
+        .list(core.serialization.lazyObject(async () => (await import("..")).Account).optional())
         .optional(),
 });
 
@@ -23,6 +23,6 @@ export declare namespace AccountsPaginatedResponse {
         count?: number | null;
         next?: string | null;
         previous?: string | null;
-        results?: serializers.Account.Raw[] | null;
+        results?: (serializers.Account.Raw | null | undefined)[] | null;
     }
 }

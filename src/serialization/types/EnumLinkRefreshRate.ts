@@ -9,8 +9,8 @@ import * as core from "../../core";
 export const EnumLinkRefreshRate: core.serialization.Schema<
     serializers.EnumLinkRefreshRate.Raw,
     Belvo.EnumLinkRefreshRate
-> = core.serialization.string().optional();
+> = core.serialization.string();
 
 export declare namespace EnumLinkRefreshRate {
-    type Raw = string | null | undefined;
+    type Raw = string;
 }

@@ -36,6 +36,6 @@ export interface ReceivablesTransaction {
     /** The net amount of the transaction. */
     netAmount?: number;
     fees: Belvo.RecevablesTransactionFees[];
-    status: Belvo.EnumReceivableTransactionStatus;
-    numberOfInstallments: Belvo.ReceivablesTransactionNumberOfInstallments;
+    status?: Belvo.EnumReceivableTransactionStatus;
+    numberOfInstallments?: Belvo.ReceivablesTransactionNumberOfInstallments;
 }

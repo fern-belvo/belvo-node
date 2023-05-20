@@ -4,6 +4,9 @@
 
 import * as Belvo from "..";
 
+/**
+ * The loan options associated with this account.
+ */
 export interface AccountsLoanData {
     /** The ISO-8601 timestamp when the data point was collected. */
     collectedAt: string;
@@ -27,7 +30,7 @@ export interface AccountsLoanData {
     /** Breakdown of the interest applied to the loan. */
     interestRates?: Belvo.AccountsLoanDataInterestRate[];
     /** Breakdown of the fees applied to the loan. */
-    fees?: Belvo.AccountsLoanDataFees[];
+    fees?: (Belvo.AccountsLoanDataFees | undefined)[];
     /** The total number of installments required to pay the loan. */
     numberOfInstallmentsTotal?: number;
     /** The number of installments left to pay. */

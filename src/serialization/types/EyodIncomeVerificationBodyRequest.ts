@@ -23,7 +23,7 @@ export const EyodIncomeVerificationBodyRequest: core.serialization.ObjectSchema<
     ),
     valueDate: core.serialization.property("value_date", core.serialization.string()),
     description: core.serialization.string(),
-    type: core.serialization.lazy(async () => (await import("..")).EnumIncomeVerificationType),
+    type: core.serialization.lazy(async () => (await import("..")).EnumIncomeVerificationType).optional(),
     amount: core.serialization.number(),
     currency: core.serialization.string(),
     institution: core.serialization.string(),
@@ -38,7 +38,7 @@ export declare namespace EyodIncomeVerificationBodyRequest {
         account_category: serializers.EnumIncomeVerificationAccountCategory.Raw;
         value_date: string;
         description: string;
-        type: serializers.EnumIncomeVerificationType.Raw;
+        type?: serializers.EnumIncomeVerificationType.Raw | null;
         amount: number;
         currency: string;
         institution: string;

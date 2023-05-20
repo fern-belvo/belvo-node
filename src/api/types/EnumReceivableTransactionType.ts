@@ -16,4 +16,4 @@
  *   - `null`
  *
  */
-export type EnumReceivableTransactionType = string | undefined;
+export type EnumReceivableTransactionType = string;

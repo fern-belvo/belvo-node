@@ -20,9 +20,9 @@ export const TaxStatusDian: core.serialization.ObjectSchema<serializers.TaxStatu
         idCif: core.serialization.property("id_cif", core.serialization.string().optional()),
         taxPayerInformation: core.serialization.property(
             "tax_payer_information",
-            core.serialization.lazyObject(async () => (await import("..")).TaxStatusTaxPayerInformationDian)
+            core.serialization.lazyObject(async () => (await import("..")).TaxStatusTaxPayerInformationDian).optional()
         ),
-        address: core.serialization.lazyObject(async () => (await import("..")).TaxStatusAddressDian),
+        address: core.serialization.lazyObject(async () => (await import("..")).TaxStatusAddressDian).optional(),
         economicActivity: core.serialization.property(
             "economic_activity",
             core.serialization
@@ -49,8 +49,8 @@ export declare namespace TaxStatusDian {
         place_and_date_of_issuance?: string | null;
         official_name?: string | null;
         id_cif?: string | null;
-        tax_payer_information: serializers.TaxStatusTaxPayerInformationDian.Raw;
-        address: serializers.TaxStatusAddressDian.Raw;
+        tax_payer_information?: serializers.TaxStatusTaxPayerInformationDian.Raw | null;
+        address?: serializers.TaxStatusAddressDian.Raw | null;
         economic_activity?: serializers.TaxStatusEconomicActivityDian.Raw[] | null;
         regimes?: serializers.TaxStatusRegimensDian.Raw[] | null;
         obligations?: serializers.TaxStatusObligationsDian.Raw[] | null;

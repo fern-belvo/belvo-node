@@ -11,4 +11,4 @@
  *   - `null`
  *
  */
-export type EnumLinkAccessModeResponse = string | undefined;
+export type EnumLinkAccessModeResponse = string;

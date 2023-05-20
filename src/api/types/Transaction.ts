@@ -12,7 +12,7 @@ export interface Transaction {
      *
      */
     internalIdentification?: string;
-    account: Belvo.Account;
+    account?: Belvo.Account;
     /** The ISO-8601 timestamp when the data point was collected. */
     collectedAt?: string;
     /** The ISO-8601 timestamp of when the data point was last updated in Belvo's database. */
@@ -38,9 +38,9 @@ export interface Transaction {
     description?: string;
     /** Additional observations provided by the institution on the transaction. */
     observations?: string;
-    merchant: Belvo.TransactionMerchantData;
+    merchant?: Belvo.TransactionMerchantData;
     category?: Belvo.EnumTransactionCategory;
-    subcategory?: Belvo.EnumTransactionSubcategory | undefined;
+    subcategory?: Belvo.EnumTransactionSubcategory;
     /** The reference number of the transaction, provided by the bank. */
     reference?: string;
     type?: Belvo.EnumTransactionType;

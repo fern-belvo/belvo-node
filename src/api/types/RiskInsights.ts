@@ -13,9 +13,9 @@ export interface RiskInsights {
     accounts?: string[];
     /** The ISO-8601 timestamp of when the data point was last updated in Belvo's database. */
     createdAt: string;
-    transactionsMetrics: Belvo.RiskInsightsTransactionMetrics;
-    balancesMetrics: Belvo.RiskInsightsBalanceMetrics;
-    cashflowMetrics: Belvo.RiskInsightsCashflowMetrics;
-    creditCardsMetrics: Belvo.RiskInsightsCreditCardMetrics;
-    loansMetrics: Belvo.RiskInsightsLoansMetrics;
+    transactionsMetrics?: Belvo.RiskInsightsTransactionMetrics;
+    balancesMetrics?: Belvo.RiskInsightsBalanceMetrics;
+    cashflowMetrics?: Belvo.RiskInsightsCashflowMetrics;
+    creditCardsMetrics?: Belvo.RiskInsightsCreditCardMetrics;
+    loansMetrics?: Belvo.RiskInsightsLoansMetrics;
 }

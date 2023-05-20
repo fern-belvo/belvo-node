@@ -11,4 +11,4 @@
  *   - `null`
  *
  */
-export type EnumTransactionStatus = string | undefined;
+export type EnumTransactionStatus = string;

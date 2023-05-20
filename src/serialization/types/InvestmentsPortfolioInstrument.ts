@@ -37,22 +37,26 @@ export const InvestmentsPortfolioInstrument: core.serialization.ObjectSchema<
         "redemption_conditions",
         core.serialization
             .list(
-                core.serialization.lazyObject(
-                    async () => (await import("..")).InvestmentsPortfolioInstrumentRedemptionConditions
-                )
+                core.serialization
+                    .lazyObject(async () => (await import("..")).InvestmentsPortfolioInstrumentRedemptionConditions)
+                    .optional()
             )
             .optional()
     ),
     fees: core.serialization
-        .list(core.serialization.lazyObject(async () => (await import("..")).InvestmentsPortfolioInstrumentFees))
+        .list(
+            core.serialization
+                .lazyObject(async () => (await import("..")).InvestmentsPortfolioInstrumentFees)
+                .optional()
+        )
         .optional(),
     interestRates: core.serialization.property(
         "interest_rates",
         core.serialization
             .list(
-                core.serialization.lazyObject(
-                    async () => (await import("..")).InvestmentsPortfolioInstrumentInterestRate
-                )
+                core.serialization
+                    .lazyObject(async () => (await import("..")).InvestmentsPortfolioInstrumentInterestRate)
+                    .optional()
             )
             .optional()
     ),
@@ -73,8 +77,10 @@ export declare namespace InvestmentsPortfolioInstrument {
         average_acquisition_price?: number | null;
         profit?: number | null;
         open_date?: string | null;
-        redemption_conditions?: serializers.InvestmentsPortfolioInstrumentRedemptionConditions.Raw[] | null;
-        fees?: serializers.InvestmentsPortfolioInstrumentFees.Raw[] | null;
-        interest_rates?: serializers.InvestmentsPortfolioInstrumentInterestRate.Raw[] | null;
+        redemption_conditions?:
+            | (serializers.InvestmentsPortfolioInstrumentRedemptionConditions.Raw | null | undefined)[]
+            | null;
+        fees?: (serializers.InvestmentsPortfolioInstrumentFees.Raw | null | undefined)[] | null;
+        interest_rates?: (serializers.InvestmentsPortfolioInstrumentInterestRate.Raw | null | undefined)[] | null;
     }
 }

@@ -7,8 +7,8 @@ import * as Belvo from "../../api";
 import * as core from "../../core";
 
 export const EnumInvoiceType: core.serialization.Schema<serializers.EnumInvoiceType.Raw, Belvo.EnumInvoiceType> =
-    core.serialization.string().optional();
+    core.serialization.string();
 
 export declare namespace EnumInvoiceType {
-    type Raw = string | null | undefined;
+    type Raw = string;
 }

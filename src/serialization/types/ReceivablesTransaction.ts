@@ -18,16 +18,18 @@ export const ReceivablesTransaction: core.serialization.ObjectSchema<
     valueDate: core.serialization.property("value_date", core.serialization.string()),
     institutionTransactionId: core.serialization.property("institution_transaction_id", core.serialization.string()),
     currency: core.serialization.string(),
-    type: core.serialization.lazy(async () => (await import("..")).EnumReceivableTransactionType),
+    type: core.serialization.lazy(async () => (await import("..")).EnumReceivableTransactionType).optional(),
     grossAmount: core.serialization.property("gross_amount", core.serialization.number().optional()),
     netAmount: core.serialization.property("net_amount", core.serialization.number().optional()),
     fees: core.serialization.list(
         core.serialization.lazyObject(async () => (await import("..")).RecevablesTransactionFees)
     ),
-    status: core.serialization.lazy(async () => (await import("..")).EnumReceivableTransactionStatus),
+    status: core.serialization.lazy(async () => (await import("..")).EnumReceivableTransactionStatus).optional(),
     numberOfInstallments: core.serialization.property(
         "number_of_installments",
-        core.serialization.lazyObject(async () => (await import("..")).ReceivablesTransactionNumberOfInstallments)
+        core.serialization
+            .lazyObject(async () => (await import("..")).ReceivablesTransactionNumberOfInstallments)
+            .optional()
     ),
 });
 
@@ -41,11 +43,11 @@ export declare namespace ReceivablesTransaction {
         value_date: string;
         institution_transaction_id: string;
         currency: string;
-        type?: serializers.EnumReceivableTransactionType.Raw;
+        type?: serializers.EnumReceivableTransactionType.Raw | null;
         gross_amount?: number | null;
         net_amount?: number | null;
         fees: serializers.RecevablesTransactionFees.Raw[];
-        status: serializers.EnumReceivableTransactionStatus.Raw;
-        number_of_installments: serializers.ReceivablesTransactionNumberOfInstallments.Raw;
+        status?: serializers.EnumReceivableTransactionStatus.Raw | null;
+        number_of_installments?: serializers.ReceivablesTransactionNumberOfInstallments.Raw | null;
     }
 }

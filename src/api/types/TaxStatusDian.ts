@@ -27,8 +27,8 @@ export interface TaxStatusDian {
      *
      */
     idCif?: string;
-    taxPayerInformation: Belvo.TaxStatusTaxPayerInformationDian;
-    address: Belvo.TaxStatusAddressDian;
+    taxPayerInformation?: Belvo.TaxStatusTaxPayerInformationDian;
+    address?: Belvo.TaxStatusAddressDian;
     /**
      * A list of economic activity objects.
      *

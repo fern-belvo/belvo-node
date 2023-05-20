@@ -86,4 +86,4 @@
  *   - `Other`
  *   - `null`
  */
-export type EnumCategorizationTransactionSubcategory = string | undefined;
+export type EnumCategorizationTransactionSubcategory = string;

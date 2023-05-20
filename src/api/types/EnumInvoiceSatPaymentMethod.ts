@@ -8,4 +8,4 @@
  * - 🇲🇽 Mexico [SAT catalog reference article](https://developers.belvo.com/docs/sat-catalogs#payment-method). For Mexico, we return `PUE`, `PIP`, `PPD`, or `null`.
  *
  */
-export type EnumInvoiceSatPaymentMethod = string | undefined;
+export type EnumInvoiceSatPaymentMethod = string;

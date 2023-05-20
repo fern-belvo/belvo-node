@@ -13,7 +13,7 @@ export const Account: core.serialization.ObjectSchema<serializers.Account.Raw, B
         institution: core.serialization.lazyObject(async () => (await import("..")).InstitutionAccount).optional(),
         collectedAt: core.serialization.property("collected_at", core.serialization.string()),
         createdAt: core.serialization.property("created_at", core.serialization.string().optional()),
-        category: core.serialization.lazy(async () => (await import("..")).EnumAccountCategory),
+        category: core.serialization.lazy(async () => (await import("..")).EnumAccountCategory).optional(),
         balanceType: core.serialization.property("balance_type", core.serialization.string().optional()),
         type: core.serialization.string().optional(),
         name: core.serialization.string().optional(),
@@ -31,11 +31,11 @@ export const Account: core.serialization.ObjectSchema<serializers.Account.Raw, B
         lastAccessedAt: core.serialization.property("last_accessed_at", core.serialization.string().optional()),
         creditData: core.serialization.property(
             "credit_data",
-            core.serialization.lazyObject(async () => (await import("..")).AccountsCreditData)
+            core.serialization.lazyObject(async () => (await import("..")).AccountsCreditData).optional()
         ),
         loanData: core.serialization.property(
             "loan_data",
-            core.serialization.lazyObject(async () => (await import("..")).AccountsLoanData)
+            core.serialization.lazyObject(async () => (await import("..")).AccountsLoanData).optional()
         ),
         fundsData: core.serialization.property(
             "funds_data",
@@ -61,7 +61,7 @@ export declare namespace Account {
         institution?: serializers.InstitutionAccount.Raw | null;
         collected_at: string;
         created_at?: string | null;
-        category?: serializers.EnumAccountCategory.Raw;
+        category?: serializers.EnumAccountCategory.Raw | null;
         balance_type?: string | null;
         type?: string | null;
         name?: string | null;
@@ -71,8 +71,8 @@ export declare namespace Account {
         public_identification_name?: string | null;
         public_identification_value?: string | null;
         last_accessed_at?: string | null;
-        credit_data: serializers.AccountsCreditData.Raw;
-        loan_data: serializers.AccountsLoanData.Raw;
+        credit_data?: serializers.AccountsCreditData.Raw | null;
+        loan_data?: serializers.AccountsLoanData.Raw | null;
         funds_data?: serializers.AccountsFundsData.Raw[] | null;
         receivables_data?: serializers.AccountsReceivablesData.Raw | null;
         bank_product_id?: string | null;

@@ -28,11 +28,13 @@ export const CategorizationBody: core.serialization.ObjectSchema<
     currency: core.serialization.string(),
     institution: core.serialization.string(),
     mcc: core.serialization.number().optional(),
-    category: core.serialization.lazy(async () => (await import("..")).EnumCategorizationTransactionCategory),
+    category: core.serialization
+        .lazy(async () => (await import("..")).EnumCategorizationTransactionCategory)
+        .optional(),
     subcategory: core.serialization
         .lazy(async () => (await import("..")).EnumCategorizationTransactionSubcategory)
         .optional(),
-    merchant: core.serialization.lazyObject(async () => (await import("..")).CategorizationMerchantData),
+    merchant: core.serialization.lazyObject(async () => (await import("..")).CategorizationMerchantData).optional(),
 });
 
 export declare namespace CategorizationBody {
@@ -49,8 +51,8 @@ export declare namespace CategorizationBody {
         currency: string;
         institution: string;
         mcc?: number | null;
-        category?: serializers.EnumCategorizationTransactionCategory.Raw;
-        subcategory?: (serializers.EnumCategorizationTransactionSubcategory.Raw | undefined) | null;
-        merchant: serializers.CategorizationMerchantData.Raw;
+        category?: serializers.EnumCategorizationTransactionCategory.Raw | null;
+        subcategory?: serializers.EnumCategorizationTransactionSubcategory.Raw | null;
+        merchant?: serializers.CategorizationMerchantData.Raw | null;
     }
 }

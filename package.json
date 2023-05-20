@@ -1,6 +1,6 @@
 {
     "name": "@fern-api/belvo",
-    "version": "0.0.33",
+    "version": "0.0.34",
     "private": false,
     "repository": "https://github.com/fern-belvo/belvo-node",
     "main": "./index.js",

@@ -22,9 +22,9 @@ export const InvoiceWithIdSat: core.serialization.ObjectSchema<
     status: core.serialization.string().optional(),
     invoiceType: core.serialization.property(
         "invoice_type",
-        core.serialization.lazy(async () => (await import("..")).EnumInvoiceSatInvoiceType)
+        core.serialization.lazy(async () => (await import("..")).EnumInvoiceSatInvoiceType).optional()
     ),
-    type: core.serialization.lazy(async () => (await import("..")).EnumInvoiceType),
+    type: core.serialization.lazy(async () => (await import("..")).EnumInvoiceType).optional(),
     senderId: core.serialization.property("sender_id", core.serialization.string().optional()),
     senderName: core.serialization.property("sender_name", core.serialization.string().optional()),
     senderTaxFraudStatus: core.serialization.property(
@@ -76,7 +76,7 @@ export const InvoiceWithIdSat: core.serialization.ObjectSchema<
     payments: core.serialization.list(
         core.serialization.lazyObject(async () => (await import("..")).InvoicesPaymentsSat)
     ),
-    payroll: core.serialization.lazyObject(async () => (await import("..")).InvoicesPayrollSat),
+    payroll: core.serialization.lazyObject(async () => (await import("..")).InvoicesPayrollSat).optional(),
     folio: core.serialization.string().optional(),
     xml: core.serialization.string().optional(),
     warnings: core.serialization.lazyObject(async () => (await import("..")).InvoiceWarningsSat).optional(),
@@ -99,8 +99,8 @@ export declare namespace InvoiceWithIdSat {
         invoice_identification?: string | null;
         invoice_date?: string | null;
         status?: string | null;
-        invoice_type: serializers.EnumInvoiceSatInvoiceType.Raw;
-        type?: serializers.EnumInvoiceType.Raw;
+        invoice_type?: serializers.EnumInvoiceSatInvoiceType.Raw | null;
+        type?: serializers.EnumInvoiceType.Raw | null;
         sender_id?: string | null;
         sender_name?: string | null;
         sender_tax_fraud_status?: string | null;
@@ -113,7 +113,7 @@ export declare namespace InvoiceWithIdSat {
         certification_authority?: string | null;
         payment_type?: string | null;
         payment_type_description?: string | null;
-        payment_method?: (serializers.EnumInvoiceSatPaymentMethod.Raw | undefined) | null;
+        payment_method?: serializers.EnumInvoiceSatPaymentMethod.Raw | null;
         payment_method_description?: string | null;
         usage?: string | null;
         version?: string | null;
@@ -126,7 +126,7 @@ export declare namespace InvoiceWithIdSat {
         discount_amount?: number | null;
         total_amount?: number | null;
         payments: serializers.InvoicesPaymentsSat.Raw[];
-        payroll: serializers.InvoicesPayrollSat.Raw;
+        payroll?: serializers.InvoicesPayrollSat.Raw | null;
         folio?: string | null;
         xml?: string | null;
         warnings?: serializers.InvoiceWarningsSat.Raw | null;

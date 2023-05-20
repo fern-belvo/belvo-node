@@ -10,7 +10,7 @@ import * as Belvo from "..";
 export interface AccountsLoanDataInterestRate {
     /** The name of the type of interest rate applied to the loan. */
     name?: string;
-    type: Belvo.EnumLoanDataInterestRateType;
+    type?: Belvo.EnumLoanDataInterestRateType;
     /** The interest rate (in percent or currency value). */
     value?: number;
 }

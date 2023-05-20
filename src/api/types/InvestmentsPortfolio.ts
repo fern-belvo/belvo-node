@@ -44,5 +44,5 @@ export interface InvestmentsPortfolio {
      */
     currency: string;
     /** An array of instruments that fall into the investment portfolio. */
-    instruments?: Belvo.InvestmentsPortfolioInstrument[];
+    instruments?: (Belvo.InvestmentsPortfolioInstrument | undefined)[];
 }
